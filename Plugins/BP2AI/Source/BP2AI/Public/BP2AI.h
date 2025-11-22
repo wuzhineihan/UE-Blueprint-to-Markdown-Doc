@@ -18,6 +18,7 @@
 class FToolBarBuilder;
 class FMenuBuilder;
 class FUICommandList;
+struct FAssetData;
 
 class SMarkdownOutputWindow;
 
@@ -36,6 +37,9 @@ public:
 
 private:
     void RegisterMenus();
+    void RegisterContentBrowserAssetMenu();
+    bool CanExportBlueprintAsset(const FAssetData& AssetData) const;
+    void HandleSingleAssetExport(const FAssetData& AssetData) const;
    
 	TSharedRef<SWidget> CreateBlueprintExecFlowWindow();
 

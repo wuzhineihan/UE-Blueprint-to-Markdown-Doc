@@ -26,6 +26,11 @@
 #include "LevelEditor.h" 
 #include "Logging/LogMacros.h" 
 #include "Styling/AppStyle.h" 
+#include "Engine/Blueprint.h"
+#include "ContentBrowserMenuContexts.h"
+#include "AssetRegistry/AssetData.h"
+#include "Exporters/BP2AIBatchExporter.h"
+#include "Misc/Paths.h"
 
 
 
@@ -368,7 +373,97 @@ void FBP2AIModule::RegisterMenus()
         UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Failed to extend WidgetBlueprintEditor.ToolBar."));
     }
 
+    RegisterContentBrowserAssetMenu();
+
     UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Toolbar button registration complete."));
+}
+
+void FBP2AIModule::RegisterContentBrowserAssetMenu()
+{
+    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: RegisterContentBrowserAssetMenu called."));
+
+    if (UToolMenu* Menu = UToolMenus::Get()->ExtendMenu("ContentBrowser.AssetContextMenu"))
+    {
+        Menu->AddDynamicSection("BP2AI.DynamicSection", FNewToolMenuDelegate::CreateLambda([this](UToolMenu* InMenu)
+        {
+            if (!InMenu) return;
+
+            UContentBrowserAssetContextMenuContext* Context = InMenu->FindContext<UContentBrowserAssetContextMenuContext>();
+            if (!Context || Context->SelectedAssets.Num() != 1) return;
+
+            const FAssetData& AssetData = Context->SelectedAssets[0];
+            if (!CanExportBlueprintAsset(AssetData)) return;
+
+            FToolMenuSection& Section = InMenu->FindOrAddSection("AssetContextAssetActions");
+            
+            Section.AddMenuEntry(
+                "BP2AI_ExportSingleBlueprint",
+                LOCTEXT("BP2AI_ExportSingleBlueprint_Label", "Export Blueprint (BP2AI)"),
+                LOCTEXT("BP2AI_ExportSingleBlueprint_Tooltip", "Export the selected blueprint or interface to a BP2AI Markdown document."),
+                FSlateIcon(),
+                FUIAction(FExecuteAction::CreateLambda([this, AssetData]()
+                {
+                    HandleSingleAssetExport(AssetData);
+                }))
+            );
+        }));
+    }
+}
+
+bool FBP2AIModule::CanExportBlueprintAsset(const FAssetData& AssetData) const
+{
+    if (!AssetData.IsValid())
+    {
+        return false;
+    }
+
+    const UClass* AssetClass = AssetData.GetClass();
+    if (!AssetClass)
+    {
+        return false;
+    }
+
+    return AssetClass->IsChildOf(UBlueprint::StaticClass());
+}
+
+void FBP2AIModule::HandleSingleAssetExport(const FAssetData& AssetData) const
+{
+    UObject* LoadedObject = AssetData.GetAsset();
+    UBlueprint* Blueprint = Cast<UBlueprint>(LoadedObject);
+    if (!Blueprint)
+    {
+        UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Selected asset '%s' is not a blueprint or failed to load."), *AssetData.AssetName.ToString());
+        return;
+    }
+
+    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Exporting blueprint '%s' via Content Browser action."), *Blueprint->GetName());
+
+    const FCompleteBlueprintData CompleteData = FBP2AIBatchExporter::ExportCompleteBlueprint(Blueprint, true);
+    const FString BaseDir = FPaths::ProjectSavedDir() / TEXT("BP2AI/Exports");
+
+    FString PackagePath = AssetData.PackagePath.ToString();
+    const FString GameRoot = TEXT("/Game");
+    if (PackagePath.StartsWith(GameRoot))
+    {
+        PackagePath = PackagePath.Mid(GameRoot.Len());
+    }
+    PackagePath.RemoveFromStart(TEXT("/"));
+
+    FString OutputDir = BaseDir;
+    if (!PackagePath.IsEmpty())
+    {
+        OutputDir = FPaths::Combine(BaseDir, PackagePath);
+    }
+
+    const FString TargetFilePath = FPaths::Combine(OutputDir, CompleteData.BlueprintName + TEXT(".md"));
+
+    if (!FBP2AIBatchExporter::WriteCompleteBlueprintMarkdown(CompleteData, TargetFilePath, true))
+    {
+        UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Failed to save blueprint export to '%s'."), *TargetFilePath);
+        return;
+    }
+
+    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Export complete -> %s"), *TargetFilePath);
 }
 /* --- COMMENTED OUT LEGACY IMPLEMENTATION ---
 void FBP2AIModule::OnPluginWindowClosed(const TSharedRef<SWindow>& Window)

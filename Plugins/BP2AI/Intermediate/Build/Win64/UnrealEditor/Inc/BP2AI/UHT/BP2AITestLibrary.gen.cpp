@@ -16,43 +16,6 @@ ENGINE_API UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
 UPackage* Z_Construct_UPackage__Script_BP2AI();
 // End Cross Module References
 
-// Begin Class UBP2AITestLibrary Function RunTask13Test
-struct Z_Construct_UFunction_UBP2AITestLibrary_RunTask13Test_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "CallInEditor", "true" },
-		{ "Category", "BP2AI|Testing" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n     * \xe8\xbf\x90\xe8\xa1\x8c Task 1.3 \xe7\x9a\x84\xe6\xb5\x8b\xe8\xaf\x95\n     * \xe5\x8f\xaf\xe4\xbb\xa5\xe5\x9c\xa8\xe7\xbc\x96\xe8\xbe\x91\xe5\x99\xa8\xe7\x9a\x84\xe8\x93\x9d\xe5\x9b\xbe\xe4\xb8\xad\xe8\xb0\x83\xe7\x94\xa8\xef\xbc\x8c\xe6\x88\x96\xe8\x80\x85\xe9\x80\x9a\xe8\xbf\x87\xe6\x8e\xa7\xe5\x88\xb6\xe5\x8f\xb0\xe5\x91\xbd\xe4\xbb\xa4\xe8\xb0\x83\xe7\x94\xa8\n     */" },
-#endif
-		{ "ModuleRelativePath", "Public/BP2AITestLibrary.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "\xe8\xbf\x90\xe8\xa1\x8c Task 1.3 \xe7\x9a\x84\xe6\xb5\x8b\xe8\xaf\x95\n\xe5\x8f\xaf\xe4\xbb\xa5\xe5\x9c\xa8\xe7\xbc\x96\xe8\xbe\x91\xe5\x99\xa8\xe7\x9a\x84\xe8\x93\x9d\xe5\x9b\xbe\xe4\xb8\xad\xe8\xb0\x83\xe7\x94\xa8\xef\xbc\x8c\xe6\x88\x96\xe8\x80\x85\xe9\x80\x9a\xe8\xbf\x87\xe6\x8e\xa7\xe5\x88\xb6\xe5\x8f\xb0\xe5\x91\xbd\xe4\xbb\xa4\xe8\xb0\x83\xe7\x94\xa8" },
-#endif
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBP2AITestLibrary_RunTask13Test_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UBP2AITestLibrary, nullptr, "RunTask13Test", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBP2AITestLibrary_RunTask13Test_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBP2AITestLibrary_RunTask13Test_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UBP2AITestLibrary_RunTask13Test()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBP2AITestLibrary_RunTask13Test_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(UBP2AITestLibrary::execRunTask13Test)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	UBP2AITestLibrary::RunTask13Test();
-	P_NATIVE_END;
-}
-// End Class UBP2AITestLibrary Function RunTask13Test
-
 // Begin Class UBP2AITestLibrary Function TestExportBlueprintByPath
 struct Z_Construct_UFunction_UBP2AITestLibrary_TestExportBlueprintByPath_Statics
 {
@@ -120,7 +83,6 @@ void UBP2AITestLibrary::StaticRegisterNativesUBP2AITestLibrary()
 {
 	UClass* Class = UBP2AITestLibrary::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
-		{ "RunTask13Test", &UBP2AITestLibrary::execRunTask13Test },
 		{ "TestExportBlueprintByPath", &UBP2AITestLibrary::execTestExportBlueprintByPath },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -146,7 +108,6 @@ struct Z_Construct_UClass_UBP2AITestLibrary_Statics
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UBP2AITestLibrary_RunTask13Test, "RunTask13Test" }, // 1990495801
 		{ &Z_Construct_UFunction_UBP2AITestLibrary_TestExportBlueprintByPath, "TestExportBlueprintByPath" }, // 2354939526
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -196,10 +157,10 @@ UBP2AITestLibrary::~UBP2AITestLibrary() {}
 struct Z_CompiledInDeferFile_FID_CPPPlayGround_Plugins_BP2AI_Source_BP2AI_Public_BP2AITestLibrary_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBP2AITestLibrary, UBP2AITestLibrary::StaticClass, TEXT("UBP2AITestLibrary"), &Z_Registration_Info_UClass_UBP2AITestLibrary, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBP2AITestLibrary), 4056800269U) },
+		{ Z_Construct_UClass_UBP2AITestLibrary, UBP2AITestLibrary::StaticClass, TEXT("UBP2AITestLibrary"), &Z_Registration_Info_UClass_UBP2AITestLibrary, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBP2AITestLibrary), 199237985U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CPPPlayGround_Plugins_BP2AI_Source_BP2AI_Public_BP2AITestLibrary_h_222645592(TEXT("/Script/BP2AI"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CPPPlayGround_Plugins_BP2AI_Source_BP2AI_Public_BP2AITestLibrary_h_956234587(TEXT("/Script/BP2AI"),
 	Z_CompiledInDeferFile_FID_CPPPlayGround_Plugins_BP2AI_Source_BP2AI_Public_BP2AITestLibrary_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CPPPlayGround_Plugins_BP2AI_Source_BP2AI_Public_BP2AITestLibrary_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

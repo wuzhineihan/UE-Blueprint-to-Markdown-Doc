@@ -21,13 +21,6 @@ class BP2AI_API UBP2AITestLibrary : public UBlueprintFunctionLibrary
 
 public:
     /**
-     * 运行 Task 1.3 的测试
-     * 可以在编辑器的蓝图中调用，或者通过控制台命令调用
-     */
-    UFUNCTION(BlueprintCallable, Category = "BP2AI|Testing", meta = (CallInEditor = "true"))
-    static void RunTask13Test();
-
-    /**
      * 测试导出指定路径的蓝图
      * @param BlueprintPath 蓝图资产路径，如 "/Game/Test/BP_TestExport"
      */

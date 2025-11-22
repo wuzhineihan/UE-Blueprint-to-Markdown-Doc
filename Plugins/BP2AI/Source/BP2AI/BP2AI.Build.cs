@@ -35,7 +35,9 @@ public class BP2AI : ModuleRules
             "HTTP",
             "WebBrowser",
             "Json",
-            "JsonUtilities"
+            "JsonUtilities",
+            "ContentBrowser",
+            "AssetRegistry"
         });
 
         if (target.Platform == UnrealTargetPlatform.Win64)

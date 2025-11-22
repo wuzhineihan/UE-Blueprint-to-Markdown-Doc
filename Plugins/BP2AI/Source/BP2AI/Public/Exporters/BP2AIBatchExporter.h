@@ -114,7 +114,7 @@ public:
     // 全蓝图结构化导出（返回所有图表数组）
     TArray<FExportedGraphInfo> ExportAllGraphsDetailed(UBlueprint* Blueprint, bool bIncludeNestedFunctions = true);
 
-    // 蓝图级完整导出（阶段2 Task2.3）：聚合所有图表并写出单一 Markdown 文档
+    // 蓝图级完整导出（阶段2 Task2.3）：聚合所有图表并返回完整数据
     static FCompleteBlueprintData ExportCompleteBlueprint(UBlueprint* Blueprint, bool bIncludeNestedFunctions = true);
 
     // 阶段3：导出元数据的静态函数
@@ -123,6 +123,9 @@ public:
     static TArray<FCompleteBlueprintData::FVariableInfo> ExportVariables(UBlueprint* Blueprint);
     static TArray<FCompleteBlueprintData::FFunctionInfo> ExportFunctions(UBlueprint* Blueprint);
     static TArray<FCompleteBlueprintData::FReferenceInfo> ExportReferences(UBlueprint* Blueprint);
+
+    // 写出 Markdown 文档的工具方法（由调用方控制输出路径）
+    static bool WriteCompleteBlueprintMarkdown(const FCompleteBlueprintData& Data, const FString& TargetFilePath, bool bCreateDirectories = true);
 
 private:
     FGenerationSettings CreateDefaultSettings() const;

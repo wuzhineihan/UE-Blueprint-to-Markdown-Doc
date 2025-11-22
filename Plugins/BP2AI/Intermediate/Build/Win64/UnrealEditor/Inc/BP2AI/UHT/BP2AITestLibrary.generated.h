@@ -15,8 +15,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define BP2AI_BP2AITestLibrary_generated_h
 
 #define FID_CPPPlayGround_Plugins_BP2AI_Source_BP2AI_Public_BP2AITestLibrary_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execTestExportBlueprintByPath); \
-	DECLARE_FUNCTION(execRunTask13Test);
+	DECLARE_FUNCTION(execTestExportBlueprintByPath);
 
 
 #define FID_CPPPlayGround_Plugins_BP2AI_Source_BP2AI_Public_BP2AITestLibrary_h_20_INCLASS_NO_PURE_DECLS \

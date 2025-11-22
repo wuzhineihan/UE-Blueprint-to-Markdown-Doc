@@ -17,6 +17,7 @@
 #include "Trace/Generation/GenerationShared.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
+#include "HAL/FileManager.h"
 #include "Serialization/JsonWriter.h"
 #include "Serialization/JsonSerializer.h"
 #include "Algo/Sort.h"
@@ -29,8 +30,6 @@
 #include "K2Node_CustomEvent.h"
 #include "UObject/UnrealType.h"
 
-// 前置声明：蓝图级 Markdown 写出
-static bool WriteBlueprintMarkdown(const FCompleteBlueprintData& Data);
 static bool IsInterfaceGraph(UEdGraph* Graph, UBlueprint* Blueprint, const TSet<FName>& InterfaceFuncs);
 
 static FString GetPropertyTypeString(FProperty* Property)
@@ -1605,7 +1604,6 @@ FCompleteBlueprintData FBP2AIBatchExporter::ExportCompleteBlueprint(UBlueprint* 
     {
         UE_LOG(LogBP2AI, Log, TEXT("ExportCompleteBlueprint: '%s' detected as Blueprint Interface"), *Result.BlueprintName);
         Result.Functions = ExportInterfaceFunctionSignatures(Blueprint);
-        WriteBlueprintMarkdown(Result);
         return Result;
     }
 
@@ -1618,25 +1616,33 @@ FCompleteBlueprintData FBP2AIBatchExporter::ExportCompleteBlueprint(UBlueprint* 
     Result.Variables  = ExportVariables(Blueprint);
     Result.Functions  = ExportFunctions(Blueprint);
 
-    // 写出蓝图级 Markdown 文档
-    WriteBlueprintMarkdown(Result);
-
     return Result;
 }
 
-// 定义：蓝图级 Markdown 写出
-static bool WriteBlueprintMarkdown(const FCompleteBlueprintData& Data)
+bool FBP2AIBatchExporter::WriteCompleteBlueprintMarkdown(const FCompleteBlueprintData& Data, const FString& TargetFilePath, bool bCreateDirectories)
 {
-    FString BaseDir = FPaths::ProjectSavedDir() / TEXT("BP2AI/Exports");
-    IFileManager::Get().MakeDirectory(*BaseDir, true);
-    FString FileName = Data.BlueprintName + TEXT(".md");
-    FString FilePath = BaseDir / FileName;
-    FString Content = Data.ToMarkdown();
-    if (FFileHelper::SaveStringToFile(Content, *FilePath))
+    if (TargetFilePath.IsEmpty())
     {
-        UE_LOG(LogBP2AI, Log, TEXT("📘 Saved blueprint document: %s"), *FilePath);
+        UE_LOG(LogBP2AI, Error, TEXT("WriteCompleteBlueprintMarkdown: Target file path is empty."));
+        return false;
+    }
+
+    const FString DirectoryPath = FPaths::GetPath(TargetFilePath);
+    if (bCreateDirectories && !DirectoryPath.IsEmpty())
+    {
+        if (!IFileManager::Get().MakeDirectory(*DirectoryPath, true) && !FPaths::DirectoryExists(DirectoryPath))
+        {
+            UE_LOG(LogBP2AI, Warning, TEXT("WriteCompleteBlueprintMarkdown: Failed to create directory '%s'."), *DirectoryPath);
+        }
+    }
+
+    const FString Content = Data.ToMarkdown();
+    if (FFileHelper::SaveStringToFile(Content, *TargetFilePath))
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("📘 Saved blueprint document: %s"), *TargetFilePath);
         return true;
     }
-    UE_LOG(LogBP2AI, Warning, TEXT("⚠️ Failed to save blueprint document: %s"), *FilePath);
+
+    UE_LOG(LogBP2AI, Warning, TEXT("⚠️ Failed to save blueprint document: %s"), *TargetFilePath);
     return false;
 }

@@ -2,14 +2,10 @@
 	"RemapUnityFiles": 
 	{
 		"Module.BP2AI.1.cpp.obj": [
-			"BP2AI.init.gen.cpp.obj",
-			"BP2AITestLibrary.gen.cpp.obj",
 			"PropertyDumperWidget.gen.cpp.obj",
 			"SemanticData.gen.cpp.obj",
-			"BP2AI.cpp.obj",
 			"BP2AICommands.cpp.obj",
 			"BP2AIStyle.cpp.obj",
-			"BP2AITestLibrary.cpp.obj",
 			"BlueprintDataExtractor.cpp.obj",
 			"FMarkdownNodeFormatter.cpp.obj",
 			"Formatters_ControlFlow.cpp.obj",
@@ -24,6 +20,10 @@
 			"BlueprintNodeFactory.cpp.obj",
 			"BlueprintPin.cpp.obj",
 			"SBlueprintMarkdownWindow.cpp.obj",
+			"BP2AI.init.gen.cpp.obj",
+			"BP2AITestLibrary.gen.cpp.obj",
+			"BP2AI.cpp.obj",
+			"BP2AITestLibrary.cpp.obj",
 			"BP2AIBatchExporter.cpp.obj"
 		],
 		"Module.BP2AI.2.cpp.obj": [
