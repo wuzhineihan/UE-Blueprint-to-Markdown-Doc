@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\utils\\markdownspansystem.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\admin\\desktop\\cppplayground\\intermediate\\build\\win64\\x64\\cppplaygroundeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bp2ai\\definitions.bp2ai.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\utils\\markdownspansystem.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\markdowngenerationcontext.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\generation\\generationshared.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\semanticdata.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\intermediate\\build\\win64\\unrealeditor\\inc\\bp2ai\\uht\\semanticdata.generated.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\logging\\bp2ailog.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

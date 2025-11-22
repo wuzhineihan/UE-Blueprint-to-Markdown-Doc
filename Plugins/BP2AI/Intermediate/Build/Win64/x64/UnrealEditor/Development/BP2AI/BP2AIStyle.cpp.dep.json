@@ -1,0 +1,24 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\bp2aistyle.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\admin\\desktop\\cppplayground\\intermediate\\build\\win64\\x64\\cppplaygroundeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bp2ai\\definitions.bp2ai.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\bp2aistyle.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\logging\\bp2ailog.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\slatecore\\public\\styling\\slatestyleregistry.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\projects\\public\\interfaces\\ipluginmanager.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\projects\\public\\plugindescriptor.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\projects\\public\\custombuildsteps.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\projects\\public\\localizationdescriptor.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\projects\\public\\moduledescriptor.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\projects\\public\\plugindisalloweddescriptor.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\projects\\public\\pluginreferencedescriptor.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\projects\\public\\versescope.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

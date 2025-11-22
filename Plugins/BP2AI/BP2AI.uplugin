@@ -1,0 +1,36 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.2",
+	"FriendlyName": "BP2AI",
+	"Description": "Extract Blueprint logic as formatted text for AI assistance and documentation",
+	"Category": "Engine Tools",
+	"CreatedBy": "A-Maze Games",
+	"CreatedByURL": "https://www.a-maze.games",
+	"DocsURL": "https://www.a-maze.games/blog/bp2ai-translator-unreal-plugin",
+	"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/6ccff7cf-f752-4b98-85d02c9d8a071792",
+	"SupportURL": "",
+	"EngineVersion": "5.4.0",
+	"CanContainContent": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "BP2AI",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "WebBrowserWidget",
+			"Enabled": true
+		},
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		}
+	]
+}

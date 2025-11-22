@@ -1,0 +1,947 @@
+﻿LogBlueprintUserMessages: Hello
+LogBP2AI: 🎮 BP2AI Test Library - TestExportBlueprintByPath() CALLED
+LogBP2AI: ========================================
+LogBP2AI: 🎮 BP2AI Test Library - Testing Blueprint Export
+LogBP2AI:    Blueprint Path: /Game/Test/BP_TestExport
+LogBP2AI: ========================================
+LogBP2AI: 🧪 TEST: Attempting to load blueprint: /Game/Test/BP_TestExport
+LogBP2AI: ✅ Blueprint loaded successfully: BP_TestExport
+LogBP2AI: BP2AIBatchExporter: Initialized
+LogBP2AI: ========================================
+LogBP2AI: BP2AIBatchExporter: Exporting blueprint 'BP_TestExport'
+LogBP2AI: ========================================
+LogBP2AI: 📊 Phase 1: Exporting Event Graphs
+LogBP2AI: BP2AIBatchExporter: Starting export for graph 'EventGraph' (4 nodes)
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogPathTracer: FExecutionFlowGenerator: Initialized with helper composition + smart caching
+LogPathTracer: Warning: === GenerateDocumentForNodes START (Context: MARKDOWN) ===
+LogPathTracer: Warning: Markdown Context detected - Using single generation approach.
+LogPathTracer: Warning: === PerformTracing START (Context: MARKDOWN) ===
+LogPathTracer: Warning: ✅ CONTEXT SET: All FMarkdownSpan calls will use MARKDOWN formatting
+LogPathTracer: Root BP context: 'BP_TestExport'
+LogDataTracer: FMarkdownDataTracer initialized. Registered 50 handlers.
+LogPathTracer: FMarkdownPathTracer: Initialized for pure tracing logic.
+LogDataTracer: DataTracer::StartTraceSession: Context pointers set. Queue: 0000009A64D774A8, ProcessedSet: 0000009A64D77600, ShowTrivialDefaults: true, Settings Ptr: 0000009A64D77BC0
+LogPathTracer: FExecutionFlowGenerator: Extracting node data for 4 selected nodes...
+LogExtractor: FBlueprintDataExtractor: Starting node data extraction...
+LogBlueprintNodeFactory: Initializing Property Extractors Map...
+LogBlueprintNodeFactory: Property Extractors Map Initialized with 36 handlers.
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_Event', Node Title: 'Event BeginPlay', Node GUID: 1C25D481433C556EBBAAC9999976A3FA
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_Event'. Calling handler now.
+LogBlueprintNodeFactory: Factory EXIT Node 1C25D481433C556EBBAAC9999976A3FA (Event)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 1
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_Event', Node Title: 'Event ActorBeginOverlap', Node GUID: 00756A384F487183A2D357A1602BE243
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_Event'. Calling handler now.
+LogBlueprintNodeFactory: Factory EXIT Node 00756A384F487183A2D357A1602BE243 (Event)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 1
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_Event', Node Title: 'Event Tick', Node GUID: FDAC8B494EC482C1B8C48BAD6DB989C4
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_Event'. Calling handler now.
+LogBlueprintNodeFactory: Factory EXIT Node FDAC8B494EC482C1B8C48BAD6DB989C4 (Event)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 1
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_CallFunction', Node Title: 'Print String', Node GUID: F1A0B5714AA2B998E61C6DB4F5B5BA26
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_CallFunction'. Calling handler now.
+LogBlueprintNodeFactory: Warning: FactoryDebug: Processing Node Title: 'Print String', Node Type: 'K2Node_CallFunction', Node GUID: F1A0B5714AA2B998E61C6DB4F5B5BA26
+LogBlueprintNodeFactory: Warning:   FactoryDebug: FuncRef MemberName: 'PrintString'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Context BP Class From Node (for GetMemberParentClass): '/Game/Test/BP_TestExport.SKEL_BP_TestExport_C'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Resolved MemberParentClass (where function is declared by FMemberReference): '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Stored 'FunctionParentClassPath': '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Factory EXIT Node F1A0B5714AA2B998E61C6DB4F5B5BA26 (CallFunction)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 4
+LogExtractor: FBlueprintDataExtractor: Finished node data extraction. 4 nodes processed.
+LogExtractor: FinalizeExtractedNodes: Preserving critical properties for 4 nodes...
+LogExtractor: FinalizeExtractedNodes: Preserved critical properties for 4 nodes
+LogExtractor: FinalizeExtractedNodes: Resolving links between nodes...
+LogExtractor: FBlueprintDataExtractor: Starting link resolution...
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Event BeginPlay' (GUID:1C25D481)
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'execute' (F1A0B571). New SourcePinFor count: 1
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Event ActorBeginOverlap' (GUID:00756A38)
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Event Tick' (GUID:FDAC8B49)
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Print String' (GUID:F1A0B571)
+LogExtractor: Error: 🔧   Input Pin='execute', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = 1C25D481433C556EBBAAC9999976A3FA
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = A847607C4BC1DC3A8E44ECB007BD4A8E
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 1
+LogExtractor: Error: 🔧   Input Pin='self', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='WorldContextObject', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='InString', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToScreen', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToLog', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='TextColor', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='Duration', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='Key', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: FBlueprintDataExtractor: Finished link resolution. Resolved 1 forward links, added 1 SourcePinFor back-references.
+LogExtractor: Error: 🔧 BLUEPRINT CONNECTION DEBUG:
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogExtractor: FinalizeExtractedNodes: Link resolution complete
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogPathTracer: FExecutionFlowGenerator: Extraction complete. Map contains 4 nodes.
+LogPathTracer: Warning: === PHASE 1: Pre-scanning for pure graphs ===
+LogPathTracer: FGraphDiscoveryHelper: Pre-scanning 4 SELECTED nodes for PURE user graphs...
+LogPathTracer: IsInternalUserGraph: Processing Node '1C25D481' (Title: 'Event BeginPlay', OriginalType: Event, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '1C25D481' (Title: 'Event BeginPlay'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: IsInternalUserGraph: Processing Node '00756A38' (Title: 'Event ActorBeginOverlap', OriginalType: Event, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '00756A38' (Title: 'Event ActorBeginOverlap'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: IsInternalUserGraph: Processing Node 'FDAC8B49' (Title: 'Event Tick', OriginalType: Event, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'FDAC8B49' (Title: 'Event Tick'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: IsInternalUserGraph: Processing Node 'F1A0B571' (Title: 'Print String', OriginalType: CallFunction, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Print String', TargetFunctionName='PrintString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('PrintString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:PrintString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'PrintString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.PrintString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'F1A0B571' (Title: 'Print String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.PrintString'
+LogPathTracer: Warning: FGraphDiscoveryHelper: Pre-scan complete. Added 0 pure graphs (Total in queue: 0)
+LogPathTracer: Warning: === PHASE 2: Main execution traces (with MARKDOWN context) ===
+LogPathTracer: FExecutionFlowGenerator::FindStartNodes: Found 3 standard entries and 1 other executable nodes.
+LogPathTracer: Starting Execution Trace from Node: Event BeginPlay (1C25D481) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from 1C25D481 (Event)
+LogPathTracer: <<< _find_next EXIT: Input node 1C25D481 (Event) is already executable.
+LogPathTracer: IsInternalUserGraph: Processing Node '1C25D481' (Title: 'Event BeginPlay', OriginalType: Event, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '1C25D481' (Title: 'Event BeginPlay'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Event BeginPlay' (Type:Event), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Event BeginPlay (1C25D481), Content: [**Event** **BeginPlay**]
+LogPathTracer: IsInternalUserGraph: Processing Node 'F1A0B571' (Title: 'Print String', OriginalType: CallFunction, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Print String', TargetFunctionName='PrintString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('PrintString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:PrintString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'PrintString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.PrintString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'F1A0B571' (Title: 'Print String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.PrintString'
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Print String' (Type:CallFunction), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Print String', FuncName='PrintString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='F1A0B5714AA2B998E61C6DB4F5B5BA26', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:096FA808) on Node='Print String' (GUID:F1A0B571, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'BP_TestExport'. CacheKey:'F1A0B5714AA2B998E61C6DB4F5B5BA26_096FA8084E6319E2CAEA2B87AFC44308_CtxBP_TestExport_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'TestExport BeginPlay', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'InString' (ID:096FA808) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'InString' (ID:096FA808) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'TestExport BeginPlay', DefObj:'', CtxRecv:'BP_TestExport'
+LogDataTracer: RVR Exit : Pin=InString (ID:096FA808), Depth=0, ContextIn='BP_TestExport', CacheKey='F1A0B5714AA2B998E61C6DB4F5B5BA26_096FA8084E6319E2CAEA2B87AFC44308_CtxBP_TestExport_Sym0' -> Result='TestExport BeginPlay'. Caching.
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Print String (F1A0B571), Content: [`PrintString`((`InString`=TestExport BeginPlay))]
+LogPathTracer: Starting Execution Trace from Node: Event ActorBeginOverlap (00756A38) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from 00756A38 (Event)
+LogPathTracer: <<< _find_next EXIT: Input node 00756A38 (Event) is already executable.
+LogPathTracer: IsInternalUserGraph: Processing Node '00756A38' (Title: 'Event ActorBeginOverlap', OriginalType: Event, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '00756A38' (Title: 'Event ActorBeginOverlap'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Event ActorBeginOverlap' (Type:Event), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogModels: Warning: GetTypeSignature - MainType: Path fed to ExtractSimpleNameFromPath for SubCategoryObject: '/Script/Engine.Actor' (Pin: OtherActor)
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Actor', Context=''
+LogDataTracer: ExtractSimpleNameFromPath OUT (Core Type Override): Path='/Script/Engine.Actor' -> Returns='Actor'
+LogModels: Warning: GetTypeSignature - MainType: ExtractSimpleNameFromPath for SubCategoryObject returned: 'Actor' (Pin: OtherActor)
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Event ActorBeginOverlap (00756A38), Content: [**Event** **ReceiveActorBeginOverlap** Args: (`OtherActor``:Actor`)]
+LogPathTracer: Starting Execution Trace from Node: Event Tick (FDAC8B49) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from FDAC8B49 (Event)
+LogPathTracer: <<< _find_next EXIT: Input node FDAC8B49 (Event) is already executable.
+LogPathTracer: IsInternalUserGraph: Processing Node 'FDAC8B49' (Title: 'Event Tick', OriginalType: Event, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'FDAC8B49' (Title: 'Event Tick'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Event Tick' (Type:Event), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Event Tick (FDAC8B49), Content: [**Event** **Tick** Args: (`DeltaSeconds``:float`)]
+LogPathTracer: Starting Execution Trace from Node: Print String (F1A0B571) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from F1A0B571 (CallFunction)
+LogPathTracer: <<< _find_next EXIT: Input node F1A0B571 (CallFunction) is already executable.
+LogPathTracer: HandleGloballyProcessedNode: TargetPinForExecutable was null for Print String. Inferred entry to main exec pin: execute
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Print String' (Type:CallFunction), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Print String', FuncName='PrintString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='F1A0B5714AA2B998E61C6DB4F5B5BA26', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:096FA808) on Node='Print String' (GUID:F1A0B571, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'BP_TestExport'. CacheKey:'F1A0B5714AA2B998E61C6DB4F5B5BA26_096FA8084E6319E2CAEA2B87AFC44308_CtxBP_TestExport_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'TestExport BeginPlay', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: RVR Cache Hit: Pin=InString (096FA808), CacheKey='F1A0B5714AA2B998E61C6DB4F5B5BA26_096FA8084E6319E2CAEA2B87AFC44308_CtxBP_TestExport_Sym0' -> Result='TestExport BeginPlay'
+LogPathTracer: CONTINUING/TRIGGERING - Path to Print String (F1A0B571) Pin: execute. Context: 'BP_TestExport'. SimpleMacroNameForCheck: ''
+LogDataTracer: DataTracer::EndTraceSession: Queue, ProcessedSet, and Settings context pointers cleared.
+LogPathTracer: Warning: === TRACING COMPLETE (Context: MARKDOWN) ===
+LogPathTracer: Warning:   Execution Traces: 4
+LogPathTracer: Warning:   Graph Definitions: 0
+LogPathTracer: Creating MarkdownDocumentBuilder
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 4 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 31 lines
+LogPathTracer: Warning: Final Document Length: 556 characters
+LogPathTracer: Warning: === GenerateDocumentForNodes END ===
+LogBP2AI: ✅ Exported 'EventGraph': 556 characters, 31 lines
+LogBP2AI: --- Preview (first 3 blueprint lines of 'EventGraph') ---
+LogBP2AI:    * Event BeginPlay
+LogBP2AI:        * PrintString((InString=TestExport BeginPlay))
+LogBP2AI:            * [Path ends]
+LogBP2AI: --- End Preview ---
+LogPathTracer: FExecutionFlowGenerator: Destroyed
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📝 Saved export 'EventGraph_EventGraph' to: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport__EventGraph_EventGraph.md
+LogBP2AI: 📊 Phase 2: Exporting Function Graphs
+LogBP2AI: BP2AIBatchExporter: Starting export for graph 'UserConstructionScript' (1 nodes)
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogPathTracer: FExecutionFlowGenerator: Initialized with helper composition + smart caching
+LogPathTracer: Warning: === GenerateDocumentForNodes START (Context: MARKDOWN) ===
+LogPathTracer: Warning: Markdown Context detected - Using single generation approach.
+LogPathTracer: Warning: === PerformTracing START (Context: MARKDOWN) ===
+LogPathTracer: Warning: ✅ CONTEXT SET: All FMarkdownSpan calls will use MARKDOWN formatting
+LogPathTracer: Root BP context: 'BP_TestExport'
+LogDataTracer: FMarkdownDataTracer initialized. Registered 50 handlers.
+LogPathTracer: FMarkdownPathTracer: Initialized for pure tracing logic.
+LogDataTracer: DataTracer::StartTraceSession: Context pointers set. Queue: 0000009A64D774A8, ProcessedSet: 0000009A64D77600, ShowTrivialDefaults: true, Settings Ptr: 0000009A64D77BC0
+LogPathTracer: FExecutionFlowGenerator: Extracting node data for 1 selected nodes...
+LogExtractor: FBlueprintDataExtractor: Starting node data extraction...
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_FunctionEntry', Node Title: 'Construction Script', Node GUID: CBDB73C543530768C855978D854C979B
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: NO handler found in PropertyExtractors map for FName: 'K2Node_FunctionEntry'.
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: (Further Info) Node Type: FunctionEntry (/Script/BlueprintGraph.K2Node_FunctionEntry) is a K2Node but has no specific handler beyond generic property extraction.
+LogBlueprintNodeFactory: Factory EXIT Node CBDB73C543530768C855978D854C979B (FunctionEntry)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 0
+LogExtractor: FBlueprintDataExtractor: Finished node data extraction. 1 nodes processed.
+LogExtractor: FinalizeExtractedNodes: Preserving critical properties for 1 nodes...
+LogExtractor: FinalizeExtractedNodes: Preserved critical properties for 1 nodes
+LogExtractor: FinalizeExtractedNodes: Resolving links between nodes...
+LogExtractor: FBlueprintDataExtractor: Starting link resolution...
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Construction Script' (GUID:CBDB73C5)
+LogExtractor: FBlueprintDataExtractor: Finished link resolution. Resolved 0 forward links, added 0 SourcePinFor back-references.
+LogExtractor: Error: 🔧 BLUEPRINT CONNECTION DEBUG:
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogExtractor: FinalizeExtractedNodes: Link resolution complete
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogPathTracer: FExecutionFlowGenerator: Extraction complete. Map contains 1 nodes.
+LogPathTracer: Warning: === PHASE 1: Pre-scanning for pure graphs ===
+LogPathTracer: FGraphDiscoveryHelper: Pre-scanning 1 SELECTED nodes for PURE user graphs...
+LogPathTracer: IsInternalUserGraph: Processing Node 'CBDB73C5' (Title: 'Construction Script', OriginalType: FunctionEntry, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'CBDB73C5' (Title: 'Construction Script'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: Warning: FGraphDiscoveryHelper: Pre-scan complete. Added 0 pure graphs (Total in queue: 0)
+LogPathTracer: Warning: === PHASE 2: Main execution traces (with MARKDOWN context) ===
+LogPathTracer: FExecutionFlowGenerator::FindStartNodes: Found 1 standard entries and 0 other executable nodes.
+LogPathTracer: Starting Execution Trace from Node: Construction Script (CBDB73C5) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from CBDB73C5 (FunctionEntry)
+LogPathTracer: <<< _find_next EXIT: Input node CBDB73C5 (FunctionEntry) is already executable.
+LogPathTracer: IsInternalUserGraph: Processing Node 'CBDB73C5' (Title: 'Construction Script', OriginalType: FunctionEntry, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'CBDB73C5' (Title: 'Construction Script'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Construction Script' (Type:FunctionEntry), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Construction Script (CBDB73C5), Content: [**Event** **Construction Script**]
+LogDataTracer: DataTracer::EndTraceSession: Queue, ProcessedSet, and Settings context pointers cleared.
+LogPathTracer: Warning: === TRACING COMPLETE (Context: MARKDOWN) ===
+LogPathTracer: Warning:   Execution Traces: 1
+LogPathTracer: Warning:   Graph Definitions: 0
+LogPathTracer: Creating MarkdownDocumentBuilder
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 1 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 7 lines
+LogPathTracer: Warning: Final Document Length: 120 characters
+LogPathTracer: Warning: === GenerateDocumentForNodes END ===
+LogBP2AI: ✅ Exported 'UserConstructionScript': 120 characters, 7 lines
+LogBP2AI: --- Preview (first 2 blueprint lines of 'UserConstructionScript') ---
+LogBP2AI:    * Event Construction Script
+LogBP2AI:        * [Path ends]
+LogBP2AI: --- End Preview ---
+LogPathTracer: FExecutionFlowGenerator: Destroyed
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📝 Saved export 'Function_UserConstructionScript' to: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport__Function_UserConstructionScript.md
+LogBP2AI: BP2AIBatchExporter: Starting export for graph 'TestFunction' (2 nodes)
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogPathTracer: FExecutionFlowGenerator: Initialized with helper composition + smart caching
+LogPathTracer: Warning: === GenerateDocumentForNodes START (Context: MARKDOWN) ===
+LogPathTracer: Warning: Markdown Context detected - Using single generation approach.
+LogPathTracer: Warning: === PerformTracing START (Context: MARKDOWN) ===
+LogPathTracer: Warning: ✅ CONTEXT SET: All FMarkdownSpan calls will use MARKDOWN formatting
+LogPathTracer: Root BP context: 'BP_TestExport'
+LogDataTracer: FMarkdownDataTracer initialized. Registered 50 handlers.
+LogPathTracer: FMarkdownPathTracer: Initialized for pure tracing logic.
+LogDataTracer: DataTracer::StartTraceSession: Context pointers set. Queue: 0000009A64D774A8, ProcessedSet: 0000009A64D77600, ShowTrivialDefaults: true, Settings Ptr: 0000009A64D77BC0
+LogPathTracer: FExecutionFlowGenerator: Extracting node data for 2 selected nodes...
+LogExtractor: FBlueprintDataExtractor: Starting node data extraction...
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_FunctionEntry', Node Title: 'Test Function', Node GUID: 22A01B2145BC51EA61E66BADE60DF66B
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: NO handler found in PropertyExtractors map for FName: 'K2Node_FunctionEntry'.
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: (Further Info) Node Type: FunctionEntry (/Script/BlueprintGraph.K2Node_FunctionEntry) is a K2Node but has no specific handler beyond generic property extraction.
+LogBlueprintNodeFactory: Factory EXIT Node 22A01B2145BC51EA61E66BADE60DF66B (FunctionEntry)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 0
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_CallFunction', Node Title: 'Print String', Node GUID: FF2E348D43C18C002FF33C89B56DAC92
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_CallFunction'. Calling handler now.
+LogBlueprintNodeFactory: Warning: FactoryDebug: Processing Node Title: 'Print String', Node Type: 'K2Node_CallFunction', Node GUID: FF2E348D43C18C002FF33C89B56DAC92
+LogBlueprintNodeFactory: Warning:   FactoryDebug: FuncRef MemberName: 'PrintString'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Context BP Class From Node (for GetMemberParentClass): '/Game/Test/BP_TestExport.SKEL_BP_TestExport_C'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Resolved MemberParentClass (where function is declared by FMemberReference): '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Stored 'FunctionParentClassPath': '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Factory EXIT Node FF2E348D43C18C002FF33C89B56DAC92 (CallFunction)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 4
+LogExtractor: FBlueprintDataExtractor: Finished node data extraction. 2 nodes processed.
+LogExtractor: FinalizeExtractedNodes: Preserving critical properties for 2 nodes...
+LogExtractor: FinalizeExtractedNodes: Preserved critical properties for 2 nodes
+LogExtractor: FinalizeExtractedNodes: Resolving links between nodes...
+LogExtractor: FBlueprintDataExtractor: Starting link resolution...
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Test Function' (GUID:22A01B21)
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'execute' (FF2E348D). New SourcePinFor count: 1
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Print String' (GUID:FF2E348D)
+LogExtractor: Error: 🔧   Input Pin='execute', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = 22A01B2145BC51EA61E66BADE60DF66B
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = BDE6B3174809CB530B4B62A9073A43D8
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 1
+LogExtractor: Error: 🔧   Input Pin='self', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='WorldContextObject', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='InString', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToScreen', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToLog', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='TextColor', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='Duration', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='Key', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: FBlueprintDataExtractor: Finished link resolution. Resolved 1 forward links, added 1 SourcePinFor back-references.
+LogExtractor: Error: 🔧 BLUEPRINT CONNECTION DEBUG:
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogExtractor: FinalizeExtractedNodes: Link resolution complete
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogPathTracer: FExecutionFlowGenerator: Extraction complete. Map contains 2 nodes.
+LogPathTracer: Warning: === PHASE 1: Pre-scanning for pure graphs ===
+LogPathTracer: FGraphDiscoveryHelper: Pre-scanning 2 SELECTED nodes for PURE user graphs...
+LogPathTracer: IsInternalUserGraph: Processing Node '22A01B21' (Title: 'Test Function', OriginalType: FunctionEntry, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '22A01B21' (Title: 'Test Function'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: IsInternalUserGraph: Processing Node 'FF2E348D' (Title: 'Print String', OriginalType: CallFunction, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Print String', TargetFunctionName='PrintString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('PrintString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:PrintString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'PrintString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.PrintString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'FF2E348D' (Title: 'Print String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.PrintString'
+LogPathTracer: Warning: FGraphDiscoveryHelper: Pre-scan complete. Added 0 pure graphs (Total in queue: 0)
+LogPathTracer: Warning: === PHASE 2: Main execution traces (with MARKDOWN context) ===
+LogPathTracer: FExecutionFlowGenerator::FindStartNodes: Found 1 standard entries and 1 other executable nodes.
+LogPathTracer: Starting Execution Trace from Node: Test Function (22A01B21) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from 22A01B21 (FunctionEntry)
+LogPathTracer: <<< _find_next EXIT: Input node 22A01B21 (FunctionEntry) is already executable.
+LogPathTracer: IsInternalUserGraph: Processing Node '22A01B21' (Title: 'Test Function', OriginalType: FunctionEntry, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '22A01B21' (Title: 'Test Function'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Test Function' (Type:FunctionEntry), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Test Function (22A01B21), Content: [**Event** **Test Function**]
+LogPathTracer: IsInternalUserGraph: Processing Node 'FF2E348D' (Title: 'Print String', OriginalType: CallFunction, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Print String', TargetFunctionName='PrintString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('PrintString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:PrintString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'PrintString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.PrintString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'FF2E348D' (Title: 'Print String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.PrintString'
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Print String' (Type:CallFunction), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Print String', FuncName='PrintString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='FF2E348D43C18C002FF33C89B56DAC92', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:39199B30) on Node='Print String' (GUID:FF2E348D, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'BP_TestExport'. CacheKey:'FF2E348D43C18C002FF33C89B56DAC92_39199B30422BA6C2BD11598F10CA7EBB_CtxBP_TestExport_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'This is a test function', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'InString' (ID:39199B30) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'InString' (ID:39199B30) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'This is a test function', DefObj:'', CtxRecv:'BP_TestExport'
+LogDataTracer: RVR Exit : Pin=InString (ID:39199B30), Depth=0, ContextIn='BP_TestExport', CacheKey='FF2E348D43C18C002FF33C89B56DAC92_39199B30422BA6C2BD11598F10CA7EBB_CtxBP_TestExport_Sym0' -> Result='This is a test function'. Caching.
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Print String (FF2E348D), Content: [`PrintString`((`InString`=This is a test function))]
+LogPathTracer: Starting Execution Trace from Node: Print String (FF2E348D) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from FF2E348D (CallFunction)
+LogPathTracer: <<< _find_next EXIT: Input node FF2E348D (CallFunction) is already executable.
+LogPathTracer: HandleGloballyProcessedNode: TargetPinForExecutable was null for Print String. Inferred entry to main exec pin: execute
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Print String' (Type:CallFunction), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Print String', FuncName='PrintString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='FF2E348D43C18C002FF33C89B56DAC92', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:39199B30) on Node='Print String' (GUID:FF2E348D, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'BP_TestExport'. CacheKey:'FF2E348D43C18C002FF33C89B56DAC92_39199B30422BA6C2BD11598F10CA7EBB_CtxBP_TestExport_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'This is a test function', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: RVR Cache Hit: Pin=InString (39199B30), CacheKey='FF2E348D43C18C002FF33C89B56DAC92_39199B30422BA6C2BD11598F10CA7EBB_CtxBP_TestExport_Sym0' -> Result='This is a test function'
+LogPathTracer: CONTINUING/TRIGGERING - Path to Print String (FF2E348D) Pin: execute. Context: 'BP_TestExport'. SimpleMacroNameForCheck: ''
+LogDataTracer: DataTracer::EndTraceSession: Queue, ProcessedSet, and Settings context pointers cleared.
+LogPathTracer: Warning: === TRACING COMPLETE (Context: MARKDOWN) ===
+LogPathTracer: Warning:   Execution Traces: 2
+LogPathTracer: Warning:   Graph Definitions: 0
+LogPathTracer: Creating MarkdownDocumentBuilder
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 2 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 15 lines
+LogPathTracer: Warning: Final Document Length: 331 characters
+LogPathTracer: Warning: === GenerateDocumentForNodes END ===
+LogBP2AI: ✅ Exported 'TestFunction': 331 characters, 15 lines
+LogBP2AI: --- Preview (first 3 blueprint lines of 'TestFunction') ---
+LogBP2AI:    * Event Test Function
+LogBP2AI:        * PrintString((InString=This is a test function))
+LogBP2AI:            * [Path ends]
+LogBP2AI: --- End Preview ---
+LogPathTracer: FExecutionFlowGenerator: Destroyed
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📝 Saved export 'Function_TestFunction' to: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport__Function_TestFunction.md
+LogBP2AI: 📊 Phase 3: Exporting Macro Graphs
+LogBP2AI: BP2AIBatchExporter: Starting export for graph 'TestMacro' (3 nodes)
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogPathTracer: FExecutionFlowGenerator: Initialized with helper composition + smart caching
+LogPathTracer: Warning: === GenerateDocumentForNodes START (Context: MARKDOWN) ===
+LogPathTracer: Warning: Markdown Context detected - Using single generation approach.
+LogPathTracer: Warning: === PerformTracing START (Context: MARKDOWN) ===
+LogPathTracer: Warning: ✅ CONTEXT SET: All FMarkdownSpan calls will use MARKDOWN formatting
+LogPathTracer: Root BP context: 'BP_TestExport'
+LogDataTracer: FMarkdownDataTracer initialized. Registered 50 handlers.
+LogPathTracer: FMarkdownPathTracer: Initialized for pure tracing logic.
+LogDataTracer: DataTracer::StartTraceSession: Context pointers set. Queue: 0000009A64D774A8, ProcessedSet: 0000009A64D77600, ShowTrivialDefaults: true, Settings Ptr: 0000009A64D77BC0
+LogPathTracer: FExecutionFlowGenerator: Extracting node data for 3 selected nodes...
+LogExtractor: FBlueprintDataExtractor: Starting node data extraction...
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_Tunnel', Node Title: 'Inputs', Node GUID: D29A5A574A0B7A43D8426CB6116F36D6
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: NO handler found in PropertyExtractors map for FName: 'K2Node_Tunnel'.
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: (Further Info) Node Type: Tunnel (/Script/BlueprintGraph.K2Node_Tunnel) is a K2Node but has no specific handler beyond generic property extraction.
+LogBlueprintNodeFactory: Factory EXIT Node D29A5A574A0B7A43D8426CB6116F36D6 (Tunnel)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 0
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_Tunnel', Node Title: 'Outputs', Node GUID: 90E814EB485775199450DFAC1B2724AC
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: NO handler found in PropertyExtractors map for FName: 'K2Node_Tunnel'.
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: (Further Info) Node Type: Tunnel (/Script/BlueprintGraph.K2Node_Tunnel) is a K2Node but has no specific handler beyond generic property extraction.
+LogBlueprintNodeFactory: Factory EXIT Node 90E814EB485775199450DFAC1B2724AC (Tunnel)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 0
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_CallFunction', Node Title: 'Print String', Node GUID: 8376C3DB45FC99419C482BA2AAF6044D
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_CallFunction'. Calling handler now.
+LogBlueprintNodeFactory: Warning: FactoryDebug: Processing Node Title: 'Print String', Node Type: 'K2Node_CallFunction', Node GUID: 8376C3DB45FC99419C482BA2AAF6044D
+LogBlueprintNodeFactory: Warning:   FactoryDebug: FuncRef MemberName: 'PrintString'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Context BP Class From Node (for GetMemberParentClass): '/Game/Test/BP_TestExport.SKEL_BP_TestExport_C'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Resolved MemberParentClass (where function is declared by FMemberReference): '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Stored 'FunctionParentClassPath': '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Factory EXIT Node 8376C3DB45FC99419C482BA2AAF6044D (CallFunction)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 4
+LogExtractor: FBlueprintDataExtractor: Finished node data extraction. 3 nodes processed.
+LogExtractor: FinalizeExtractedNodes: Preserving critical properties for 3 nodes...
+LogExtractor: FinalizeExtractedNodes: Preserved critical properties for 3 nodes
+LogExtractor: FinalizeExtractedNodes: Resolving links between nodes...
+LogExtractor: FBlueprintDataExtractor: Starting link resolution...
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Inputs' (GUID:D29A5A57)
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'execute' (8376C3DB). New SourcePinFor count: 1
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Outputs' (GUID:90E814EB)
+LogExtractor: Error: 🔧   Input Pin='MacroOut', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = 8376C3DB45FC99419C482BA2AAF6044D
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = 169FE3734116437F693B86B842AEB9F7
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Print String' (GUID:8376C3DB)
+LogExtractor: Error: 🔧   Input Pin='execute', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = D29A5A574A0B7A43D8426CB6116F36D6
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = F1F9F21E49130DEFA4ABD8901E57F306
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 1
+LogExtractor: Error: 🔧   Input Pin='self', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='WorldContextObject', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='InString', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToScreen', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToLog', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='TextColor', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='Duration', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='Key', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'MacroOut' (90E814EB). New SourcePinFor count: 1
+LogExtractor: FBlueprintDataExtractor: Finished link resolution. Resolved 2 forward links, added 2 SourcePinFor back-references.
+LogExtractor: Error: 🔧 BLUEPRINT CONNECTION DEBUG:
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogExtractor: FinalizeExtractedNodes: Link resolution complete
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogPathTracer: FExecutionFlowGenerator: Extraction complete. Map contains 3 nodes.
+LogPathTracer: Warning: === PHASE 1: Pre-scanning for pure graphs ===
+LogPathTracer: FGraphDiscoveryHelper: Pre-scanning 3 SELECTED nodes for PURE user graphs...
+LogPathTracer: IsInternalUserGraph: Processing Node 'D29A5A57' (Title: 'Inputs', OriginalType: Tunnel, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'D29A5A57' (Title: 'Inputs'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: IsInternalUserGraph: Processing Node '90E814EB' (Title: 'Outputs', OriginalType: Tunnel, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '90E814EB' (Title: 'Outputs'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: IsInternalUserGraph: Processing Node '8376C3DB' (Title: 'Print String', OriginalType: CallFunction, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Print String', TargetFunctionName='PrintString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('PrintString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:PrintString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'PrintString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.PrintString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '8376C3DB' (Title: 'Print String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.PrintString'
+LogPathTracer: Warning: FGraphDiscoveryHelper: Pre-scan complete. Added 0 pure graphs (Total in queue: 0)
+LogPathTracer: Warning: === PHASE 2: Main execution traces (with MARKDOWN context) ===
+LogPathTracer: FExecutionFlowGenerator::FindStartNodes: Found 0 standard entries and 3 other executable nodes.
+LogPathTracer: Starting Execution Trace from Node: Outputs (90E814EB) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from 90E814EB (Tunnel)
+LogPathTracer: <<< _find_next EXIT: Input node 90E814EB (Tunnel) is already executable.
+LogPathTracer: IsInternalUserGraph: Processing Node '90E814EB' (Title: 'Outputs', OriginalType: Tunnel, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '90E814EB' (Title: 'Outputs'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Outputs' (Type:Tunnel), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Outputs (90E814EB), Content: [**Tunnel** (Outputs)]
+LogPathTracer: Starting Execution Trace from Node: Inputs (D29A5A57) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from D29A5A57 (Tunnel)
+LogPathTracer: <<< _find_next EXIT: Input node D29A5A57 (Tunnel) is already executable.
+LogPathTracer: IsInternalUserGraph: Processing Node 'D29A5A57' (Title: 'Inputs', OriginalType: Tunnel, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'D29A5A57' (Title: 'Inputs'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Inputs' (Type:Tunnel), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Inputs (D29A5A57), Content: [**Tunnel** (Inputs)]
+LogPathTracer: IsInternalUserGraph: Processing Node '8376C3DB' (Title: 'Print String', OriginalType: CallFunction, CallerBP: BP_TestExport) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Print String', TargetFunctionName='PrintString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('PrintString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:PrintString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'PrintString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.PrintString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '8376C3DB' (Title: 'Print String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.PrintString'
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Print String' (Type:CallFunction), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Print String', FuncName='PrintString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='8376C3DB45FC99419C482BA2AAF6044D', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:69A080EE) on Node='Print String' (GUID:8376C3DB, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'BP_TestExport'. CacheKey:'8376C3DB45FC99419C482BA2AAF6044D_69A080EE489D4C49D19BD7889E668188_CtxBP_TestExport_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'This is a test macro', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'InString' (ID:69A080EE) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'InString' (ID:69A080EE) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'This is a test macro', DefObj:'', CtxRecv:'BP_TestExport'
+LogDataTracer: RVR Exit : Pin=InString (ID:69A080EE), Depth=0, ContextIn='BP_TestExport', CacheKey='8376C3DB45FC99419C482BA2AAF6044D_69A080EE489D4C49D19BD7889E668188_CtxBP_TestExport_Sym0' -> Result='This is a test macro'. Caching.
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Print String (8376C3DB), Content: [`PrintString`((`InString`=This is a test macro))]
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Outputs' (Type:Tunnel), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogPathTracer:             CONTINUING/TRIGGERING - Path to Outputs (90E814EB) Pin: MacroOut. Context: 'BP_TestExport'. SimpleMacroNameForCheck: ''
+LogPathTracer: Starting Execution Trace from Node: Print String (8376C3DB) in Context: 'BP_TestExport'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from 8376C3DB (CallFunction)
+LogPathTracer: <<< _find_next EXIT: Input node 8376C3DB (CallFunction) is already executable.
+LogPathTracer: HandleGloballyProcessedNode: TargetPinForExecutable was null for Print String. Inferred entry to main exec pin: execute
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Print String' (Type:CallFunction), CtxRecv:'BP_TestExport', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Print String', FuncName='PrintString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='8376C3DB45FC99419C482BA2AAF6044D', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='BP_TestExport' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:69A080EE) on Node='Print String' (GUID:8376C3DB, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'BP_TestExport'. CacheKey:'8376C3DB45FC99419C482BA2AAF6044D_69A080EE489D4C49D19BD7889E668188_CtxBP_TestExport_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'This is a test macro', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: RVR Cache Hit: Pin=InString (69A080EE), CacheKey='8376C3DB45FC99419C482BA2AAF6044D_69A080EE489D4C49D19BD7889E668188_CtxBP_TestExport_Sym0' -> Result='This is a test macro'
+LogPathTracer: CONTINUING/TRIGGERING - Path to Print String (8376C3DB) Pin: execute. Context: 'BP_TestExport'. SimpleMacroNameForCheck: ''
+LogDataTracer: DataTracer::EndTraceSession: Queue, ProcessedSet, and Settings context pointers cleared.
+LogPathTracer: Warning: === TRACING COMPLETE (Context: MARKDOWN) ===
+LogPathTracer: Warning:   Execution Traces: 3
+LogPathTracer: Warning:   Graph Definitions: 0
+LogPathTracer: Creating MarkdownDocumentBuilder
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 3 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 23 lines
+LogPathTracer: Warning: Final Document Length: 458 characters
+LogPathTracer: Warning: === GenerateDocumentForNodes END ===
+LogBP2AI: ✅ Exported 'TestMacro': 458 characters, 23 lines
+LogBP2AI: --- Preview (first 1 blueprint lines of 'TestMacro') ---
+LogBP2AI:    * Tunnel (Outputs)
+LogBP2AI: --- End Preview ---
+LogPathTracer: FExecutionFlowGenerator: Destroyed
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📝 Saved export 'Macro_TestMacro' to: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport__Macro_TestMacro.md
+LogBP2AI: 📊 Phase 4: Exporting Delegate Graphs
+LogBP2AI: ========================================
+LogBP2AI: ✅ Export Complete:
+LogBP2AI:    Blueprint: BP_TestExport
+LogBP2AI:    Total Graphs Exported: 4
+LogBP2AI:    Event Graphs Exported: 1 / Available: 1
+LogBP2AI:    Function Graphs Exported: 2 / Available: 2
+LogBP2AI:    Macro Graphs Exported: 1 / Available: 1
+LogBP2AI:    Delegate Graphs Exported: 0 / Available: 0
+LogBP2AI: ========================================
+LogBP2AI: 📄 Export Results Summary:
+LogBP2AI:    - EventGraph_EventGraph: 556 characters
+LogBP2AI:    - Function_UserConstructionScript: 120 characters
+LogBP2AI:    - Function_TestFunction: 331 characters
+LogBP2AI:    - Macro_TestMacro: 458 characters
+LogBP2AI: ✅ TEST PASSED: Successfully exported 4 graphs
+LogBP2AI: BP2AIBatchExporter: Destroyed
+LogBP2AI: ✅ Export test completed successfully!
+LogBlueprintUserMessages: Good
+LogSlate: Took 0.002290 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/NotoColorEmoji.ttf' (7610K)
+LogSlate: Took 0.000139 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+LogWindowsTextInputMethodSystem: Activated input method: 简体中文(中国大陆) - 微软拼音 (TSF IME).
+LogAudioMixer: Display: Audio Buffer Underrun (starvation) detected. InstanceID=1
+LogDerivedDataCache: C:/Users/admin/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.000 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 0 files in 1 folders with total size 0 MiB.
+LogSlate: Took 0.000104 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+LogAssetEditorSubsystem: Opening Asset editor for EditorUtilityWidgetBlueprint /Game/NewBlueprint1.NewBlueprint1
+LogSlate: Warning: The command 'UMGEditor.OpenAnimDrawer' has the same default chord as 'EditorViewport.Next' [Ctrl+Shift+Space Bar]
+LogSlate: Took 0.004737 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+LogSlateStyle: Warning: Missing Resource from 'CoreStyle' Style: 'Unable to find SlateColor 'Foreground'.'
+LogSlate: Took 0.004338 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+LogUI: SBlueprintExecFlowWindow: UpdateFromSelection (forced full refresh with contexts)
+LogUI: ExecFlowWindow GetSelectedNodes: Found 6 selected nodes.
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogPathTracer: FExecutionFlowGenerator: Initialized with helper composition + smart caching
+LogUI: 🔄 FORCED REGENERATION: Cache invalidated, fresh Markdown generation
+LogPathTracer: Warning: === GenerateDocumentForNodes START (Context: MARKDOWN) ===
+LogPathTracer: Warning: Markdown Context detected - Using single generation approach.
+LogPathTracer: Warning: === PerformTracing START (Context: MARKDOWN) ===
+LogPathTracer: Warning: ✅ CONTEXT SET: All FMarkdownSpan calls will use MARKDOWN formatting
+LogPathTracer: Root BP context: 'NewBlueprint1'
+LogDataTracer: FMarkdownDataTracer initialized. Registered 50 handlers.
+LogPathTracer: FMarkdownPathTracer: Initialized for pure tracing logic.
+LogDataTracer: DataTracer::StartTraceSession: Context pointers set. Queue: 0000009A64D699B8, ProcessedSet: 0000009A64D69B10, ShowTrivialDefaults: true, Settings Ptr: 0000009A64D6A330
+LogPathTracer: FExecutionFlowGenerator: Extracting node data for 6 selected nodes...
+LogExtractor: FBlueprintDataExtractor: Starting node data extraction...
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_ComponentBoundEvent', Node Title: 'On Clicked (EditorUtilityButton_54)', Node GUID: 2B58733C4130557B5025B897CA02AA36
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_ComponentBoundEvent'. Calling handler now.
+LogBlueprintNodeFactory:   Extractor: CompBoundEvent 2B58733C
+LogBlueprintNodeFactory:     Extractor (CompEvent 2B58733C): Correctly set BoundEventOwnerClassPath to: '/Game/NewBlueprint1.NewBlueprint1'
+LogBlueprintNodeFactory: Factory EXIT Node 2B58733C4130557B5025B897CA02AA36 (ComponentBoundEvent)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='EditorUtilityButton_54', Del='OnClicked', OwnerPathWorkaround='/Game/NewBlueprint1.NewBlueprint1'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 2
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_CallFunction', Node Title: 'Log String', Node GUID: 4CDA1C44454A0092D7E9E5BEAB565D3C
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_CallFunction'. Calling handler now.
+LogBlueprintNodeFactory: Warning: FactoryDebug: Processing Node Title: 'Log String', Node Type: 'K2Node_CallFunction', Node GUID: 4CDA1C44454A0092D7E9E5BEAB565D3C
+LogBlueprintNodeFactory: Warning:   FactoryDebug: FuncRef MemberName: 'LogString'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Context BP Class From Node (for GetMemberParentClass): '/Game/NewBlueprint1.SKEL_NewBlueprint1_C'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Resolved MemberParentClass (where function is declared by FMemberReference): '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Stored 'FunctionParentClassPath': '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Factory EXIT Node 4CDA1C44454A0092D7E9E5BEAB565D3C (CallFunction)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 4
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_CallFunction', Node Title: 'Log String', Node GUID: 891EE7734B502DF2BBCB14A637A98078
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_CallFunction'. Calling handler now.
+LogBlueprintNodeFactory: Warning: FactoryDebug: Processing Node Title: 'Log String', Node Type: 'K2Node_CallFunction', Node GUID: 891EE7734B502DF2BBCB14A637A98078
+LogBlueprintNodeFactory: Warning:   FactoryDebug: FuncRef MemberName: 'LogString'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Context BP Class From Node (for GetMemberParentClass): '/Game/NewBlueprint1.SKEL_NewBlueprint1_C'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Resolved MemberParentClass (where function is declared by FMemberReference): '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Stored 'FunctionParentClassPath': '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Factory EXIT Node 891EE7734B502DF2BBCB14A637A98078 (CallFunction)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 4
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_CallFunction', Node Title: 'Test Export Blueprint by Path', Node GUID: C699762E4A3A40B570BBFBAA74836F0E
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_CallFunction'. Calling handler now.
+LogBlueprintNodeFactory: Warning: FactoryDebug: Processing Node Title: 'Test Export Blueprint by Path', Node Type: 'K2Node_CallFunction', Node GUID: C699762E4A3A40B570BBFBAA74836F0E
+LogBlueprintNodeFactory: Warning:   FactoryDebug: FuncRef MemberName: 'TestExportBlueprintByPath'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Context BP Class From Node (for GetMemberParentClass): '/Game/NewBlueprint1.SKEL_NewBlueprint1_C'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Resolved MemberParentClass (where function is declared by FMemberReference): '/Script/BP2AI.BP2AITestLibrary'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Stored 'FunctionParentClassPath': '/Script/BP2AI.BP2AITestLibrary'
+LogBlueprintNodeFactory: Factory EXIT Node C699762E4A3A40B570BBFBAA74836F0E (CallFunction)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 4
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_IfThenElse', Node Title: 'Branch', Node GUID: 144CA9E14167247CEA87C084BC3D8582
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: NO handler found in PropertyExtractors map for FName: 'K2Node_IfThenElse'.
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: (Further Info) Node Type: IfThenElse (/Script/BlueprintGraph.K2Node_IfThenElse) is a K2Node but has no specific handler beyond generic property extraction.
+LogBlueprintNodeFactory: Factory EXIT Node 144CA9E14167247CEA87C084BC3D8582 (IfThenElse)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 0
+LogBlueprintNodeFactory: Warning: FactoryDispatchDebug: Attempting to dispatch for Node Type (FName): 'K2Node_CallFunction', Node Title: 'Log String', Node GUID: 11B51FA14D76B3D0664F138A92266FD3
+LogBlueprintNodeFactory: Warning:   FactoryDispatchDebug: Found BOUND handler for FName: 'K2Node_CallFunction'. Calling handler now.
+LogBlueprintNodeFactory: Warning: FactoryDebug: Processing Node Title: 'Log String', Node Type: 'K2Node_CallFunction', Node GUID: 11B51FA14D76B3D0664F138A92266FD3
+LogBlueprintNodeFactory: Warning:   FactoryDebug: FuncRef MemberName: 'LogString'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Context BP Class From Node (for GetMemberParentClass): '/Game/NewBlueprint1.SKEL_NewBlueprint1_C'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Resolved MemberParentClass (where function is declared by FMemberReference): '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Warning:   FactoryDebug: Stored 'FunctionParentClassPath': '/Script/Engine.KismetSystemLibrary'
+LogBlueprintNodeFactory: Factory EXIT Node 11B51FA14D76B3D0664F138A92266FD3 (CallFunction)
+LogBlueprintNodeFactory:   PRESERVED Props: Comp='', Del='', OwnerPathWorkaround='InitialTestOwnerPath'
+LogBlueprintNodeFactory:   FINAL RawProperties Count: 4
+LogExtractor: FBlueprintDataExtractor: Finished node data extraction. 6 nodes processed.
+LogExtractor: FinalizeExtractedNodes: Preserving critical properties for 6 nodes...
+LogModels: PreserveCriticalProperties: Checking RawProperties for Node 2B58733C (ComponentBoundEvent) (OwnerPath preservation removed)
+LogModels:   -> Found CompPropName in RawProperties: 'EditorUtilityButton_54'
+LogModels:   -> Found DelPropName in RawProperties: 'OnClicked'
+LogExtractor: FinalizeExtractedNodes: Preserved critical properties for 6 nodes
+LogExtractor: FinalizeExtractedNodes: Resolving links between nodes...
+LogExtractor: FBlueprintDataExtractor: Starting link resolution...
+LogExtractor: Error: ResolveLinks: BEFORE Pins Loop for 2B58733C (ComponentBoundEvent). Initial RawProperties.Num() = 2
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='On Clicked (EditorUtilityButton_54)' (GUID:2B58733C)
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'execute' (4CDA1C44). New SourcePinFor count: 1
+LogExtractor: Error: ResolveLinks: AFTER Pins Loop for 2B58733C (ComponentBoundEvent). RawProperties.Num() = 2 (Unchanged)
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Log String' (GUID:4CDA1C44)
+LogExtractor: Error: 🔧   Input Pin='execute', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = 2B58733C4130557B5025B897CA02AA36
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = 4E7C66CD4AC2D9176054E38A8D6814D0
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 1
+LogExtractor: Error: 🔧   Input Pin='self', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='InString', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToLog', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'execute' (C699762E). New SourcePinFor count: 1
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Log String' (GUID:891EE773)
+LogExtractor: Error: 🔧   Input Pin='execute', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = 144CA9E14167247CEA87C084BC3D8582
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = C856989C4D4F3670716ED4B341B0399D
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='self', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='InString', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToLog', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Test Export Blueprint by Path' (GUID:C699762E)
+LogExtractor: Error: 🔧   Input Pin='execute', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = 4CDA1C44454A0092D7E9E5BEAB565D3C
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = 7F083B6A427969E149D1C0AB102E763C
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 1
+LogExtractor: Error: 🔧   Input Pin='self', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='BlueprintPath', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'execute' (144CA9E1). New SourcePinFor count: 1
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'Condition' (144CA9E1). New SourcePinFor count: 1
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Branch' (GUID:144CA9E1)
+LogExtractor: Error: 🔧   Input Pin='execute', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = C699762E4A3A40B570BBFBAA74836F0E
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = CB4D300947D70354687A0883A5AC9B94
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 1
+LogExtractor: Error: 🔧   Input Pin='Condition', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = C699762E4A3A40B570BBFBAA74836F0E
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = 63122D7244A2F87A9A977FA4BE884058
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 1
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'execute' (11B51FA1). New SourcePinFor count: 1
+LogExtractor:       ResolveLinks: Added SourcePinFor link to Target Pin 'execute' (891EE773). New SourcePinFor count: 1
+LogExtractor: Error: 🔧 LINK RESOLUTION DEBUG: Processing Node='Log String' (GUID:11B51FA1)
+LogExtractor: Error: 🔧   Input Pin='execute', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧     LinkedTo_0_NodeGuid = 144CA9E14167247CEA87C084BC3D8582
+LogExtractor: Error: 🔧     LinkedTo_0_PinID = 9CB993874632EB62B47F86985030E0DB
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 1
+LogExtractor: Error: 🔧   Input Pin='self', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='InString', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: Error: 🔧   Input Pin='bPrintToLog', LinkedTo props in RawProperties:
+LogExtractor: Error: 🔧   SourcePinFor.Num after resolution: 0
+LogExtractor: FBlueprintDataExtractor: Finished link resolution. Resolved 6 forward links, added 6 SourcePinFor back-references.
+LogExtractor: Error: 🔧 BLUEPRINT CONNECTION DEBUG:
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogExtractor: FinalizeExtractedNodes: Link resolution complete
+LogExtractor: Error: DEBUG Post-ResolveLinks: Inspecting SourcePinFor for GetDataTableRow input pins:
+LogPathTracer: FExecutionFlowGenerator: Extraction complete. Map contains 6 nodes.
+LogPathTracer: Warning: === PHASE 1: Pre-scanning for pure graphs ===
+LogPathTracer: FGraphDiscoveryHelper: Pre-scanning 6 SELECTED nodes for PURE user graphs...
+LogPathTracer: IsInternalUserGraph: Processing Node '2B58733C' (Title: 'On Clicked (EditorUtilityButton_54)', OriginalType: ComponentBoundEvent, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '2B58733C' (Title: 'On Clicked (EditorUtilityButton_54)'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: IsInternalUserGraph: Processing Node '4CDA1C44' (Title: 'Log String', OriginalType: CallFunction, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Log String', TargetFunctionName='LogString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('LogString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:LogString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'LogString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.LogString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '4CDA1C44' (Title: 'Log String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.LogString'
+LogPathTracer: IsInternalUserGraph: Processing Node '891EE773' (Title: 'Log String', OriginalType: CallFunction, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Log String', TargetFunctionName='LogString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('LogString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:LogString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'LogString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.LogString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '891EE773' (Title: 'Log String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.LogString'
+LogPathTracer: IsInternalUserGraph: Processing Node 'C699762E' (Title: 'Test Export Blueprint by Path', OriginalType: CallFunction, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Test Export Blueprint by Path', TargetFunctionName='TestExportBlueprintByPath'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/BP2AI.BP2AITestLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('TestExportBlueprintByPath' in 'BP2AITestLibrary') resolved to: /Script/BP2AI.BP2AITestLibrary:TestExportBlueprintByPath
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'TestExportBlueprintByPath'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'BP2AI.BP2AITestLibrary.TestExportBlueprintByPath'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'C699762E' (Title: 'Test Export Blueprint by Path'): DetectedType=0, OutGraphPath='', OutGraphNameHint='BP2AI.BP2AITestLibrary.TestExportBlueprintByPath'
+LogPathTracer: IsInternalUserGraph: Processing Node '144CA9E1' (Title: 'Branch', OriginalType: IfThenElse, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '144CA9E1' (Title: 'Branch'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogPathTracer: IsInternalUserGraph: Processing Node '11B51FA1' (Title: 'Log String', OriginalType: CallFunction, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Log String', TargetFunctionName='LogString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('LogString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:LogString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'LogString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.LogString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '11B51FA1' (Title: 'Log String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.LogString'
+LogPathTracer: Warning: FGraphDiscoveryHelper: Pre-scan complete. Added 0 pure graphs (Total in queue: 0)
+LogPathTracer: Warning: === PHASE 2: Main execution traces (with MARKDOWN context) ===
+LogPathTracer: FExecutionFlowGenerator::FindStartNodes: Found 1 standard entries and 5 other executable nodes.
+LogTemp: FCapturedEventData: Captured Node 2B58733C - Comp='EditorUtilityButton_54', Del='OnClicked', Owner='/Game/NewBlueprint1.NewBlueprint1'
+LogPathTracer: Starting Execution Trace from Node: On Clicked (EditorUtilityButton_54) (2B58733C) in Context: 'NewBlueprint1'. DataSymbolic=0, DefineSep=1, ExpandInline=0
+LogPathTracer: >>> _find_next ENTER: Searching from 2B58733C (ComponentBoundEvent)
+LogPathTracer: <<< _find_next EXIT: Input node 2B58733C (ComponentBoundEvent) is already executable.
+LogPathTracer: IsInternalUserGraph: Processing Node '2B58733C' (Title: 'On Clicked (EditorUtilityButton_54)', OriginalType: ComponentBoundEvent, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '2B58733C' (Title: 'On Clicked (EditorUtilityButton_54)'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='On Clicked (EditorUtilityButton_54)' (Type:ComponentBoundEvent), CtxRecv:'NewBlueprint1', LinkOnly:0, Symbolic:0
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Game/NewBlueprint1.NewBlueprint1', Context=''
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Game/NewBlueprint1.NewBlueprint1', Context='' -> InitialCtx='', InitialItem='NewBlueprint1.NewBlueprint1', ItemAfterSkelStrip='NewBlueprint1.NewBlueprint1', FinalItemAfterDotAndPrefixStrips='NewBlueprint1' -> Returns='NewBlueprint1'
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: On Clicked (EditorUtilityButton_54) (2B58733C), Content: [**Bound Event** `OnClicked` (`EditorUtilityButton_54` on `NewBlueprint1`)]
+LogPathTracer: IsInternalUserGraph: Processing Node '4CDA1C44' (Title: 'Log String', OriginalType: CallFunction, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Log String', TargetFunctionName='LogString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('LogString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:LogString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'LogString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.LogString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '4CDA1C44' (Title: 'Log String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.LogString'
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Log String' (Type:CallFunction), CtxRecv:'NewBlueprint1', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Log String', FuncName='LogString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='4CDA1C44454A0092D7E9E5BEAB565D3C', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='bPrintToLog' (ID:99C14D7D) on Node='Log String' (GUID:4CDA1C44, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'4CDA1C44454A0092D7E9E5BEAB565D3C_99C14D7D4D66F19AF9935C8224D5E015_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'true', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='bPrintToLog' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'bPrintToLog' (ID:99C14D7D) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'bPrintToLog' (ID:99C14D7D) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'true', DefObj:'', CtxRecv:'NewBlueprint1'
+LogDataTracer: RVR Exit : Pin=bPrintToLog (ID:99C14D7D), Depth=0, ContextIn='NewBlueprint1', CacheKey='4CDA1C44454A0092D7E9E5BEAB565D3C_99C14D7D4D66F19AF9935C8224D5E015_CtxNewBlueprint1_Sym0' -> Result='true'. Caching.
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:6F011E68) on Node='Log String' (GUID:4CDA1C44, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'4CDA1C44454A0092D7E9E5BEAB565D3C_6F011E684D8F4BCEFAD47AB3DED7598A_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'Hello', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'InString' (ID:6F011E68) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'InString' (ID:6F011E68) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'Hello', DefObj:'', CtxRecv:'NewBlueprint1'
+LogDataTracer: RVR Exit : Pin=InString (ID:6F011E68), Depth=0, ContextIn='NewBlueprint1', CacheKey='4CDA1C44454A0092D7E9E5BEAB565D3C_6F011E684D8F4BCEFAD47AB3DED7598A_CtxNewBlueprint1_Sym0' -> Result='Hello'. Caching.
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Log String (4CDA1C44), Content: [`LogString`((`bPrintToLog`=true, `InString`=Hello))]
+LogPathTracer: IsInternalUserGraph: Processing Node 'C699762E' (Title: 'Test Export Blueprint by Path', OriginalType: CallFunction, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Test Export Blueprint by Path', TargetFunctionName='TestExportBlueprintByPath'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/BP2AI.BP2AITestLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('TestExportBlueprintByPath' in 'BP2AITestLibrary') resolved to: /Script/BP2AI.BP2AITestLibrary:TestExportBlueprintByPath
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'TestExportBlueprintByPath'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'BP2AI.BP2AITestLibrary.TestExportBlueprintByPath'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node 'C699762E' (Title: 'Test Export Blueprint by Path'): DetectedType=0, OutGraphPath='', OutGraphNameHint='BP2AI.BP2AITestLibrary.TestExportBlueprintByPath'
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Test Export Blueprint by Path' (Type:CallFunction), CtxRecv:'NewBlueprint1', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Test Export Blueprint by Path', FuncName='TestExportBlueprintByPath'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='C699762E4A3A40B570BBFBAA74836F0E', Direction='EGPD_Input', Category='object', DefaultObject='/Script/BP2AI.Default__BP2AITestLibrary', Context='NewBlueprint1'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/BP2AI.Default__BP2AITestLibrary', Context='NewBlueprint1'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/BP2AI.Default__BP2AITestLibrary', Context='NewBlueprint1' -> InitialCtx='BP2AI', InitialItem='Default__BP2AITestLibrary', ItemAfterSkelStrip='BP2AITestLibrary', FinalItemAfterDotAndPrefixStrips='BP2AITestLibrary' -> Returns='BP2AI:BP2AITestLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/BP2AI.Default__BP2AITestLibrary', RawSimplifiedName='BP2AI:BP2AITestLibrary'
+LogDataTracer: Warning:     TraceTargetPin: NOT a known static lib to omit OR RawSimplifiedName was empty. DefaultObject path. Returning formatted: '`BP2AI:BP2AITestLibrary`'
+LogDataTracer: Error: RVR Enter: Pin='BlueprintPath' (ID:1646A7FA) on Node='Test Export Blueprint by Path' (GUID:C699762E, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'C699762E4A3A40B570BBFBAA74836F0E_1646A7FA4C95F71A983114B537DD560B_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'/Game/Test/BP_TestExport', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='BlueprintPath' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'BlueprintPath' (ID:1646A7FA) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'BlueprintPath' (ID:1646A7FA) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'/Game/Test/BP_TestExport', DefObj:'', CtxRecv:'NewBlueprint1'
+LogDataTracer: RVR Exit : Pin=BlueprintPath (ID:1646A7FA), Depth=0, ContextIn='NewBlueprint1', CacheKey='C699762E4A3A40B570BBFBAA74836F0E_1646A7FA4C95F71A983114B537DD560B_CtxNewBlueprint1_Sym0' -> Result='/Game/Test/BP_TestExport'. Caching.
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Test Export Blueprint by Path (C699762E), Content: [`BP2AI:BP2AITestLibrary`.`TestExportBlueprintByPath`((`BlueprintPath`=/Game/Test/BP_TestExport))]
+LogPathTracer: IsInternalUserGraph: Processing Node '144CA9E1' (Title: 'Branch', OriginalType: IfThenElse, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '144CA9E1' (Title: 'Branch'): DetectedType=0, OutGraphPath='', OutGraphNameHint=''
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Branch' (Type:IfThenElse), CtxRecv:'NewBlueprint1', LinkOnly:0, Symbolic:0
+LogDataTracer: TracePinValue START: Pin=Condition (8A4CE1544BF5F9E6F2C058BDF18A2C21), Node=144CA9E14167247CEA87C084BC3D8582, Symbolic=0
+LogDataTracer: Error: RVR Enter: Pin='Condition' (ID:8A4CE154) on Node='Branch' (GUID:144CA9E1, Type:IfThenElse), Depth:0, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'144CA9E14167247CEA87C084BC3D8582_8A4CE1544BF5F9E6F2C058BDF18A2C21_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:1, DefVal:'true', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='Condition' has 1 source connections:
+LogDataTracer: Error: 🔧   Source[0]: NodeGUID='C699762E', NodeName='Test Export Blueprint by Path', NodeType='CallFunction', PinName='ReturnValue' (ID:63122D72)
+LogDataTracer: Error:   RVR: Input Pin 'Condition' (ID:8A4CE154) SourcePinFor[0]: NodeGUID=C699762E, PinID=63122D72, PinName='ReturnValue'
+LogDataTracer: Error:   RVR: Pin 'Condition' (ID:8A4CE154) has SourceDataPin 'ReturnValue' (ID:63122D72) on Node 'Test Export Blueprint by Path' (GUID:C699762E, Type:CallFunction). Calling TraceSourceNode. CtxToPass:'NewBlueprint1'
+LogDataTracer: Error:     TraceSourceNode ENTER: NodeType='CallFunction', PinName='ReturnValue', CurrentBlueprintContext RECEIVED: 'NewBlueprint1'
+LogDataTracer:     TraceSourceNode Dispatch: Trying Node='Test Export Blueprint by Path' (Type:'CallFunction', GUID:C699762E), Pin='ReturnValue'. CtxRecv:'NewBlueprint1', Symbolic:0
+LogDataTracer:       TraceSourceNode: Found handler for 'CallFunction'. CtxToPass:'NewBlueprint1'. CallingNode: NULL (NULL_GUID)
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='C699762E4A3A40B570BBFBAA74836F0E', Direction='EGPD_Input', Category='object', DefaultObject='/Script/BP2AI.Default__BP2AITestLibrary', Context='NewBlueprint1'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/BP2AI.Default__BP2AITestLibrary', Context='NewBlueprint1'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/BP2AI.Default__BP2AITestLibrary', Context='NewBlueprint1' -> InitialCtx='BP2AI', InitialItem='Default__BP2AITestLibrary', ItemAfterSkelStrip='BP2AITestLibrary', FinalItemAfterDotAndPrefixStrips='BP2AITestLibrary' -> Returns='BP2AI:BP2AITestLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/BP2AI.Default__BP2AITestLibrary', RawSimplifiedName='BP2AI:BP2AITestLibrary'
+LogDataTracer: Warning:     TraceTargetPin: NOT a known static lib to omit OR RawSimplifiedName was empty. DefaultObject path. Returning formatted: '`BP2AI:BP2AITestLibrary`'
+LogFormatter: FormatArgumentsForTrace (Utils): Node 'Test Export Blueprint by Path', Context 'NewBlueprint1', Symbolic: 0, ShowTrivialGlobal: true
+LogFormatter: Error:     FormatArgumentsForTrace: Tracing arg pin 'BlueprintPath' (Node:'Test Export Blueprint by Path'). CtxToPass:'NewBlueprint1', Depth:2, SymbolicForThisTrace:0
+LogDataTracer: Error: RVR Enter: Pin='BlueprintPath' (ID:1646A7FA) on Node='Test Export Blueprint by Path' (GUID:C699762E, Type:CallFunction), Depth:2, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'C699762E4A3A40B570BBFBAA74836F0E_1646A7FA4C95F71A983114B537DD560B_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'/Game/Test/BP_TestExport', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='BlueprintPath' has 0 source connections:
+LogDataTracer: RVR Cache Hit: Pin=BlueprintPath (1646A7FA), CacheKey='C699762E4A3A40B570BBFBAA74836F0E_1646A7FA4C95F71A983114B537DD560B_CtxNewBlueprint1_Sym0' -> Result='/Game/Test/BP_TestExport'
+LogDataTracer: RVR Exit : Pin=Condition (ID:8A4CE154), Depth=0, ContextIn='NewBlueprint1', CacheKey='144CA9E14167247CEA87C084BC3D8582_8A4CE1544BF5F9E6F2C058BDF18A2C21_CtxNewBlueprint1_Sym0' -> Result='`BP2AI:BP2AITestLibrary`.`TestExportBlueprintByPath`(`BlueprintPath`=/Game/Test/BP_TestExport)'. Caching.
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Branch (144CA9E1), Content: [**If** (`BP2AI:BP2AITestLibrary`.`TestExportBlueprintByPath`(`BlueprintPath`=/Game/Test/BP_TestExport))]
+LogPathTracer: IsInternalUserGraph: Processing Node '11B51FA1' (Title: 'Log String', OriginalType: CallFunction, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Log String', TargetFunctionName='LogString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('LogString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:LogString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'LogString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.LogString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '11B51FA1' (Title: 'Log String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.LogString'
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Log String' (Type:CallFunction), CtxRecv:'NewBlueprint1', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Log String', FuncName='LogString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='11B51FA14D76B3D0664F138A92266FD3', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='bPrintToLog' (ID:99C14D7D) on Node='Log String' (GUID:11B51FA1, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'11B51FA14D76B3D0664F138A92266FD3_99C14D7D4D66F19AF9935C8224D5E015_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'true', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='bPrintToLog' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'bPrintToLog' (ID:99C14D7D) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'bPrintToLog' (ID:99C14D7D) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'true', DefObj:'', CtxRecv:'NewBlueprint1'
+LogDataTracer: RVR Exit : Pin=bPrintToLog (ID:99C14D7D), Depth=0, ContextIn='NewBlueprint1', CacheKey='11B51FA14D76B3D0664F138A92266FD3_99C14D7D4D66F19AF9935C8224D5E015_CtxNewBlueprint1_Sym0' -> Result='true'. Caching.
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:6F011E68) on Node='Log String' (GUID:11B51FA1, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'11B51FA14D76B3D0664F138A92266FD3_6F011E684D8F4BCEFAD47AB3DED7598A_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'Good', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'InString' (ID:6F011E68) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'InString' (ID:6F011E68) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'Good', DefObj:'', CtxRecv:'NewBlueprint1'
+LogDataTracer: RVR Exit : Pin=InString (ID:6F011E68), Depth=0, ContextIn='NewBlueprint1', CacheKey='11B51FA14D76B3D0664F138A92266FD3_6F011E684D8F4BCEFAD47AB3DED7598A_CtxNewBlueprint1_Sym0' -> Result='Good'. Caching.
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Log String (11B51FA1), Content: [`LogString`((`bPrintToLog`=true, `InString`=Good))]
+LogPathTracer: IsInternalUserGraph: Processing Node '891EE773' (Title: 'Log String', OriginalType: CallFunction, CallerBP: NewBlueprint1) for user graph identification.
+LogPathTracer:   Helper_CheckCallFunctionType: Node Title='Log String', TargetFunctionName='LogString'.
+LogPathTracer:     Helper_CheckCallFunctionType: TargetFunctionOwnerClass (after potential prop lookup): '/Script/Engine.KismetSystemLibrary'
+LogPathTracer:     Helper_CheckCallFunctionType: TargetUFunction ('LogString' in 'KismetSystemLibrary') resolved to: /Script/Engine.KismetSystemLibrary:LogString
+LogPathTracer:     Helper_CheckCallFunctionType: FunctionDefiningBP (for 'LogString'): NULL - Likely Native/C++ or Interface Definition/Not in BP
+LogPathTracer:     Helper_CheckCallFunctionType: Call to NATIVE/C++ or Interface Definition. Hint: 'Engine.KismetSystemLibrary.LogString'. Not queued for separate BP graph definition.
+LogPathTracer: IsInternalUserGraph FINAL RESULT for Node '891EE773' (Title: 'Log String'): DetectedType=0, OutGraphPath='', OutGraphNameHint='Engine.KismetSystemLibrary.LogString'
+LogFormatter: Error: FMarkdownNodeFormatter::FormatNodeDescription: Node='Log String' (Type:CallFunction), CtxRecv:'NewBlueprint1', LinkOnly:0, Symbolic:0
+LogFormatter: Error: 🔧 DEBUG FUNCTION: Node='Log String', FuncName='LogString'
+LogFormatter: Error: 🔧 DEBUG FUNCTION: No operator match - using standard function formatting
+LogDataTracer:   TraceTargetPin: Processing PinName='self', NodeGuid='891EE7734B502DF2BBCB14A637A98078', Direction='EGPD_Input', Category='object', DefaultObject='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1'
+LogDataTracer: ExtractSimpleNameFromPath IN: Path='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1'
+LogDataTracer: Warning: ExtractSimpleNameFromPath OUT: Path='/Script/Engine.Default__KismetSystemLibrary', Context='NewBlueprint1' -> InitialCtx='Engine', InitialItem='Default__KismetSystemLibrary', ItemAfterSkelStrip='KismetSystemLibrary', FinalItemAfterDotAndPrefixStrips='KismetSystemLibrary' -> Returns='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin (Unlinked/DefaultObject): DefaultObjPath='/Script/Engine.Default__KismetSystemLibrary', RawSimplifiedName='Engine.KismetSystemLibrary'
+LogDataTracer: Warning:     TraceTargetPin: Matched KnownStaticBlueprintLibrary: 'Engine.KismetSystemLibrary'. Returning TEXT("").
+LogDataTracer: Error: RVR Enter: Pin='bPrintToLog' (ID:99C14D7D) on Node='Log String' (GUID:891EE773, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'891EE7734B502DF2BBCB14A637A98078_99C14D7D4D66F19AF9935C8224D5E015_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'true', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='bPrintToLog' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'bPrintToLog' (ID:99C14D7D) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'bPrintToLog' (ID:99C14D7D) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'true', DefObj:'', CtxRecv:'NewBlueprint1'
+LogDataTracer: RVR Exit : Pin=bPrintToLog (ID:99C14D7D), Depth=0, ContextIn='NewBlueprint1', CacheKey='891EE7734B502DF2BBCB14A637A98078_99C14D7D4D66F19AF9935C8224D5E015_CtxNewBlueprint1_Sym0' -> Result='true'. Caching.
+LogDataTracer: Error: RVR Enter: Pin='InString' (ID:6F011E68) on Node='Log String' (GUID:891EE773, Type:CallFunction), Depth:0, Symbolic:0. CtxRecv:'NewBlueprint1'. CacheKey:'891EE7734B502DF2BBCB14A637A98078_6F011E684D8F4BCEFAD47AB3DED7598A_CtxNewBlueprint1_Sym0'. CallingNode: NULL_Node (NULL_GUID), OuterMap: 0000000000000000, LinksIn:0, DefVal:'Damn', DefObj:''
+LogDataTracer: Error: 🔧 PIN RECURSION DEBUG: Pin='InString' has 0 source connections:
+LogDataTracer: Error:   RVR: Input Pin 'InString' (ID:6F011E68) has SourcePinFor.Num() == 0.
+LogDataTracer: Error:   RVR: Pin 'InString' (ID:6F011E68) has NO valid SourceDataPin (SourcePinFor.Num(): 0, IsOutput: 0). Using FormatDefaultValue. DefVal:'Damn', DefObj:'', CtxRecv:'NewBlueprint1'
+LogDataTracer: RVR Exit : Pin=InString (ID:6F011E68), Depth=0, ContextIn='NewBlueprint1', CacheKey='891EE7734B502DF2BBCB14A637A98078_6F011E684D8F4BCEFAD47AB3DED7598A_CtxNewBlueprint1_Sym0' -> Result='Damn'. Caching.
+LogPathTracer: TracePathRecursive: Adding generic FormattedDesc for Node: Log String (891EE773), Content: [`LogString`((`bPrintToLog`=true, `InString`=Damn))]
+LogDataTracer: DataTracer::EndTraceSession: Queue, ProcessedSet, and Settings context pointers cleared.
+LogPathTracer: Warning: === TRACING COMPLETE (Context: MARKDOWN) ===
+LogPathTracer: Warning:   Execution Traces: 1
+LogPathTracer: Warning:   Graph Definitions: 0
+LogPathTracer: Creating MarkdownDocumentBuilder
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 1 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 15 lines
+LogPathTracer: Warning: Final Document Length: 686 characters
+LogPathTracer: Warning: === GenerateDocumentForNodes END ===
+LogUI: 🔄 FORCED REGENERATION: Complete (Markdown: 686 chars)
+LogUI: SBlueprintExecFlowWindow: Forced full regeneration with contexts complete.
+LogAudioMixer: Display: Audio Buffer Underrun (starvation) detected. InstanceID=1
+LogBP2AI: BP2AI: OnExecFlowWindowClosed Called. Resetting pointers.

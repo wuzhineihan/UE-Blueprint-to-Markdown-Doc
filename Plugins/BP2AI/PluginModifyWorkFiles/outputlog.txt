@@ -1,0 +1,188 @@
+﻿LogBP2AI: 🎮 BP2AI Test Library - TestExportBlueprintByPath() CALLED
+LogBP2AI: ========================================
+LogBP2AI: 🎮 BP2AI Test Library - Testing Blueprint Export (Detailed)
+LogBP2AI:    Blueprint Path: /Game/Test/BP_TestExport
+LogBP2AI: ========================================
+LogBP2AI: ✅ Blueprint loaded successfully: BP_TestExport
+LogBP2AI: BP2AIBatchExporter: Initialized
+LogBP2AI: ========================================
+LogBP2AI: BP2AIBatchExporter: Detailed export for blueprint 'BP_TestExport'
+LogBP2AI: ========================================
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 9 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 76 lines
+LogBP2AI: ✅ Exported 'EventGraph': 2544 characters, 82 lines
+LogBP2AI: ----- ExecFlow Preview for Graph: EventGraph (blocks: showing 3/9) -----
+LogBP2AI: [Block 1/3] * Event EnhancedInputAction IA_Look Args: (ActionValue_X:double, ActionValue_Y:double, InputAction:EnhancedInput:InputAc ...[truncated]
+LogBP2AI:    [01] * Event EnhancedInputAction IA_Look Args: (ActionValue_X:double, ActionValue_Y:double, InputAction:EnhancedInput:InputAction)
+LogBP2AI:    [02]     * Triggered:
+LogBP2AI:    [03]         * AddControllerYawInput((Val=EnhancedInputAction IA_Look.ActionValue_X))
+LogBP2AI:    [04]             * AddControllerPitchInput((Val=EnhancedInputAction IA_Look.ActionValue_Y))
+LogBP2AI:    [05]                 * [Path ends]
+LogBP2AI:    ---
+LogBP2AI: [Block 2/3] * Event EnhancedInputAction IA_Move Args: (ActionValue_X:double, ActionValue_Y:double, InputAction:EnhancedInput:InputAc ...[truncated]
+LogBP2AI:    [01] * Event EnhancedInputAction IA_Move Args: (ActionValue_X:double, ActionValue_Y:double, InputAction:EnhancedInput:InputAction)
+LogBP2AI:    [02]     * Triggered:
+LogBP2AI:    [03]         * AddMovementInput((bForce=false, ScaleValue=EnhancedInputAction IA_Move.ActionValue_X, WorldDirection=GetActorRightVector()))
+LogBP2AI:    [04]             * AddMovementInput((bForce=false, ScaleValue=EnhancedInputAction IA_Move.ActionValue_Y, WorldDirection=GetActorForwardVector()))
+LogBP2AI:    [05]                 * [Path ends]
+LogBP2AI:    ---
+LogBP2AI: [Block 3/3] * Event EnhancedInputAction IA_Jump Args: (ActionValue:bool, InputAction:EnhancedInput:InputAction)
+LogBP2AI:    [01] * Event EnhancedInputAction IA_Jump Args: (ActionValue:bool, InputAction:EnhancedInput:InputAction)
+LogBP2AI:    [02]     |-- Completed:
+LogBP2AI:    [03]     |   * StopJumping(())
+LogBP2AI:    [04]     |       * [Path ends]
+LogBP2AI:    [05]     L-- Started:
+LogBP2AI:    [06]         * Jump(())
+LogBP2AI:    ... (1 more line(s) in this block)
+LogBP2AI: ... ExecFlow preview truncated: 6 more block(s) not shown. See Markdown export for full content.
+LogBP2AI: ----- End ExecFlow Preview for Graph: EventGraph -----
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 1 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 7 lines
+LogBP2AI: ✅ Exported 'UserConstructionScript': 120 characters, 7 lines
+LogBP2AI: ----- ExecFlow Preview for Graph: UserConstructionScript (blocks: showing 1/1) -----
+LogBP2AI: [Block 1/1] * Event Construction Script
+LogBP2AI:    [01] * Event Construction Script
+LogBP2AI:    [02]     * [Path ends]
+LogBP2AI: ----- End ExecFlow Preview for Graph: UserConstructionScript -----
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 4 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 33 lines
+LogBP2AI: ✅ Exported 'TestFunction1': 773 characters, 33 lines
+LogBP2AI: ----- ExecFlow Preview for Graph: TestFunction1 (blocks: showing 3/4) -----
+LogBP2AI: [Block 1/3] * Event Test Function 1
+LogBP2AI:    [01] * Event Test Function 1
+LogBP2AI:    [02]     * If (ValueFrom(Test Function 1.Param))
+LogBP2AI:    [03]         |-- true:
+LogBP2AI:    [04]         |   * PrintString((InString=This is test function 1))
+LogBP2AI:    [05]         |       * Return()
+LogBP2AI:    [06]         L-- false:
+LogBP2AI:    ... (1 more line(s) in this block)
+LogBP2AI:    ---
+LogBP2AI: [Block 2/3] * [Continue execution at: PrintString((InString=This is test function 1)) → Previously detailed]
+LogBP2AI:    [01] * [Continue execution at: PrintString((InString=This is test function 1)) → Previously detailed]
+LogBP2AI:    ---
+LogBP2AI: [Block 3/3] * [Continue execution at: Return() → Previously detailed]
+LogBP2AI:    [01] * [Continue execution at: Return() → Previously detailed]
+LogBP2AI: ... ExecFlow preview truncated: 1 more block(s) not shown. See Markdown export for full content.
+LogBP2AI: ----- End ExecFlow Preview for Graph: TestFunction1 -----
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 2 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 15 lines
+LogBP2AI: ✅ Exported 'TestFunction2': 335 characters, 15 lines
+LogBP2AI: ----- ExecFlow Preview for Graph: TestFunction2 (blocks: showing 2/2) -----
+LogBP2AI: [Block 1/2] * Event Test Function 2
+LogBP2AI:    [01] * Event Test Function 2
+LogBP2AI:    [02]     * PrintString((InString=This is test function 2))
+LogBP2AI:    [03]         * [Path ends]
+LogBP2AI:    ---
+LogBP2AI: [Block 2/2] * [Continue execution at: PrintString((InString=This is test function 2)) → Previously detailed]
+LogBP2AI:    [01] * [Continue execution at: PrintString((InString=This is test function 2)) → Previously detailed]
+LogBP2AI: ----- End ExecFlow Preview for Graph: TestFunction2 -----
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 1 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 6 lines
+LogBP2AI: ✅ Exported 'TestMacro': 107 characters, 6 lines
+LogBP2AI: ----- ExecFlow Preview for Graph: TestMacro (blocks: showing 1/1) -----
+LogBP2AI: [Block 1/1] No executable nodes found in the current selection.
+LogBP2AI:    [01] No executable nodes found in the current selection.
+LogBP2AI: ----- End ExecFlow Preview for Graph: TestMacro -----
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 1 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 7 lines
+LogBP2AI: ✅ Exported 'TestEventDispatcher': 124 characters, 7 lines
+LogBP2AI: ----- ExecFlow Preview for Graph: TestEventDispatcher (blocks: showing 1/1) -----
+LogBP2AI: [Block 1/1] * Event Test Event Dispatcher
+LogBP2AI:    [01] * Event Test Event Dispatcher
+LogBP2AI:    [02]     * [Path ends]
+LogBP2AI: ----- End ExecFlow Preview for Graph: TestEventDispatcher -----
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📊 Detailed Export Summary:
+LogBP2AI:    Graphs: 6
+LogBP2AI:    Total Nodes: 34
+LogBP2AI:    Total Characters: 4003
+LogBP2AI:    Total Lines: 150
+LogBP2AI:    Total Blueprint Blocks: 18
+LogBP2AI:    Per-Graph Overview:
+LogBP2AI:       [Event] EventGraph | Nodes=24, Chars=2544, Lines=82, Blocks=9
+LogBP2AI:       [Function] UserConstructionScript | Nodes=1, Chars=120, Lines=7, Blocks=1
+LogBP2AI:       [Function] TestFunction1 | Nodes=4, Chars=773, Lines=33, Blocks=4
+LogBP2AI:       [Function] TestFunction2 | Nodes=2, Chars=335, Lines=15, Blocks=2
+LogBP2AI:       [Macro] TestMacro | Nodes=2, Chars=107, Lines=6, Blocks=1
+LogBP2AI:       [Delegate] TestEventDispatcher | Nodes=1, Chars=124, Lines=7, Blocks=1
+LogBP2AI: ========================================
+LogBP2AI: 📘 Saved blueprint document: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport.md
+LogBP2AI: BP2AIBatchExporter: Destroyed
+LogBP2AI: 📄 Blueprint Export Summary:
+LogBP2AI:    Blueprint: BP_TestExport
+LogBP2AI:    Asset Path: /Game/Test/BP_TestExport.BP_TestExport
+LogBP2AI:    Total Graphs: 6
+LogBP2AI:    Total Nodes: 34
+LogBP2AI:    Graph List:
+LogBP2AI:       [Event] EventGraph | Nodes=24
+LogBP2AI:       [Function] UserConstructionScript | Nodes=1
+LogBP2AI:       [Function] TestFunction1 | Nodes=4
+LogBP2AI:       [Function] TestFunction2 | Nodes=2
+LogBP2AI:       [Macro] TestMacro | Nodes=2
+LogBP2AI:       [Delegate] TestEventDispatcher | Nodes=1
+LogBP2AI: ✅ TEST PASSED: Successfully exported complete blueprint document

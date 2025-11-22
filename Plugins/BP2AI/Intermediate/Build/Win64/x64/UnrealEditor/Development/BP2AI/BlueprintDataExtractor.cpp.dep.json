@@ -1,0 +1,31 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\extractors\\blueprintdataextractor.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\admin\\desktop\\cppplayground\\intermediate\\build\\win64\\x64\\cppplaygroundeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bp2ai\\definitions.bp2ai.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\extractors\\blueprintdataextractor.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\models\\blueprintnode.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\models\\blueprintpin.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\logging\\bp2ailog.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\models\\blueprintnodefactory.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\blueprintgraph\\classes\\k2node_callfunction.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\kismetcompiler\\public\\kismetcompilermisc.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\kismetcompiler\\public\\bpterminal.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\kismetcompiler\\public\\blueprintcompiledstatement.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\blueprintgraph\\uht\\k2node_callfunction.generated.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\blueprintgraph\\classes\\k2node_macroinstance.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\blueprintgraph\\classes\\k2node_tunnel.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\blueprintgraph\\uht\\k2node_tunnel.generated.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\blueprintgraph\\uht\\k2node_macroinstance.generated.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\unrealed\\public\\kismet2\\blueprinteditorutils.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\classviewer\\public\\classviewermodule.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\kismet\\public\\blueprinteditormodule.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\unrealed\\public\\workfloworientedapp\\workflowcentricapplication.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

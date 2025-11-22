@@ -1,0 +1,113 @@
+﻿LogBP2AI: 🎮 BP2AI Test Library - TestExportBlueprintByPath() CALLED
+LogBP2AI: ========================================
+LogBP2AI: 🎮 BP2AI Test Library - Testing Blueprint Export
+LogBP2AI:    Blueprint Path: /Game/Test/BP_TestExport
+LogBP2AI: ========================================
+LogBP2AI: 🧪 TEST: Attempting to load blueprint: /Game/Test/BP_TestExport
+LogBP2AI: ✅ Blueprint loaded successfully: BP_TestExport
+LogBP2AI: BP2AIBatchExporter: Initialized
+LogBP2AI: ========================================
+LogBP2AI: BP2AIBatchExporter: Exporting blueprint 'BP_TestExport'
+LogBP2AI: ========================================
+LogBP2AI: 📊 Phase 1: Exporting Event Graphs
+LogBP2AI: BP2AIBatchExporter: Starting export for graph 'EventGraph' (4 nodes)
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 4 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 31 lines
+LogBP2AI: ✅ Exported 'EventGraph': 556 characters, 31 lines
+LogBP2AI: --- Preview (first 3 blueprint lines of 'EventGraph') ---
+LogBP2AI:    * Event BeginPlay
+LogBP2AI:        * PrintString((InString=TestExport BeginPlay))
+LogBP2AI:            * [Path ends]
+LogBP2AI: --- End Preview ---
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📝 Saved export 'EventGraph_EventGraph' to: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport__EventGraph_EventGraph.md
+LogBP2AI: 📊 Phase 2: Exporting Function Graphs
+LogBP2AI: BP2AIBatchExporter: Starting export for graph 'UserConstructionScript' (1 nodes)
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 1 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 7 lines
+LogBP2AI: ✅ Exported 'UserConstructionScript': 120 characters, 7 lines
+LogBP2AI: --- Preview (first 2 blueprint lines of 'UserConstructionScript') ---
+LogBP2AI:    * Event Construction Script
+LogBP2AI:        * [Path ends]
+LogBP2AI: --- End Preview ---
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📝 Saved export 'Function_UserConstructionScript' to: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport__Function_UserConstructionScript.md
+LogBP2AI: BP2AIBatchExporter: Starting export for graph 'TestFunction' (2 nodes)
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 2 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 15 lines
+LogBP2AI: ✅ Exported 'TestFunction': 331 characters, 15 lines
+LogBP2AI: --- Preview (first 3 blueprint lines of 'TestFunction') ---
+LogBP2AI:    * Event Test Function
+LogBP2AI:        * PrintString((InString=This is a test function))
+LogBP2AI:            * [Path ends]
+LogBP2AI: --- End Preview ---
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📝 Saved export 'Function_TestFunction' to: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport__Function_TestFunction.md
+LogBP2AI: 📊 Phase 3: Exporting Macro Graphs
+LogBP2AI: BP2AIBatchExporter: Starting export for graph 'TestMacro' (3 nodes)
+LogBP2AI: FGraphDiscoveryHelper: Initialized
+LogBP2AI: FCategoryAnalysisHelper: Initialized
+LogBP2AI: FDefinitionGenerationHelper: Initialized
+LogBP2AI: FFlowValidationHelper: Initialized
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 3 execution traces. UseSemanticData: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing 0 section headers and 0 graph definitions. UseSemanticData from CurrentSettings: FALSE
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: 0
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers
+LogBP2AI: MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with 23 lines
+LogBP2AI: ✅ Exported 'TestMacro': 458 characters, 23 lines
+LogBP2AI: --- Preview (first 1 blueprint lines of 'TestMacro') ---
+LogBP2AI:    * Tunnel (Outputs)
+LogBP2AI: --- End Preview ---
+LogBP2AI: FFlowValidationHelper: Destroyed
+LogBP2AI: FDefinitionGenerationHelper: Destroyed
+LogBP2AI: FCategoryAnalysisHelper: Destroyed
+LogBP2AI: FGraphDiscoveryHelper: Destroyed
+LogBP2AI: 📝 Saved export 'Macro_TestMacro' to: C:/Users/admin/Desktop/CPPPlayGround/Saved/BP2AI/Exports/BP_TestExport__Macro_TestMacro.md
+LogBP2AI: 📊 Phase 4: Exporting Delegate Graphs
+LogBP2AI: ========================================
+LogBP2AI: ✅ Export Complete:
+LogBP2AI:    Blueprint: BP_TestExport
+LogBP2AI:    Total Graphs Exported: 4
+LogBP2AI:    Event Graphs Exported: 1 / Available: 1
+LogBP2AI:    Function Graphs Exported: 2 / Available: 2
+LogBP2AI:    Macro Graphs Exported: 1 / Available: 1
+LogBP2AI:    Delegate Graphs Exported: 0 / Available: 0
+LogBP2AI: ========================================
+LogBP2AI: 📄 Export Results Summary:
+LogBP2AI:    - EventGraph_EventGraph: 556 characters
+LogBP2AI:    - Function_UserConstructionScript: 120 characters
+LogBP2AI:    - Function_TestFunction: 331 characters
+LogBP2AI:    - Macro_TestMacro: 458 characters
+LogBP2AI: ✅ TEST PASSED: Successfully exported 4 graphs
+LogBP2AI: BP2AIBatchExporter: Destroyed
+LogBP2AI: ✅ Export test completed successfully!

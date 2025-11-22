@@ -1,0 +1,15 @@
+﻿**Trace Start: On Clicked (EditorUtilityButton_54)** (ComponentBoundEvent)
+
+```blueprint
+* Bound Event OnClicked (EditorUtilityButton_54 on NewBlueprint1)
+    * LogString((bPrintToLog=true, InString=Hello))
+        * BP2AI:BP2AITestLibrary.TestExportBlueprintByPath((BlueprintPath=/Game/Test/BP_TestExport))
+            * If (BP2AI:BP2AITestLibrary.TestExportBlueprintByPath(BlueprintPath=/Game/Test/BP_TestExport))
+                |-- true:
+                |   * LogString((bPrintToLog=true, InString=Good))
+                |       * [Path ends]
+                L-- false:
+                    * LogString((bPrintToLog=true, InString=Damn))
+                        * [Path ends]
+```
+---

@@ -1,0 +1,39 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\handlers\\nodetracehandlers_operators.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\admin\\desktop\\cppplayground\\intermediate\\build\\win64\\x64\\cppplaygroundeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bp2ai\\definitions.bp2ai.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\handlers\\nodetracehandlers_operators.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\extractors\\blueprintdataextractor.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\models\\blueprintnode.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\models\\blueprintpin.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\trace\\markdowndatatracer.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\trace\\fmarkdownpathtracer.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\widgets\\smarkdownoutputwindow.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\slate\\public\\widgets\\input\\smultilineeditabletextbox.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\slate\\public\\widgets\\text\\smultilineeditabletext.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\slate\\public\\framework\\text\\slatetextlayoutfactory.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\slate\\public\\framework\\text\\slatetextlayout.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\widgets\\sblueprintexecflowhtmlwindow.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\generation\\generationshared.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\markdowngenerationcontext.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\semanticdata.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\intermediate\\build\\win64\\unrealeditor\\inc\\bp2ai\\uht\\semanticdata.generated.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\webbrowser\\public\\iwebbrowserwindow.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\webbrowser\\public\\swebbrowser.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\webbrowser\\public\\swebbrowserview.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\slate\\public\\widgets\\sviewport.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\webbrowser\\public\\iwebbrowsersingleton.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\webbrowser\\public\\iwebbrowserresourceloader.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\webbrowser\\public\\webbrowsermodule.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\logging\\bp2ailog.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\utils\\markdownformattingutils.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\utils\\markdowntracerutils.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

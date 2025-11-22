@@ -1,0 +1,16 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\models\\blueprintnode.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\admin\\desktop\\cppplayground\\intermediate\\build\\win64\\x64\\cppplaygroundeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bp2ai\\definitions.bp2ai.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\models\\blueprintnode.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\models\\blueprintpin.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\logging\\bp2ailog.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
