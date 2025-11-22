@@ -77,10 +77,19 @@ struct FCompleteBlueprintData
         bool bIsEvent = false;
     };
 
+    struct FReferenceInfo
+    {
+        FString Path;
+        FString Type;
+        FString Source;
+        bool bIsSoftReference = false;
+    };
+
     FBlueprintMetadata Metadata;
     TArray<FComponentInfo> Components;
     TArray<FVariableInfo> Variables;
     TArray<FFunctionInfo> Functions;
+    TArray<FReferenceInfo> References;
 
     // 渲染为单个蓝图级 Markdown 文档
     FString ToMarkdown() const;
@@ -113,6 +122,7 @@ public:
     static TArray<FCompleteBlueprintData::FComponentInfo> ExportComponents(UBlueprint* Blueprint);
     static TArray<FCompleteBlueprintData::FVariableInfo> ExportVariables(UBlueprint* Blueprint);
     static TArray<FCompleteBlueprintData::FFunctionInfo> ExportFunctions(UBlueprint* Blueprint);
+    static TArray<FCompleteBlueprintData::FReferenceInfo> ExportReferences(UBlueprint* Blueprint);
 
 private:
     FGenerationSettings CreateDefaultSettings() const;

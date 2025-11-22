@@ -10,6 +10,7 @@
 #include "Settings/BP2AIExportConfig.h"
 #include "EdGraph/EdGraph.h"
 #include "EdGraph/EdGraphNode.h"
+#include "EdGraphSchema_K2.h"
 #include "Engine/Blueprint.h"
 #include "Trace/ExecutionFlow/ExecutionFlowGenerator.h"
 #include "Trace/MarkdownGenerationContext.h"
@@ -18,6 +19,7 @@
 #include "Misc/Paths.h"
 #include "Serialization/JsonWriter.h"
 #include "Serialization/JsonSerializer.h"
+#include "Algo/Sort.h"
 #include "Engine/SimpleConstructionScript.h"
 #include "Engine/SCS_Node.h"
 #include "K2Node_CallFunction.h"
@@ -55,6 +57,113 @@ static FString GetPropertyTypeString(FProperty* Property)
     }
 
     return BaseType;
+}
+
+static FString NormalizeAssetPath(const FString& RawPath)
+{
+    FString Working = RawPath;
+    Working.TrimStartAndEndInline();
+
+    if (Working.IsEmpty())
+    {
+        return FString();
+    }
+
+    if (Working.Equals(TEXT("None"), ESearchCase::IgnoreCase))
+    {
+        return FString();
+    }
+
+    auto StripOuterQuotes = [](FString& Str)
+    {
+        if (Str.Len() >= 2)
+        {
+            const TCHAR First = Str[0];
+            const TCHAR Last = Str[Str.Len() - 1];
+            if ((First == '\'' && Last == '\'') || (First == '"' && Last == '"'))
+            {
+                Str = Str.Mid(1, Str.Len() - 2);
+            }
+        }
+    };
+
+    int32 QuoteStart = INDEX_NONE;
+    int32 QuoteEnd = INDEX_NONE;
+    if (Working.FindChar('\'', QuoteStart))
+    {
+        Working.FindLastChar('\'', QuoteEnd);
+        if (QuoteEnd > QuoteStart)
+        {
+            Working = Working.Mid(QuoteStart + 1, QuoteEnd - QuoteStart - 1);
+        }
+    }
+    else if (Working.FindChar('"', QuoteStart))
+    {
+        Working.FindLastChar('"', QuoteEnd);
+        if (QuoteEnd > QuoteStart)
+        {
+            Working = Working.Mid(QuoteStart + 1, QuoteEnd - QuoteStart - 1);
+        }
+    }
+
+    Working.TrimStartAndEndInline();
+    StripOuterQuotes(Working);
+
+    int32 StartIdx = Working.Find(TEXT("/Game/"), ESearchCase::CaseSensitive);
+    if (StartIdx == INDEX_NONE)
+    {
+        StartIdx = Working.Find(TEXT("/Script/"), ESearchCase::CaseSensitive);
+    }
+    if (StartIdx != INDEX_NONE)
+    {
+        FString Tail = Working.Mid(StartIdx);
+        int32 EndIdx = Tail.Find(TEXT("\""), ESearchCase::CaseSensitive);
+        if (EndIdx != INDEX_NONE)
+        {
+            Tail = Tail.Left(EndIdx);
+        }
+        EndIdx = Tail.Find(TEXT("'"), ESearchCase::CaseSensitive);
+        if (EndIdx != INDEX_NONE)
+        {
+            Tail = Tail.Left(EndIdx);
+        }
+        EndIdx = Tail.Find(TEXT(")"), ESearchCase::CaseSensitive);
+        if (EndIdx != INDEX_NONE)
+        {
+            Tail = Tail.Left(EndIdx);
+        }
+        Working = Tail;
+    }
+
+    StripOuterQuotes(Working);
+    Working.TrimStartAndEndInline();
+
+    if (Working.StartsWith(TEXT("/")) || Working.Contains(TEXT("/")))
+    {
+        return Working;
+    }
+
+    return FString();
+}
+
+static FString GetReferenceTypeLabel(const UObject* Object)
+{
+    if (!Object)
+    {
+        return TEXT("UObject");
+    }
+
+    if (const UClass* ClassObject = Cast<UClass>(Object))
+    {
+        return ClassObject->GetName();
+    }
+
+    if (const UClass* ClassType = Object->GetClass())
+    {
+        return ClassType->GetName();
+    }
+
+    return TEXT("UObject");
 }
 
 static TArray<FCompleteBlueprintData::FFunctionInfo> ExportInterfaceFunctionSignatures(UBlueprint* Blueprint)
@@ -813,14 +922,20 @@ TArray<FCompleteBlueprintData::FVariableInfo> FBP2AIBatchExporter::ExportVariabl
     {
         FCompleteBlueprintData::FVariableInfo V;
         V.Name = VarDesc.VarName.ToString();
-        // Use GetPinTypeDescription to correctly handle arrays, sets, maps, and object types
-        V.Type = GetPinTypeDescription(VarDesc.VarType);
-        V.bIsPublic = (VarDesc.PropertyFlags & CPF_Edit) != 0;
-        V.Tooltip = VarDesc.FriendlyName;
-        // 默认值（简单类型，复杂类型略过）
+        V.Type = VarDesc.VarType.PinCategory.ToString();
+        if (VarDesc.VarType.PinSubCategoryObject.IsValid())
+        {
+            if (UObject* SubObj = VarDesc.VarType.PinSubCategoryObject.Get())
+            {
+                V.Type = SubObj->GetName();
+            }
+        }
         V.DefaultValue = VarDesc.DefaultValue;
+        V.bIsPublic = (VarDesc.PropertyFlags & CPF_BlueprintVisible) != 0;
+        V.Tooltip = VarDesc.FriendlyName;
         Vars.Add(V);
     }
+
     return Vars;
 }
 
@@ -992,6 +1107,269 @@ TArray<FCompleteBlueprintData::FFunctionInfo> FBP2AIBatchExporter::ExportFunctio
     return Funcs;
 }
 
+TArray<FCompleteBlueprintData::FReferenceInfo> FBP2AIBatchExporter::ExportReferences(UBlueprint* Blueprint)
+{
+    TArray<FCompleteBlueprintData::FReferenceInfo> Out;
+    if (!Blueprint)
+    {
+        return Out;
+    }
+
+    TSet<FString> Seen;
+
+    TSet<FString> SelfPathsLower;
+    auto AddSelfPath = [&](const FString& RawPath)
+    {
+        const FString NormalizedSelf = NormalizeAssetPath(RawPath);
+        if (!NormalizedSelf.IsEmpty())
+        {
+            FString Lower = NormalizedSelf;
+            Lower.ToLowerInline();
+            SelfPathsLower.Add(MoveTemp(Lower));
+        }
+    };
+    AddSelfPath(Blueprint->GetPathName());
+    if (Blueprint->GeneratedClass)
+    {
+        AddSelfPath(Blueprint->GeneratedClass->GetPathName());
+    }
+    if (Blueprint->SkeletonGeneratedClass)
+    {
+        AddSelfPath(Blueprint->SkeletonGeneratedClass->GetPathName());
+    }
+
+    auto IsEngineReference = [](const FString& PathLower)
+    {
+        return PathLower.StartsWith(TEXT("/script/engine"))
+            || PathLower.StartsWith(TEXT("/script/coreuobject"));
+    };
+
+    auto BuildKey = [](const FString& Path, bool bIsSoft)
+    {
+        FString Key = Path;
+        Key.ToLowerInline();
+        Key += bIsSoft ? TEXT("|soft") : TEXT("|hard");
+        return Key;
+    };
+
+    auto AddReference = [&](const FString& RawPath, const FString& Type, const FString& Source, bool bIsSoft)
+    {
+        const FString Normalized = NormalizeAssetPath(RawPath);
+        if (Normalized.IsEmpty())
+        {
+            return;
+        }
+
+        FString NormalizedLower = Normalized;
+        NormalizedLower.ToLowerInline();
+
+        if (SelfPathsLower.Contains(NormalizedLower))
+        {
+            return;
+        }
+
+        if (IsEngineReference(NormalizedLower))
+        {
+            return;
+        }
+
+        const FString Key = BuildKey(Normalized, bIsSoft);
+        if (Seen.Contains(Key))
+        {
+            return;
+        }
+        Seen.Add(Key);
+
+        FCompleteBlueprintData::FReferenceInfo Info;
+        Info.Path = Normalized;
+        Info.Type = Type;
+        Info.Source = Source;
+        Info.bIsSoftReference = bIsSoft;
+        Out.Add(MoveTemp(Info));
+    };
+
+    auto ShouldExtractType = [](const FEdGraphPinType& PinType)
+    {
+        const FName Category = PinType.PinCategory;
+        return Category == UEdGraphSchema_K2::PC_Object
+            || Category == UEdGraphSchema_K2::PC_Interface
+            || Category == UEdGraphSchema_K2::PC_Class
+            || Category == UEdGraphSchema_K2::PC_SoftObject
+            || Category == UEdGraphSchema_K2::PC_SoftClass;
+    };
+
+    auto CollectFromPin = [&](UEdGraphPin* Pin, const FString& Source)
+    {
+        if (!Pin)
+        {
+            return;
+        }
+
+        if (UObject* DefaultObj = Pin->DefaultObject)
+        {
+            const FString TypeName = GetReferenceTypeLabel(DefaultObj);
+            AddReference(DefaultObj->GetPathName(), TypeName, Source, false);
+        }
+
+        if (ShouldExtractType(Pin->PinType))
+        {
+            if (UObject* TypeObject = Pin->PinType.PinSubCategoryObject.Get())
+            {
+                const FString TypeName = GetReferenceTypeLabel(TypeObject);
+                AddReference(TypeObject->GetPathName(), TypeName, Source, false);
+            }
+        }
+
+        if (!Pin->DefaultValue.IsEmpty())
+        {
+            const FString CategoryName = Pin->PinType.PinCategory.ToString();
+            AddReference(Pin->DefaultValue, CategoryName, Source, true);
+        }
+
+        if (!Pin->DefaultTextValue.IsEmpty())
+        {
+            const FString CategoryName = Pin->PinType.PinCategory.ToString();
+            AddReference(Pin->DefaultTextValue.ToString(), CategoryName, Source, true);
+        }
+    };
+
+    auto AppendGraphs = [&](const TArray<UEdGraph*>& Graphs, TSet<UEdGraph*>& Target)
+    {
+        for (UEdGraph* Graph : Graphs)
+        {
+            if (Graph)
+            {
+                Target.Add(Graph);
+            }
+        }
+    };
+
+    TSet<UEdGraph*> UniqueGraphs;
+    AppendGraphs(Blueprint->UbergraphPages, UniqueGraphs);
+    AppendGraphs(Blueprint->FunctionGraphs, UniqueGraphs);
+    AppendGraphs(Blueprint->MacroGraphs, UniqueGraphs);
+    AppendGraphs(Blueprint->DelegateSignatureGraphs, UniqueGraphs);
+    for (const FBPInterfaceDescription& Iface : Blueprint->ImplementedInterfaces)
+    {
+        AppendGraphs(Iface.Graphs, UniqueGraphs);
+    }
+
+    for (UEdGraph* Graph : UniqueGraphs)
+    {
+        if (!Graph)
+        {
+            continue;
+        }
+
+        const FString GraphName = Graph->GetName();
+        for (UEdGraphNode* Node : Graph->Nodes)
+        {
+            if (!Node)
+            {
+                continue;
+            }
+
+            FString NodeTitle = Node->GetNodeTitle(ENodeTitleType::ListView).ToString();
+            NodeTitle.ReplaceInline(TEXT("\n"), TEXT(" "));
+            NodeTitle.TrimStartAndEndInline();
+            const FString NodeSource = FString::Printf(TEXT("%s :: %s"), *GraphName, *NodeTitle);
+
+            for (UEdGraphPin* Pin : Node->Pins)
+            {
+                if (!Pin)
+                {
+                    continue;
+                }
+
+                FString PinNameStr = Pin->PinName.ToString();
+                PinNameStr.ReplaceInline(TEXT("\n"), TEXT(" "));
+                PinNameStr.TrimStartAndEndInline();
+                const FString PinSource = FString::Printf(TEXT("%s.%s"), *NodeSource, *PinNameStr);
+                CollectFromPin(Pin, PinSource);
+            }
+
+            if (const UK2Node_CallFunction* CallFunction = Cast<UK2Node_CallFunction>(Node))
+            {
+                if (const UFunction* TargetFunction = CallFunction->GetTargetFunction())
+                {
+                    if (const UClass* OwnerClass = TargetFunction->GetOwnerClass())
+                    {
+                        const FString TypeName = GetReferenceTypeLabel(OwnerClass);
+                        AddReference(OwnerClass->GetPathName(), TypeName, NodeSource, false);
+                    }
+                }
+            }
+        }
+    }
+
+    // Blueprint variables can embed soft references
+    for (const FBPVariableDescription& VarDesc : Blueprint->NewVariables)
+    {
+        const FString VarSource = FString::Printf(TEXT("Variable: %s"), *VarDesc.VarName.ToString());
+
+        if (ShouldExtractType(VarDesc.VarType) && VarDesc.VarType.PinSubCategoryObject.IsValid())
+        {
+            if (UObject* TypeObject = VarDesc.VarType.PinSubCategoryObject.Get())
+            {
+                const FString TypeName = GetReferenceTypeLabel(TypeObject);
+                AddReference(TypeObject->GetPathName(), TypeName, VarSource, false);
+            }
+        }
+
+        if (!VarDesc.DefaultValue.IsEmpty())
+        {
+            AddReference(VarDesc.DefaultValue, VarDesc.VarType.PinCategory.ToString(), VarSource, true);
+        }
+    }
+
+    // Parent class and interfaces are dependencies as well
+    if (Blueprint->ParentClass)
+    {
+        AddReference(Blueprint->ParentClass->GetPathName(), GetReferenceTypeLabel(Blueprint->ParentClass), TEXT("Parent Class"), false);
+    }
+
+    for (const FBPInterfaceDescription& Iface : Blueprint->ImplementedInterfaces)
+    {
+        if (UClass* InterfaceClass = Iface.Interface.Get())
+        {
+            AddReference(InterfaceClass->GetPathName(), GetReferenceTypeLabel(InterfaceClass), TEXT("Implemented Interface"), false);
+        }
+    }
+
+    if (Blueprint->SimpleConstructionScript)
+    {
+        const TArray<USCS_Node*> AllNodes = Blueprint->SimpleConstructionScript->GetAllNodes();
+        for (USCS_Node* SCSNode : AllNodes)
+        {
+            if (!SCSNode)
+            {
+                continue;
+            }
+
+            if (UClass* ComponentClass = SCSNode->ComponentClass)
+            {
+                const FString Source = FString::Printf(TEXT("Component: %s"), *SCSNode->GetVariableName().ToString());
+                AddReference(ComponentClass->GetPathName(), GetReferenceTypeLabel(ComponentClass), Source, false);
+            }
+        }
+    }
+
+    Out.Sort([](const FCompleteBlueprintData::FReferenceInfo& A, const FCompleteBlueprintData::FReferenceInfo& B)
+    {
+        if (A.Path == B.Path)
+        {
+            if (A.Type == B.Type)
+            {
+                return A.Source < B.Source;
+            }
+            return A.Type < B.Type;
+        }
+        return A.Path < B.Path;
+    });
+
+    return Out;
+}
+
 static bool IsInterfaceGraph(UEdGraph* Graph, UBlueprint* Blueprint, const TSet<FName>& InterfaceFuncs)
 {
     if (!Graph || !Blueprint)
@@ -1080,11 +1458,30 @@ FString FCompleteBlueprintData::ToMarkdown() const
         }
     };
 
+    auto AppendReferencesSection = [&]()
+    {
+        if (References.Num() == 0)
+        {
+            return;
+        }
+
+        Result += TEXT("## References\n\n");
+        for (const auto& Ref : References)
+        {
+            const FString TypeSuffix = Ref.Type.IsEmpty() ? TEXT("") : FString::Printf(TEXT(" (%s)"), *Ref.Type);
+            const FString SoftSuffix = Ref.bIsSoftReference ? TEXT(" [Soft]") : TEXT("");
+            const FString SourceSuffix = Ref.Source.IsEmpty() ? TEXT("") : FString::Printf(TEXT(" // %s"), *Ref.Source);
+            Result += FString::Printf(TEXT("- %s%s%s%s\n"), *Ref.Path, *TypeSuffix, *SoftSuffix, *SourceSuffix);
+        }
+        Result += TEXT("\n");
+    };
+
     if (bIsInterface)
     {
         Result += TEXT("## Interface Functions\n\n");
         AppendFunctionList(Functions);
         Result += TEXT("\n---\n\n");
+        AppendReferencesSection();
         return Result;
     }
     
@@ -1184,6 +1581,8 @@ FString FCompleteBlueprintData::ToMarkdown() const
         Result += TEXT("\n\n---\n\n");
     }
 
+    AppendReferencesSection();
+
     return Result;
 }
 
@@ -1199,6 +1598,7 @@ FCompleteBlueprintData FBP2AIBatchExporter::ExportCompleteBlueprint(UBlueprint* 
     Result.BlueprintName = Blueprint->GetName();
     Result.AssetPath = Blueprint->GetPathName();
     Result.Metadata   = ExportMetadata(Blueprint);
+    Result.References = ExportReferences(Blueprint);
     Result.bIsInterface = (Blueprint->BlueprintType == BPTYPE_Interface);
 
     if (Result.bIsInterface)

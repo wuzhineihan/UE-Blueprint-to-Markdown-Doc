@@ -60,7 +60,7 @@ namespace BP2AIExportConfig
 	 * true: Print(InString="Hello", bPrintToScreen=true, bPrintToLog=true, ...)
 	 * false: Print(InString="Hello")
 	 */
-	constexpr bool bShowDefaultParams = true;
+	constexpr bool bShowDefaultParams = false;
 
 	/**
 	 * 是否将用户定义的函数图表与事件图表分开显示

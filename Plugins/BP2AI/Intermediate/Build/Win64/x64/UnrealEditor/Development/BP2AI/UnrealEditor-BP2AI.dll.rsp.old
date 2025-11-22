@@ -119,6 +119,8 @@
 "..\Plugins\EnhancedInput\Intermediate\Build\Win64\x64\UnrealEditor\Development\EnhancedInput\UnrealEditor-EnhancedInput.lib"
 "..\Intermediate\Build\Win64\x64\UnrealEditor\Development\HTTP\UnrealEditor-HTTP.lib"
 "..\Intermediate\Build\Win64\x64\UnrealEditor\Development\WebBrowser\UnrealEditor-WebBrowser.lib"
+"..\Intermediate\Build\Win64\x64\UnrealEditor\Development\Json\UnrealEditor-Json.lib"
+"..\Intermediate\Build\Win64\x64\UnrealEditor\Development\JsonUtilities\UnrealEditor-JsonUtilities.lib"
 "..\Intermediate\Build\Win64\x64\UnrealEditor\Development\CEF3Utils\UnrealEditor-CEF3Utils.lib"
 "..\Intermediate\Build\Win64\x64\UnrealEditor\Development\Core\UnrealEditor-Core.lib"
 "..\Intermediate\Build\Win64\x64\UnrealEditor\Development\CoreUObject\UnrealEditor-CoreUObject.lib"

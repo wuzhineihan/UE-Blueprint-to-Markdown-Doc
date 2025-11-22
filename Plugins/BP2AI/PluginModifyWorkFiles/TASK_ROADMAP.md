@@ -76,6 +76,7 @@
 - ✅ 新增 `ExportInterfaceFunctionSignatures`，直接读取接口 `UFunction` 并输出参数/返回值
 - ✅ Markdown 输出新增 `## Interface Functions`，专注展示函数头
 - ✅ 测试库忽略接口资产无图表的警告，确保用例通过
+- ✅ 完成 Task 3.6：实现 `ExportReferences()`，在 Markdown 中导出依赖关系列表
 - 🔜 下一步：恢复 Task 2.6 的函数/事件结构优化，并推进批量导出（Task 2.7）
 
 ---
@@ -204,82 +205,7 @@
     ✅ 去除所有 "Previously detailed" 冗余块
     ```
 
-- [x] **Task 2.6** - 增强函数和事件显示
-  - **函数签名增强**: 在函数列表中显示完整参数和返回值
-    ```markdown
-    ## Functions
-    - UserConstructionScript () -> void
-    - TestFunction1 (Param: bool) -> void
-    - TestFunction2 () -> void
-    ```
-  - **事件图表结构增强**: 为每个图表的事件节点创建独立条目（保持父子关系）
-    ```markdown
-    ## Graph Logic
-    
-    ### [Event] EventGraph
-      - **Event: IA_Look** (Triggered)
-      - **Event: IA_Move** (Triggered)  
-      - **Event: IA_Jump** (Started, Completed)
-    
-    ### [Event] TestGraph
-      - **Event: TestEvent**
-    ```
-  - **实现要点**: 
-    - 不要把事件放入Functions列表
-    - 每个图表作为一个列表，其中放置该图表的事件节点
-    - 展示真实的蓝图图表结构
-  - **测试方法**: 检查导出的Markdown文档结构
-  - **预期结果**: 
-    ```
-    ✅ Functions列表不包含事件
-    ✅ 每个事件图表有清晰的事件节点列表
-    ✅ 函数列表显示完整签名（参数类型和返回值）
-    ```
 
-- [ ] **Task 2.7** - 实现批量导出文件夹功能（项目最终目标）
-  - **目标**: 一键导出指定文件夹中的所有蓝图（不包括资产）
-  - **实现**: 
-    1. 创建 `ExportFolder(FString FolderPath)` 函数
-    2. 遍历文件夹，过滤出所有蓝图资产（排除其他资产类型）
-    3. 对每个蓝图调用 `ExportCompleteBlueprint`
-    4. 生成项目级 `index.json`（包含所有导出蓝图的元数据）
-    5. 生成导出报告（成功/失败统计）
-  - **UI接口**: 
-    - Editor Utility Widget 添加文件夹选择器
-    - 显示导出进度条
-    - 显示实时日志输出
-  - **index.json 示例**:
-    ```json
-    {
-      "exportTime": "2025-11-21T10:30:00Z",
-      "exportFolder": "/Game/Test",
-      "totalBlueprints": 25,
-      "successCount": 24,
-      "failureCount": 1,
-      "blueprints": [
-        {
-          "name": "BP_TestExport",
-          "path": "/Game/Test/BP_TestExport",
-          "graphCount": 7,
-          "nodeCount": 37,
-          "exportFile": "BP_TestExport.md",
-          "status": "success"
-        }
-      ]
-    }
-    ```
-  - **测试方法**: 
-    1. 选择 `/Game/Test` 文件夹
-    2. 点击"批量导出"按钮
-    3. 检查输出文件夹和index.json
-  - **预期结果**: 
-    ```
-    ✅ 自动识别并导出文件夹中所有蓝图
-    ✅ 排除非蓝图资产（材质、纹理等）
-    ✅ 生成每个蓝图的独立.md文件
-    ✅ 生成项目级index.json索引文件
-    ✅ UI显示导出进度和结果统计
-    ```
 
 ---
 
@@ -347,38 +273,48 @@
     ```
   - **待优化**: Task 2.6 将增强此功能，添加参数和返回值信息
 
-- [x] **Task 3.5** - 增强函数参数和返回值解析
-  - **目标**: 完善 `ExportFunctions()` 的参数和返回值提取
-  - **实现**: 
-    1. 从函数图表的Entry节点获取参数信息
-    2. 从Result节点获取返回值信息
-    3. 解析参数的类型、名称、是否是输出参数
-    4. 检测纯函数标志（从UFunction的元数据）
-  - **测试方法**: 检查 TestFunction1 的参数（Param: bool）
-  - **预期结果**:
+- [x] **Task 3.5** - 增强函数和事件显示
+  - **函数签名增强**: 在函数列表中显示完整参数和返回值
     ```markdown
     ## Functions
     - UserConstructionScript () -> void
     - TestFunction1 (Param: bool) -> void
     - TestFunction2 () -> void
     ```
+  - **事件图表结构增强**: 为每个图表的事件节点创建独立条目（保持父子关系）
+    ```markdown
+    ## Graph Logic
+    
+    ### [Event] EventGraph
+      - **Event: IA_Look** (Triggered)
+      - **Event: IA_Move** (Triggered)  
+      - **Event: IA_Jump** (Started, Completed)
+    
+    ### [Event] TestGraph
+      - **Event: TestEvent**
+    ```
+  - **实现要点**: 
+    - 不要把事件放入Functions列表
+    - 每个图表作为一个列表，其中放置该图表的事件节点
+    - 展示真实的蓝图图表结构
+  - **测试方法**: 检查导出的Markdown文档结构
+  - **预期结果**: 
+    ```
+    ✅ Functions列表不包含事件
+    ✅ 每个事件图表有清晰的事件节点列表
+    ✅ 函数列表显示完整签名（参数类型和返回值）
+    ```
 
-- [ ] **Task 3.6** - 导出 References (依赖关系)
-  - **目标**: 扫描图表节点，收集引用的其他蓝图/资产
-  - **实现**:
-    1. 遍历所有图表的所有节点
-    2. 检查节点的 Pin 连接和属性值
-    3. 提取对其他蓝图、C++类、资产的引用
-    4. 区分硬引用和软引用
-  - **创建结构体**: `FReferenceInfo`
-  - **测试方法**: 检查 BP_TestExport 是否引用了 EnhancedInput 相关资产
-  - **预期结果**:
+- [x] **Task 3.6** - 导出 References (依赖关系)
+  - ✅ 新增 `FReferenceInfo` 结构体与 `ExportReferences()`，聚合蓝图依赖
+  - ✅ 扫描所有图表节点与变量，解析 Pin 默认值/对象引用，区分 Hard / Soft 引用
+  - ✅ 捕获父类、接口、SCS 组件、调用函数所属类等依赖，并写入 Markdown `## References`
+  - ✅ Markdown 输出示例（BP_TestExport）:
     ```markdown
     ## References
-    - /Game/Input/IA_Move (EnhancedInputAction)
-    - /Game/Input/IA_Look (EnhancedInputAction)
-    - /Game/Input/IA_Jump (EnhancedInputAction)
+    - /Game/Input/IA_Move (InputAction) [Soft] // EventGraph :: EnhancedInputAction IA_Move.Triggered
     ```
+  - 🔍 **验证**: 检查 `BP_TestExport.md`，确认 EnhancedInputAction 等资产路径被记录
 
 ---
 
@@ -389,17 +325,14 @@
   - ✅ 包含阶段2和阶段3的所有数据（Graphs + Metadata + Components + Variables + Functions）
   - ✅ 已实现 `ToMarkdown()` 方法
   - **已完成**: 可成功导出 BP_TestExport.md 包含所有信息
-  - **待实现**: `ToJSON()` 方法（可选，用于结构化数据分析）
 
 
-- [ ] **Task 4.4** - 优化 Editor Utility 界面
+- [ ] **Task 4.2** - 优化 Editor Utility 界面
   - **目标**: 完善批量导出的UI交互
   - **实现**:
     1. 添加文件夹选择器（Content Browser集成）
     2. 添加导出选项面板（配置参数）
-    3. 显示实时导出进度条
-    4. 显示导出日志和结果统计
-    5. 支持选择输出格式 (Markdown/JSON/HTML)
+    3. 显示导出日志和结果统计
   - **测试方法**: 通过UI导出多个蓝图
   - **预期结果**: 
     ```
@@ -414,6 +347,52 @@
 ---
 
 ### **阶段 5: 批量导出功能**
+
+ 实现批量导出文件夹功能（项目最终目标）
+  - **目标**: 一键导出指定文件夹中的所有蓝图（不包括资产）
+  - **实现**: 
+    1. 创建 `ExportFolder(FString FolderPath)` 函数
+    2. 遍历文件夹，过滤出所有蓝图资产（排除其他资产类型）
+    3. 对每个蓝图调用 `ExportCompleteBlueprint`
+    4. 生成项目级 `index.json`（包含所有导出蓝图的元数据）
+    5. 生成导出报告（成功/失败统计）
+  - **UI接口**: 
+    - Editor Utility Widget 添加文件夹选择器
+    - 显示导出进度条
+    - 显示实时日志输出
+  - **index.json 示例**:
+    ```json
+    {
+      "exportTime": "2025-11-21T10:30:00Z",
+      "exportFolder": "/Game/Test",
+      "totalBlueprints": 25,
+      "successCount": 24,
+      "failureCount": 1,
+      "blueprints": [
+        {
+          "name": "BP_TestExport",
+          "path": "/Game/Test/BP_TestExport",
+          "graphCount": 7,
+          "nodeCount": 37,
+          "exportFile": "BP_TestExport.md",
+          "status": "success"
+        }
+      ]
+    }
+    ```
+  - **测试方法**: 
+    1. 选择 `/Game/Test` 文件夹
+    2. 点击"批量导出"按钮
+    3. 检查输出文件夹和index.json
+  - **预期结果**: 
+    ```
+    ✅ 自动识别并导出文件夹中所有蓝图
+    ✅ 排除非蓝图资产（材质、纹理等）
+    ✅ 生成每个蓝图的独立.md文件
+    ✅ 生成项目级index.json索引文件
+    ✅ UI显示导出进度和结果统计
+    ```
+
 
 - [ ] **Task 5.1** - 实现项目级扫描
   - 使用 `AssetRegistry` 扫描所有蓝图资产
@@ -482,26 +461,6 @@
   - 测试 AI 能否理解蓝图结构
   - 测试 AI 能否给出合理的重构建议
   - **预期结果**: AI 能准确分析并提供有价值的建议
-
----
-
-## 📊 当前进度
-
-**当前阶段**: 阶段 2 - 导出 Graph Logic (复用 BP2AI)  
-**当前任务**: Task 2.6 - 增强函数和事件显示  
-**完成度**: 47% (9/19 任务完成)
-- ✅ 已完成: 9个任务（Task 1.1-1.3, 2.1-2.5, 4.1）
-- 🔜 待实现: 4个任务（Task 2.6-2.7, 3.5-3.6）
-- ❌ 已取消: 2个任务（Task 4.2-4.3）
-
----
-
-## 🎯 下一步计划
-
-1. **Task 2.6 - 函数/事件结构**：从 Function 列表中剥离事件，按图表展示事件节点，同时保留函数签名增强。
-2. **Task 2.7 - 批量导出文件夹**：实现内容浏览器路径扫描、蓝图过滤与 `index.json` 汇总。
-3. **Task 3.5 - 函数参数完善**：补齐复杂参数（多返回值、Pass-by-Ref、数组/Map）和纯函数标志。
-4. **Task 3.6 - 依赖关系**：收集节点引用的资产/蓝图，形成 `## References` 区块，为后续批量分析做准备。
 
 ---
 

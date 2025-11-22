@@ -26,8 +26,7 @@
 			"BlueprintPin.cpp.obj",
 			"SBlueprintMarkdownWindow.cpp.obj",
 			"CurrentPhaseTest.cpp.obj",
-			"BlueprintMarkdownCSS.cpp.obj",
-			"ExecutionFlowGenerator.cpp.obj"
+			"BlueprintMarkdownCSS.cpp.obj"
 		]
 	}
 }
