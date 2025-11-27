@@ -1,6 +1,6 @@
-# BP2AI - Unreal 引擎蓝图转 Markdown 导出器
+# Unreal 引擎蓝图转 Markdown 导出器
 
-BP2AI 是一个 Unreal Engine 5 插件，旨在将蓝图逻辑和结构提取为人类可读且对 AI 友好的 Markdown 文档。它有助于记录复杂的蓝图系统，并为 AI 编程助手提供上下文。
+这是一个 Unreal Engine 5 插件，旨在将蓝图逻辑和结构提取为人类可读且对 AI 友好的 Markdown 文档。它有助于记录复杂的蓝图系统，并为 AI 编程助手提供上下文。
 
 ## 功能
 
@@ -55,5 +55,3 @@ BP2AI 是一个 Unreal Engine 5 插件，旨在将蓝图逻辑和结构提取为
 *   函数及其签名。
 *   事件图和执行流逻辑。
 
----
-*Copyright (c) 2025 A-Maze Games*
