@@ -12,17 +12,9 @@
 #include "Trace/Utils/MarkdownTracerUtils.h"
 #include "Settings/BP2AIExportConfig.h"
 
-namespace
-{
-FORCEINLINE bool ShouldLogBlueprintDetails()
-{
-    return BP2AIExportConfig::bDetailedBlueprintLog;
-}
-}
-
 FFlowValidationHelper::FFlowValidationHelper()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("FFlowValidationHelper: Initialized"));
     }
@@ -30,7 +22,7 @@ FFlowValidationHelper::FFlowValidationHelper()
 
 FFlowValidationHelper::~FFlowValidationHelper()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("FFlowValidationHelper: Destroyed"));
     }

@@ -13,17 +13,9 @@
 #include "Trace/FMarkdownPathTracer.h"
 #include "Settings/BP2AIExportConfig.h"
 
-namespace
-{
-FORCEINLINE bool ShouldLogBlueprintDetails()
-{
-    return BP2AIExportConfig::bDetailedBlueprintLog;
-}
-}
-
 FCategoryAnalysisHelper::FCategoryAnalysisHelper()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("FCategoryAnalysisHelper: Initialized"));
     }
@@ -31,7 +23,7 @@ FCategoryAnalysisHelper::FCategoryAnalysisHelper()
 
 FCategoryAnalysisHelper::~FCategoryAnalysisHelper()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("FCategoryAnalysisHelper: Destroyed"));
     }

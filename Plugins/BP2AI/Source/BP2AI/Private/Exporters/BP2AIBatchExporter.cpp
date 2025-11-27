@@ -32,14 +32,6 @@
 
 static bool IsInterfaceGraph(UEdGraph* Graph, UBlueprint* Blueprint, const TSet<FName>& InterfaceFuncs);
 
-namespace
-{
-FORCEINLINE bool ShouldLogBlueprintDetails()
-{
-    return BP2AIExportConfig::bDetailedBlueprintLog;
-}
-}
-
 static FString GetPropertyTypeString(FProperty* Property)
 {
     if (!Property)
@@ -263,7 +255,7 @@ static TArray<FCompleteBlueprintData::FFunctionInfo> ExportInterfaceFunctionSign
 
 FBP2AIBatchExporter::FBP2AIBatchExporter()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Initialized"));
     }
@@ -271,7 +263,7 @@ FBP2AIBatchExporter::FBP2AIBatchExporter()
 
 FBP2AIBatchExporter::~FBP2AIBatchExporter()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Destroyed"));
     }
@@ -318,7 +310,7 @@ bool FBP2AIBatchExporter::IsGraphValid(UEdGraph* Graph) const
 
 void FBP2AIBatchExporter::LogExportResult(const FString& GraphName, const FString& Content) const
 {
-    if (!ShouldLogBlueprintDetails())
+    if (!BP2AIExportConfig::bDetailedBlueprintLog)
     {
         return;
     }
@@ -610,7 +602,7 @@ static TSet<FName> GetInterfaceFunctionNames(UBlueprint* Blueprint)
         UClass* InterfaceClass = Iface.Interface.Get();
         if (InterfaceClass)
         {
-            if (ShouldLogBlueprintDetails())
+            if (BP2AIExportConfig::bDetailedBlueprintLog)
             {
                 UE_LOG(LogBP2AI, Log, TEXT("Found Interface: %s"), *InterfaceClass->GetName());
             }
@@ -626,7 +618,7 @@ static TSet<FName> GetInterfaceFunctionNames(UBlueprint* Blueprint)
                     }
 
                     Names.Add(Func->GetFName());
-                    if (ShouldLogBlueprintDetails())
+                    if (BP2AIExportConfig::bDetailedBlueprintLog)
                     {
                         UE_LOG(LogBP2AI, Log, TEXT("   - Found Interface Function: %s"), *Func->GetName());
                     }
@@ -649,7 +641,7 @@ TArray<FExportedGraphInfo> FBP2AIBatchExporter::ExportAllGraphsDetailed(UBluepri
         UE_LOG(LogBP2AI, Error, TEXT("ExportAllGraphsDetailed: Blueprint is null"));
         return Result;
     }
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("========================================"));
         UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Detailed export for blueprint '%s'"), *Blueprint->GetName());
@@ -723,7 +715,7 @@ TArray<FExportedGraphInfo> FBP2AIBatchExporter::ExportAllGraphsDetailed(UBluepri
         TotalBlocks += G.BlueprintBlockCount;
         TotalNodes += G.NodeCount;
     }
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("📊 Detailed Export Summary:"));
         UE_LOG(LogBP2AI, Log, TEXT("   Graphs: %d"), Result.Num());
@@ -1633,7 +1625,7 @@ FCompleteBlueprintData FBP2AIBatchExporter::ExportCompleteBlueprint(UBlueprint* 
 
     if (Result.bIsInterface)
     {
-        if (ShouldLogBlueprintDetails())
+        if (BP2AIExportConfig::bDetailedBlueprintLog)
         {
             UE_LOG(LogBP2AI, Log, TEXT("ExportCompleteBlueprint: '%s' detected as Blueprint Interface"), *Result.BlueprintName);
         }
@@ -1673,7 +1665,7 @@ bool FBP2AIBatchExporter::WriteCompleteBlueprintMarkdown(const FCompleteBlueprin
     const FString Content = Data.ToMarkdown();
     if (FFileHelper::SaveStringToFile(Content, *TargetFilePath))
     {
-        if (ShouldLogBlueprintDetails())
+        if (BP2AIExportConfig::bDetailedBlueprintLog)
         {
             UE_LOG(LogBP2AI, Log, TEXT("📘 Saved blueprint document: %s"), *TargetFilePath);
         }

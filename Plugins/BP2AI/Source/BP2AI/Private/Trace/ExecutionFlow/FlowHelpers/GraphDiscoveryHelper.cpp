@@ -19,17 +19,9 @@
 #include "Trace/Utils/MarkdownTracerUtils.h"
 #include "Settings/BP2AIExportConfig.h"
 
-namespace
-{
-FORCEINLINE bool ShouldLogBlueprintDetails()
-{
-    return BP2AIExportConfig::bDetailedBlueprintLog;
-}
-}
-
 FGraphDiscoveryHelper::FGraphDiscoveryHelper()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("FGraphDiscoveryHelper: Initialized"));
     }
@@ -37,7 +29,7 @@ FGraphDiscoveryHelper::FGraphDiscoveryHelper()
 
 FGraphDiscoveryHelper::~FGraphDiscoveryHelper()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("FGraphDiscoveryHelper: Destroyed"));
     }

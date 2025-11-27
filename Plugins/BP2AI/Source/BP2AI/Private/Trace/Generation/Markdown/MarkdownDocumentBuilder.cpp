@@ -13,14 +13,6 @@
 #include "Trace/Generation/GenerationShared.h"
 #include "Settings/BP2AIExportConfig.h"
 
-namespace
-{
-FORCEINLINE bool ShouldLogBlueprintDetails()
-{
-    return BP2AIExportConfig::bDetailedBlueprintLog;
-}
-}
-
 FMarkdownDocumentBuilder::FMarkdownDocumentBuilder()
 {
     // UE_LOG(LogBP2AI, Log, TEXT("FMarkdownDocumentBuilder: Initialized for Markdown-only output.")); // Removed
@@ -38,7 +30,7 @@ FString FMarkdownDocumentBuilder::BuildDocument(const FTracingResults& TracingDa
     
     TArray<FString> AllOutputLines;
     
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing %d execution traces. UseSemanticData: %s"), TracingData.ExecutionTraces.Num(), Settings.bUseSemanticData ? TEXT("TRUE") : TEXT("FALSE"));
     }
@@ -64,7 +56,7 @@ FString FMarkdownDocumentBuilder::BuildDocument(const FTracingResults& TracingDa
     // TOC generation for Markdown is typically not done, or handled by external tools.
     // GenerateAndPrependTOC(AllOutputLines, TracingData); // Stays empty as per current logic.
     
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with %d lines"), AllOutputLines.Num());
     }
@@ -74,7 +66,7 @@ FString FMarkdownDocumentBuilder::BuildDocument(const FTracingResults& TracingDa
 
 void FMarkdownDocumentBuilder::ProcessStructuredContent(const FTracingResults& TracingData, TArray<FString>& OutLines)
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing %d section headers and %d graph definitions. UseSemanticData from CurrentSettings: %s"), 
             TracingData.SectionHeaders.Num(), TracingData.GraphDefinitions.Num(), CurrentSettings ? (CurrentSettings->bUseSemanticData ? TEXT("TRUE") : TEXT("FALSE")) : TEXT("SETTINGS_NULL"));
@@ -95,7 +87,7 @@ void FMarkdownDocumentBuilder::ProcessStructuredContent(const FTracingResults& T
     }
 
     // Routine summary -> Log (not Warning)
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: %d"), DefinitionsByCategory.Num());
     }
@@ -179,7 +171,7 @@ void FMarkdownDocumentBuilder::ProcessStructuredContent(const FTracingResults& T
     }
     else
     {
-        if (ShouldLogBlueprintDetails())
+        if (BP2AIExportConfig::bDetailedBlueprintLog)
         {
             UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers"));
         }

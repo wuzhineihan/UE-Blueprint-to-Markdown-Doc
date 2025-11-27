@@ -24,17 +24,9 @@
 #include "UObject/PropertyPortFlags.h"
 #include "Kismet2/BlueprintEditorUtils.h"
 
-namespace
-{
-FORCEINLINE bool ShouldLogBlueprintDetails()
-{
-    return BP2AIExportConfig::bDetailedBlueprintLog;
-}
-}
-
 FDefinitionGenerationHelper::FDefinitionGenerationHelper()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("FDefinitionGenerationHelper: Initialized"));
     }
@@ -42,7 +34,7 @@ FDefinitionGenerationHelper::FDefinitionGenerationHelper()
 
 FDefinitionGenerationHelper::~FDefinitionGenerationHelper()
 {
-    if (ShouldLogBlueprintDetails())
+    if (BP2AIExportConfig::bDetailedBlueprintLog)
     {
         UE_LOG(LogBP2AI, Log, TEXT("FDefinitionGenerationHelper: Destroyed"));
     }

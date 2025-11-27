@@ -51,24 +51,6 @@ void FBP2AIModule::StartupModule()
     FBP2AICommands::Register();
     PluginCommands = MakeShareable(new FUICommandList);
 
-    /* --- COMMENTED OUT LEGACY ACTION MAPPINGS ---
-    PluginCommands->MapAction(
-        FBP2AICommands::Get().GenerateMarkdownCommand, 
-        FExecuteAction::CreateRaw(this, &FBP2AIModule::GenerateMarkdownAction), 
-        FCanExecuteAction());
-
-    PluginCommands->MapAction(
-        FBP2AICommands::Get().GenerateTextMarkdownCommand,
-        FExecuteAction::CreateRaw(this, &FBP2AIModule::GenerateTextBasedMarkdownAction),
-        FCanExecuteAction());
-
-    PluginCommands->MapAction(
-        FBP2AICommands::Get().ShowExportDebugCommand,
-        FExecuteAction::CreateRaw(this, &FBP2AIModule::ShowExportDebugAction),
-        FCanExecuteAction());
-    */
-    
-    // --- KEPT: The one remaining action mapping ---
     PluginCommands->MapAction(
         FBP2AICommands::Get().GenerateExecFlowCommand,
         FExecuteAction::CreateRaw(this, &FBP2AIModule::GenerateExecFlowAction),
@@ -94,134 +76,13 @@ void FBP2AIModule::ShutdownModule()
     FBP2AICommands::Unregister();
     PluginCommands.Reset(); 
 
-    /* --- COMMENTED OUT LEGACY WINDOW DESTRUCTION ---
-    if (PluginWindow.IsValid())
-    {
-         UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Requesting plugin window destroy during shutdown."));
-         PluginWindow->RequestDestroyWindow(); 
-    }
-    
-    if (TextBasedPluginWindow.IsValid())
-    {
-        UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Requesting text-based plugin window destroy during shutdown."));
-        TextBasedPluginWindow->RequestDestroyWindow();
-    }
-    
-    if (DebugWindow.IsValid())
-    {
-        UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Requesting debug window destroy during shutdown."));
-        DebugWindow->RequestDestroyWindow();
-    }
-    */
-
-    // --- KEPT: The one remaining window destruction ---
     if (ExecFlowPluginWindow.IsValid()) ExecFlowPluginWindow->RequestDestroyWindow();
     
-    /* --- COMMENTED OUT LEGACY POINTER RESETS ---
-    PluginWindow.Reset();
-    MarkdownWindow.Reset();
-    TextBasedPluginWindow.Reset();
-    TextBasedMarkdownWindow.Reset();
-    DebugWindow.Reset();
-    ExportDebugWindow.Reset();
-    */
-
-    // --- KEPT: The one remaining pointer reset ---
     ExecFlowPluginWindow.Reset(); ExecFlowMarkdownWindow.Reset();
 
     UE_LOG(LogBP2AI, Log, TEXT("BP2AI: ShutdownModule() End."));
 }
 
-/* --- COMMENTED OUT LEGACY IMPLEMENTATION ---
-void FBP2AIModule::GenerateMarkdownAction()
-{
-   
-    if (PluginWindow.IsValid())
-    {
-        UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Found existing PluginWindow TSharedPtr. Attempting BringToFront()."));
-        PluginWindow->BringToFront();
-        return;
-    }
-
-    PluginWindow.Reset();
-    MarkdownWindow.Reset();
-
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Creating new plugin window."));
-    SAssignNew(PluginWindow, SWindow)
-        .Title(LOCTEXT("WindowTitle", "Blueprint Markdown Generator"))
-        .ClientSize(FVector2D(800, 600))
-        .SizingRule(ESizingRule::UserSized)
-        .SupportsMaximize(true)
-        .SupportsMinimize(true);
-
-    if (PluginWindow.IsValid())
-        {
-        PluginWindow->SetOnWindowClosed(FOnWindowClosed::CreateRaw(this, &FBP2AIModule::OnPluginWindowClosed));
-        }
-    else
-    {
-        UE_LOG(LogBP2AI, Error, TEXT("BP2AI: Failed to create SWindow!"));
-        return; 
-    }
-
-    PluginWindow->SetContent(CreateBP2AIWindow()); 
-
-    TSharedPtr<SWindow> RootWindow = FGlobalTabmanager::Get()->GetRootWindow();
-    if (RootWindow.IsValid())
-    {
-        FSlateApplication::Get().AddWindowAsNativeChild(PluginWindow.ToSharedRef(), RootWindow.ToSharedRef());
-    }
-    else
-    {
-        FSlateApplication::Get().AddWindow(PluginWindow.ToSharedRef());
-    }
-  
-}
-*/
-/*
-void FBP2AIModule::GenerateTextBasedMarkdownAction()
-{
-    if (TextBasedPluginWindow.IsValid())
-    {
-        UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Found existing TextBasedPluginWindow TSharedPtr. Attempting BringToFront()."));
-        TextBasedPluginWindow->BringToFront();
-        return;
-    }
-
-    TextBasedPluginWindow.Reset();
-    TextBasedMarkdownWindow.Reset();
-
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Creating new text-based plugin window."));
-    SAssignNew(TextBasedPluginWindow, SWindow)
-        .Title(LOCTEXT("TextWindowTitle", "Text-Based Blueprint Markdown Generator"))
-        .ClientSize(FVector2D(800, 600))
-        .SizingRule(ESizingRule::UserSized)
-        .SupportsMaximize(true)
-        .SupportsMinimize(true);
-
-    if (TextBasedPluginWindow.IsValid())
-    {
-        TextBasedPluginWindow->SetOnWindowClosed(FOnWindowClosed::CreateRaw(this, &FBP2AIModule::OnTextBasedPluginWindowClosed));
-    }
-    else
-    {
-        UE_LOG(LogBP2AI, Error, TEXT("BP2AI: Failed to create text-based SWindow!"));
-        return;
-    }
-
-    TextBasedPluginWindow->SetContent(CreateTextBasedMarkdownWindow());
-
-    TSharedPtr<SWindow> RootWindow = FGlobalTabmanager::Get()->GetRootWindow();
-    if (RootWindow.IsValid())
-    {
-        FSlateApplication::Get().AddWindowAsNativeChild(TextBasedPluginWindow.ToSharedRef(), RootWindow.ToSharedRef());
-    }
-    else
-    {
-        FSlateApplication::Get().AddWindow(TextBasedPluginWindow.ToSharedRef());
-    }
-}
-*/
 void FBP2AIModule::GenerateExecFlowAction()
 {
     if (ExecFlowPluginWindow.IsValid())
@@ -255,74 +116,174 @@ void FBP2AIModule::GenerateExecFlowAction()
     if (RootWindow.IsValid()) FSlateApplication::Get().AddWindowAsNativeChild(ExecFlowPluginWindow.ToSharedRef(), RootWindow.ToSharedRef());
     else FSlateApplication::Get().AddWindow(ExecFlowPluginWindow.ToSharedRef());
 }
-/* --- COMMENTED OUT LEGACY IMPLEMENTATION ---
-void FBP2AIModule::ShowExportDebugAction()
+
+namespace
 {
-    if (DebugWindow.IsValid())
+    /**
+     * RAII helper to silence internal log categories during batch operations.
+     * Restores original verbosity on destruction.
+     */
+    struct FScopedLogSilencer
     {
-        UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Found existing DebugWindow TSharedPtr. Attempting BringToFront()."));
-        DebugWindow->BringToFront();
+        FScopedLogSilencer()
+        {
+            bShouldSilence = BP2AIExportConfig::bSilenceInternalCategoriesDuringBatchExport;
+            if (bShouldSilence)
+            {
+                OriginalDataTracer = LogDataTracer.GetVerbosity();
+                OriginalPathTracer = LogPathTracer.GetVerbosity();
+                OriginalFormatter = LogFormatter.GetVerbosity();
+                OriginalExtractor = LogExtractor.GetVerbosity();
+                OriginalNodeFactory = LogBlueprintNodeFactory.GetVerbosity();
+                OriginalModels = LogModels.GetVerbosity();
+
+                LogDataTracer.SetVerbosity(ELogVerbosity::NoLogging);
+                LogPathTracer.SetVerbosity(ELogVerbosity::NoLogging);
+                LogFormatter.SetVerbosity(ELogVerbosity::NoLogging);
+                LogExtractor.SetVerbosity(ELogVerbosity::NoLogging);
+                LogBlueprintNodeFactory.SetVerbosity(ELogVerbosity::NoLogging);
+                LogModels.SetVerbosity(ELogVerbosity::NoLogging);
+            }
+        }
+
+        ~FScopedLogSilencer()
+        {
+            if (bShouldSilence)
+            {
+                LogDataTracer.SetVerbosity(OriginalDataTracer);
+                LogPathTracer.SetVerbosity(OriginalPathTracer);
+                LogFormatter.SetVerbosity(OriginalFormatter);
+                LogExtractor.SetVerbosity(OriginalExtractor);
+                LogBlueprintNodeFactory.SetVerbosity(OriginalNodeFactory);
+                LogModels.SetVerbosity(OriginalModels);
+            }
+        }
+
+    private:
+        bool bShouldSilence;
+        ELogVerbosity::Type OriginalDataTracer;
+        ELogVerbosity::Type OriginalPathTracer;
+        ELogVerbosity::Type OriginalFormatter;
+        ELogVerbosity::Type OriginalExtractor;
+        ELogVerbosity::Type OriginalNodeFactory;
+        ELogVerbosity::Type OriginalModels;
+    };
+}
+
+void FBP2AIModule::HandleFolderExport(const TArray<FString>& SelectedPaths) const
+{
+    if (SelectedPaths.Num() == 0)
+    {
         return;
     }
 
-    DebugWindow.Reset();
-    ExportDebugWindow.Reset();
+    // Use RAII to manage log silencing
+    FScopedLogSilencer LogSilencer;
 
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Creating new debug window."));
-    SAssignNew(DebugWindow, SWindow)
-        .Title(LOCTEXT("DebugWindowTitle", "Blueprint Export Debug"))
-        .ClientSize(FVector2D(900, 700))
-        .SizingRule(ESizingRule::UserSized)
-        .SupportsMaximize(true)
-        .SupportsMinimize(true);
+    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Folder export started (%d folder%s)."), SelectedPaths.Num(), SelectedPaths.Num() > 1 ? TEXT("s") : TEXT(""));
 
-    if (DebugWindow.IsValid())
+    FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+    IAssetRegistry& AssetRegistry = AssetRegistryModule.Get();
+
+    FARFilter Filter;
+    Filter.bRecursivePaths = true;
+    Filter.ClassPaths.Add(UBlueprint::StaticClass()->GetClassPathName());
+
+    for (const FString& Path : SelectedPaths)
     {
-        DebugWindow->SetOnWindowClosed(FOnWindowClosed::CreateRaw(this, &FBP2AIModule::OnExportDebugWindowClosed));
+        if (!Path.IsEmpty())
+        {
+            Filter.PackagePaths.Add(FName(*Path));
+        }
     }
-    else
+
+    TArray<FAssetData> BlueprintAssets;
+    AssetRegistry.GetAssets(Filter, BlueprintAssets);
+
+    if (BlueprintAssets.Num() == 0)
     {
-        UE_LOG(LogBP2AI, Error, TEXT("BP2AI: Failed to create debug SWindow!"));
+        UE_LOG(LogBP2AI, Log, TEXT("BP2AI: No blueprint assets found under selected folders."));
         return;
     }
 
-    DebugWindow->SetContent(CreateExportDebugWindow());
+    const int32 TotalAssets = BlueprintAssets.Num();
+    int32 SuccessCount = 0;
+    int32 FailureCount = 0;
+    int32 ProcessedSinceGc = 0;
+    const int32 GcInterval = 20; // Adjusted to 20 as requested
 
-    TSharedPtr<SWindow> RootWindow = FGlobalTabmanager::Get()->GetRootWindow();
-    if (RootWindow.IsValid())
+    // 创建进度条对话框
+    FScopedSlowTask Progress(TotalAssets, LOCTEXT("BP2AIExportProgress", "Exporting Blueprints..."));
+    Progress.MakeDialog(true); // true = 允许取消
+
+    for (int32 Index = 0; Index < TotalAssets; ++Index)
     {
-        FSlateApplication::Get().AddWindowAsNativeChild(DebugWindow.ToSharedRef(), RootWindow.ToSharedRef());
+        // 检查用户是否取消
+        if (Progress.ShouldCancel())
+        {
+            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Export cancelled by user. Processed: %d/%d"), SuccessCount + FailureCount, TotalAssets);
+            break;
+        }
+
+        const FAssetData& AssetData = BlueprintAssets[Index];
+        if (!CanExportBlueprintAsset(AssetData))
+        {
+            Progress.EnterProgressFrame(1.0f);
+            continue;
+        }
+
+        // 更新进度条显示当前资产路径
+        const FString AssetFullPath = AssetData.GetObjectPathString();
+        Progress.EnterProgressFrame(1.0f, FText::Format(
+            LOCTEXT("ExportingAsset", "[{0}/{1}] {2}"),
+            FText::AsNumber(Index + 1),
+            FText::AsNumber(TotalAssets),
+            FText::FromString(AssetFullPath)
+        ));
+
+        UObject* LoadedObject = AssetData.GetAsset();
+        UBlueprint* Blueprint = Cast<UBlueprint>(LoadedObject);
+        if (!Blueprint)
+        {
+            ++FailureCount;
+            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Failed to load blueprint asset '%s'."), *AssetData.AssetName.ToString());
+            continue;
+        }
+
+        const FCompleteBlueprintData CompleteData = FBP2AIBatchExporter::ExportCompleteBlueprint(Blueprint, true);
+        const FString TargetFilePath = BuildExportFilePath(AssetData.PackagePath.ToString(), CompleteData.BlueprintName);
+
+        const bool bSaved = FBP2AIBatchExporter::WriteCompleteBlueprintMarkdown(CompleteData, TargetFilePath, true);
+        const int32 ProgressIndex = SuccessCount + FailureCount + 1;
+
+        if (bSaved)
+        {
+            ++SuccessCount;
+            UE_LOG(LogBP2AI, Log, TEXT("BP2AI: [%d/%d] %s"), ProgressIndex, TotalAssets, *AssetFullPath);
+        }
+        else
+        {
+            ++FailureCount;
+            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: [%d/%d] %s (Failed to save)"), ProgressIndex, TotalAssets, *AssetFullPath);
+        }
+
+        ++ProcessedSinceGc;
+        if (ProcessedSinceGc >= GcInterval)
+        {
+            ProcessedSinceGc = 0;
+            CollectGarbage(GARBAGE_COLLECTION_KEEPFLAGS);
+        }
     }
-    else
-    {
-        FSlateApplication::Get().AddWindow(DebugWindow.ToSharedRef());
-    }
+
+    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Folder export summary -> Success: %d | Failed: %d | Total: %d"), SuccessCount, FailureCount, TotalAssets);
 }
 
-TSharedRef<SWidget> FBP2AIModule::CreateBP2AIWindow()
-{
-    MarkdownWindow = SNew(SBP2AIWindow);
-    return MarkdownWindow.ToSharedRef();
-}
-*/
 TSharedRef<SWidget> FBP2AIModule::CreateBlueprintExecFlowWindow()
 {
     SAssignNew(ExecFlowMarkdownWindow, SMarkdownOutputWindow); 
     return ExecFlowMarkdownWindow.ToSharedRef();
 }
-/* --- COMMENTED OUT LEGACY IMPLEMENTATION ---
-TSharedRef<SWidget> FBP2AIModule::CreateTextBasedMarkdownWindow()
-{
-    TextBasedMarkdownWindow = SNew(STextExportMarkdownWindow);
-    return TextBasedMarkdownWindow.ToSharedRef();
-}
 
-TSharedRef<SWidget> FBP2AIModule::CreateExportDebugWindow()
-{
-    ExportDebugWindow = SNew(SBlueprintExportDebugWindow);
-    return ExportDebugWindow.ToSharedRef();
-}
-*/
 void FBP2AIModule::RegisterMenus()
 {
     UE_LOG(LogBP2AI, Log, TEXT("BP2AI: RegisterMenus() Called."));
@@ -503,158 +464,7 @@ void FBP2AIModule::HandleSingleAssetExport(const FAssetData& AssetData) const
     UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Export complete -> %s"), *TargetFilePath);
 }
 
-void FBP2AIModule::HandleFolderExport(const TArray<FString>& SelectedPaths) const
-{
-    if (SelectedPaths.Num() == 0)
-    {
-        return;
-    }
 
-    // 批量导出时静默内部技术日志分类（可通过配置关闭）
-    ELogVerbosity::Type OriginalDataTracer = ELogVerbosity::NoLogging;
-    ELogVerbosity::Type OriginalPathTracer = ELogVerbosity::NoLogging;
-    ELogVerbosity::Type OriginalFormatter = ELogVerbosity::NoLogging;
-    ELogVerbosity::Type OriginalExtractor = ELogVerbosity::NoLogging;
-    ELogVerbosity::Type OriginalNodeFactory = ELogVerbosity::NoLogging;
-    ELogVerbosity::Type OriginalModels = ELogVerbosity::NoLogging;
-
-    if (BP2AIExportConfig::bSilenceInternalCategoriesDuringBatchExport)
-    {
-        OriginalDataTracer = LogDataTracer.GetVerbosity();
-        OriginalPathTracer = LogPathTracer.GetVerbosity();
-        OriginalFormatter = LogFormatter.GetVerbosity();
-        OriginalExtractor = LogExtractor.GetVerbosity();
-        OriginalNodeFactory = LogBlueprintNodeFactory.GetVerbosity();
-        OriginalModels = LogModels.GetVerbosity();
-
-        LogDataTracer.SetVerbosity(ELogVerbosity::NoLogging);
-        LogPathTracer.SetVerbosity(ELogVerbosity::NoLogging);
-        LogFormatter.SetVerbosity(ELogVerbosity::NoLogging);
-        LogExtractor.SetVerbosity(ELogVerbosity::NoLogging);
-        LogBlueprintNodeFactory.SetVerbosity(ELogVerbosity::NoLogging);
-        LogModels.SetVerbosity(ELogVerbosity::NoLogging);
-    }
-
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Folder export started (%d folder%s)."), SelectedPaths.Num(), SelectedPaths.Num() > 1 ? TEXT("s") : TEXT(""));
-
-    FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
-    IAssetRegistry& AssetRegistry = AssetRegistryModule.Get();
-
-    FARFilter Filter;
-    Filter.bRecursivePaths = true;
-    Filter.ClassPaths.Add(UBlueprint::StaticClass()->GetClassPathName());
-
-    for (const FString& Path : SelectedPaths)
-    {
-        if (!Path.IsEmpty())
-        {
-            Filter.PackagePaths.Add(FName(*Path));
-        }
-    }
-
-    TArray<FAssetData> BlueprintAssets;
-    AssetRegistry.GetAssets(Filter, BlueprintAssets);
-
-    if (BlueprintAssets.Num() == 0)
-    {
-        UE_LOG(LogBP2AI, Log, TEXT("BP2AI: No blueprint assets found under selected folders."));
-
-        // 恢复日志级别
-        if (BP2AIExportConfig::bSilenceInternalCategoriesDuringBatchExport)
-        {
-            LogDataTracer.SetVerbosity(OriginalDataTracer);
-            LogPathTracer.SetVerbosity(OriginalPathTracer);
-            LogFormatter.SetVerbosity(OriginalFormatter);
-            LogExtractor.SetVerbosity(OriginalExtractor);
-            LogBlueprintNodeFactory.SetVerbosity(OriginalNodeFactory);
-            LogModels.SetVerbosity(OriginalModels);
-        }
-
-        return;
-    }
-
-    const int32 TotalAssets = BlueprintAssets.Num();
-    int32 SuccessCount = 0;
-    int32 FailureCount = 0;
-    int32 ProcessedSinceGc = 0;
-    const int32 GcInterval = 10;
-
-    // 创建进度条对话框
-    FScopedSlowTask Progress(TotalAssets, LOCTEXT("BP2AIExportProgress", "Exporting Blueprints..."));
-    Progress.MakeDialog(true); // true = 允许取消
-
-    for (int32 Index = 0; Index < TotalAssets; ++Index)
-    {
-        // 检查用户是否取消
-        if (Progress.ShouldCancel())
-        {
-            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Export cancelled by user. Processed: %d/%d"), SuccessCount + FailureCount, TotalAssets);
-            break;
-        }
-
-        const FAssetData& AssetData = BlueprintAssets[Index];
-        if (!CanExportBlueprintAsset(AssetData))
-        {
-            Progress.EnterProgressFrame(1.0f);
-            continue;
-        }
-
-        // 更新进度条显示当前资产路径
-        const FString AssetFullPath = AssetData.GetObjectPathString();
-        Progress.EnterProgressFrame(1.0f, FText::Format(
-            LOCTEXT("ExportingAsset", "[{0}/{1}] {2}"),
-            FText::AsNumber(Index + 1),
-            FText::AsNumber(TotalAssets),
-            FText::FromString(AssetFullPath)
-        ));
-
-        UObject* LoadedObject = AssetData.GetAsset();
-        UBlueprint* Blueprint = Cast<UBlueprint>(LoadedObject);
-        if (!Blueprint)
-        {
-            ++FailureCount;
-            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Failed to load blueprint asset '%s'."), *AssetData.AssetName.ToString());
-            continue;
-        }
-
-        const FCompleteBlueprintData CompleteData = FBP2AIBatchExporter::ExportCompleteBlueprint(Blueprint, true);
-        const FString TargetFilePath = BuildExportFilePath(AssetData.PackagePath.ToString(), CompleteData.BlueprintName);
-
-        const bool bSaved = FBP2AIBatchExporter::WriteCompleteBlueprintMarkdown(CompleteData, TargetFilePath, true);
-        const int32 ProgressIndex = SuccessCount + FailureCount + 1;
-
-        if (bSaved)
-        {
-            ++SuccessCount;
-            UE_LOG(LogBP2AI, Log, TEXT("BP2AI: [%d/%d] %s"), ProgressIndex, TotalAssets, *AssetFullPath);
-        }
-        else
-        {
-            ++FailureCount;
-            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: [%d/%d] %s (Failed to save)"), ProgressIndex, TotalAssets, *AssetFullPath);
-        }
-
-        ++ProcessedSinceGc;
-        if (ProcessedSinceGc >= GcInterval)
-        {
-            ProcessedSinceGc = 0;
-            CollectGarbage(GARBAGE_COLLECTION_KEEPFLAGS);
-        }
-    }
-
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Folder export summary -> Success: %d | Failed: %d | Total: %d"), SuccessCount, FailureCount, TotalAssets);
-
-    // 恢复原始日志级别
-    if (BP2AIExportConfig::bSilenceInternalCategoriesDuringBatchExport)
-    {
-        LogDataTracer.SetVerbosity(OriginalDataTracer);
-        LogPathTracer.SetVerbosity(OriginalPathTracer);
-        LogFormatter.SetVerbosity(OriginalFormatter);
-        LogExtractor.SetVerbosity(OriginalExtractor);
-        LogBlueprintNodeFactory.SetVerbosity(OriginalNodeFactory);
-        LogModels.SetVerbosity(OriginalModels);
-    }
-}
 
 
 FString FBP2AIModule::BuildExportFilePath(const FString& PackagePath, const FString& BlueprintName) const
@@ -707,37 +517,7 @@ void FBP2AIModule::OnExecFlowWindowClosed(const TSharedRef<SWindow>& Window)
         UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: OnExecFlowWindowClosed called for an unexpected window."));
     }
 }
-/* --- COMMENTED OUT LEGACY IMPLEMENTATION ---
-void FBP2AIModule::OnTextBasedPluginWindowClosed(const TSharedRef<SWindow>& Window)
-{
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: OnTextBasedPluginWindowClosed Called. Resetting pointers."));
 
-    if (Window == TextBasedPluginWindow)
-    {
-        TextBasedPluginWindow.Reset();
-        TextBasedMarkdownWindow.Reset();
-    }
-    else
-    {
-        UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: OnTextBasedPluginWindowClosed called for an unexpected window."));
-    }
-}
-
-void FBP2AIModule::OnExportDebugWindowClosed(const TSharedRef<SWindow>& Window)
-{
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: OnExportDebugWindowClosed Called. Resetting pointers."));
-
-    if (Window == DebugWindow)
-    {
-        DebugWindow.Reset();
-        ExportDebugWindow.Reset();
-    }
-    else
-    {
-        UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: OnExportDebugWindowClosed called for an unexpected window."));
-    }
-}
-*/
 FBP2AIModule& FBP2AIModule::Get()
 {
     return FModuleManager::LoadModuleChecked<FBP2AIModule>("BP2AI");
