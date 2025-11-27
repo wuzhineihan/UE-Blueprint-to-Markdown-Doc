@@ -31,7 +31,8 @@
             "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\executionflow\\flowhelpers\\categoryanalysishelper.h",
             "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\trace\\markdowndatatracer.h",
             "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\extractors\\blueprintdataextractor.h",
-            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\utils\\markdowntracerutils.h"
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\utils\\markdowntracerutils.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\settings\\bp2aiexportconfig.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

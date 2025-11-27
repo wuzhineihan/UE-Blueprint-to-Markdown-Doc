@@ -68,5 +68,27 @@ namespace BP2AIExportConfig
 	 * false: 所有图表按类型分组
 	 */
 	constexpr bool bSeparateUserGraphs = true;
+
+	/**
+	 * ========================================
+	 * 日志控制 (Logging Controls)
+	 * ========================================
+	 */
+
+	/**
+	 * bp2ai.Log.BlueprintDetails
+	 * 作用：控制单个蓝图导出时的详细日志（构造、逐图表打印、ExecFlow 预览等）
+	 * 使用场景：批量导出时关闭以减少日志；调试单个蓝图时打开
+	 */
+	constexpr bool bDetailedBlueprintLog = false;
+
+	/**
+	 * bp2ai.Log.SilenceInternalCategoriesDuringBatchExport
+	 * 作用：批量导出时完全静默插件内部的技术日志分类（LogDataTracer、LogPathTracer 等）
+	 * 使用场景：防止批量导出时其他 Category 的日志刷屏导致 Output Log 卡死
+	 * 注意：只影响批量导出；单个蓝图导出或调试时不受影响
+	 * 受影响的 Category: LogDataTracer, LogPathTracer, LogFormatter, LogExtractor, LogBlueprintNodeFactory, LogModels
+	 */
+	constexpr bool bSilenceInternalCategoriesDuringBatchExport = true;
 }
 

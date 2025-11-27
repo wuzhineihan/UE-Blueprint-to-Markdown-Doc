@@ -11,15 +11,30 @@
 #include "Models/BlueprintPin.h"
 #include "Logging/BP2AILog.h"
 #include "Trace/FMarkdownPathTracer.h"
+#include "Settings/BP2AIExportConfig.h"
+
+namespace
+{
+FORCEINLINE bool ShouldLogBlueprintDetails()
+{
+    return BP2AIExportConfig::bDetailedBlueprintLog;
+}
+}
 
 FCategoryAnalysisHelper::FCategoryAnalysisHelper()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("FCategoryAnalysisHelper: Initialized"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("FCategoryAnalysisHelper: Initialized"));
+    }
 }
 
 FCategoryAnalysisHelper::~FCategoryAnalysisHelper()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("FCategoryAnalysisHelper: Destroyed"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("FCategoryAnalysisHelper: Destroyed"));
+    }
 }
 
 FString FCategoryAnalysisHelper::CategorizeGraphByType(

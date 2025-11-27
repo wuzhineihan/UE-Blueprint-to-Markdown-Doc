@@ -38,8 +38,11 @@ public:
 private:
     void RegisterMenus();
     void RegisterContentBrowserAssetMenu();
+    void RegisterContentBrowserFolderMenu();
     bool CanExportBlueprintAsset(const FAssetData& AssetData) const;
     void HandleSingleAssetExport(const FAssetData& AssetData) const;
+    void HandleFolderExport(const TArray<FString>& SelectedPaths) const;
+    FString BuildExportFilePath(const FString& PackagePath, const FString& BlueprintName) const;
    
 	TSharedRef<SWidget> CreateBlueprintExecFlowWindow();
 

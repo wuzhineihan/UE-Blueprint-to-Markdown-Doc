@@ -28,7 +28,8 @@
             "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\webbrowser\\public\\iwebbrowserresourceloader.h",
             "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\webbrowser\\public\\webbrowsermodule.h",
             "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\logging\\bp2ailog.h",
-            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\utils\\markdowntracerutils.h"
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\private\\trace\\utils\\markdowntracerutils.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\settings\\bp2aiexportconfig.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

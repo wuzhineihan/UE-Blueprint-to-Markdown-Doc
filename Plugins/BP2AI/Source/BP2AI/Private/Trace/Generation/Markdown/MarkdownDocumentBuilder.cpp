@@ -10,7 +10,16 @@
 #include "Trace/Utils/MarkdownSpanSystem.h"
 #include "Trace/FMarkdownPathTracer.h"
 #include "Logging/BP2AILog.h"
-#include "Trace/Generation/GenerationShared.h" 
+#include "Trace/Generation/GenerationShared.h"
+#include "Settings/BP2AIExportConfig.h"
+
+namespace
+{
+FORCEINLINE bool ShouldLogBlueprintDetails()
+{
+    return BP2AIExportConfig::bDetailedBlueprintLog;
+}
+}
 
 FMarkdownDocumentBuilder::FMarkdownDocumentBuilder()
 {
@@ -29,7 +38,10 @@ FString FMarkdownDocumentBuilder::BuildDocument(const FTracingResults& TracingDa
     
     TArray<FString> AllOutputLines;
     
-    UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing %d execution traces. UseSemanticData: %s"), TracingData.ExecutionTraces.Num(), Settings.bUseSemanticData ? TEXT("TRUE") : TEXT("FALSE"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing %d execution traces. UseSemanticData: %s"), TracingData.ExecutionTraces.Num(), Settings.bUseSemanticData ? TEXT("TRUE") : TEXT("FALSE"));
+    }
     
     // Process execution traces  
     for (const FTraceEntry& TraceEntry : TracingData.ExecutionTraces)
@@ -52,15 +64,21 @@ FString FMarkdownDocumentBuilder::BuildDocument(const FTracingResults& TracingDa
     // TOC generation for Markdown is typically not done, or handled by external tools.
     // GenerateAndPrependTOC(AllOutputLines, TracingData); // Stays empty as per current logic.
     
-    UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with %d lines"), AllOutputLines.Num());
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Generated document with %d lines"), AllOutputLines.Num());
+    }
     
     return FString::Join(AllOutputLines, TEXT("\n"));
 }
 
 void FMarkdownDocumentBuilder::ProcessStructuredContent(const FTracingResults& TracingData, TArray<FString>& OutLines)
 {
-    UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing %d section headers and %d graph definitions. UseSemanticData from CurrentSettings: %s"), 
-        TracingData.SectionHeaders.Num(), TracingData.GraphDefinitions.Num(), CurrentSettings ? (CurrentSettings->bUseSemanticData ? TEXT("TRUE") : TEXT("FALSE")) : TEXT("SETTINGS_NULL"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Processing %d section headers and %d graph definitions. UseSemanticData from CurrentSettings: %s"), 
+            TracingData.SectionHeaders.Num(), TracingData.GraphDefinitions.Num(), CurrentSettings ? (CurrentSettings->bUseSemanticData ? TEXT("TRUE") : TEXT("FALSE")) : TEXT("SETTINGS_NULL"));
+    }
 
     TMap<FString, TArray<FGraphDefinitionEntry>> DefinitionsByCategory;
     for (const FGraphDefinitionEntry& GraphDef : TracingData.GraphDefinitions)
@@ -77,7 +95,10 @@ void FMarkdownDocumentBuilder::ProcessStructuredContent(const FTracingResults& T
     }
 
     // Routine summary -> Log (not Warning)
-    UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: %d"), DefinitionsByCategory.Num());
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): Visible definition category count: %d"), DefinitionsByCategory.Num());
+    }
     for (const auto& CategoryPair : DefinitionsByCategory)
     {
         UE_LOG(LogBP2AI, Verbose, TEXT("  Category '%s': %d definitions"), 
@@ -158,7 +179,10 @@ void FMarkdownDocumentBuilder::ProcessStructuredContent(const FTracingResults& T
     }
     else
     {
-        UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers"));
+        if (ShouldLogBlueprintDetails())
+        {
+            UE_LOG(LogBP2AI, Log, TEXT("MarkdownDocumentBuilder (!!!MARKDOWN!!!): SUCCESS: All definitions matched to section headers"));
+        }
     }
 }
 

@@ -15,6 +15,7 @@
 #include "Trace/Generation/GenerationShared.h"
 #include "Logging/BP2AILog.h"
 #include "Trace/Utils/MarkdownTracerUtils.h"
+#include "Settings/BP2AIExportConfig.h"
 
 #include "UObject/UObjectIterator.h"
 #include "Engine/Blueprint.h"
@@ -23,14 +24,28 @@
 #include "UObject/PropertyPortFlags.h"
 #include "Kismet2/BlueprintEditorUtils.h"
 
+namespace
+{
+FORCEINLINE bool ShouldLogBlueprintDetails()
+{
+    return BP2AIExportConfig::bDetailedBlueprintLog;
+}
+}
+
 FDefinitionGenerationHelper::FDefinitionGenerationHelper()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("FDefinitionGenerationHelper: Initialized"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("FDefinitionGenerationHelper: Initialized"));
+    }
 }
 
 FDefinitionGenerationHelper::~FDefinitionGenerationHelper()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("FDefinitionGenerationHelper: Destroyed"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("FDefinitionGenerationHelper: Destroyed"));
+    }
 }
 
 FGraphDefinitionEntry FDefinitionGenerationHelper::CreateGraphDefinition(

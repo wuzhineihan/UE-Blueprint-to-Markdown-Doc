@@ -10,15 +10,30 @@
 #include "Trace/Generation/GenerationShared.h"
 #include "Logging/BP2AILog.h"
 #include "Trace/Utils/MarkdownTracerUtils.h"
+#include "Settings/BP2AIExportConfig.h"
+
+namespace
+{
+FORCEINLINE bool ShouldLogBlueprintDetails()
+{
+    return BP2AIExportConfig::bDetailedBlueprintLog;
+}
+}
 
 FFlowValidationHelper::FFlowValidationHelper()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("FFlowValidationHelper: Initialized"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("FFlowValidationHelper: Initialized"));
+    }
 }
 
 FFlowValidationHelper::~FFlowValidationHelper()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("FFlowValidationHelper: Destroyed"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("FFlowValidationHelper: Destroyed"));
+    }
 }
 
 void FFlowValidationHelper::FDuplicateDetectionReport::RecordEntry(

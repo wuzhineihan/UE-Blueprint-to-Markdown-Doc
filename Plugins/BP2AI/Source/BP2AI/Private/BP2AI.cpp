@@ -28,9 +28,13 @@
 #include "Styling/AppStyle.h" 
 #include "Engine/Blueprint.h"
 #include "ContentBrowserMenuContexts.h"
+#include "ContentBrowserModule.h"
 #include "AssetRegistry/AssetData.h"
+#include "AssetRegistry/AssetRegistryModule.h"
+#include "UObject/GarbageCollection.h"
 #include "Exporters/BP2AIBatchExporter.h"
 #include "Misc/Paths.h"
+#include "Settings/BP2AIExportConfig.h"
 
 
 
@@ -374,6 +378,7 @@ void FBP2AIModule::RegisterMenus()
     }
 
     RegisterContentBrowserAssetMenu();
+    RegisterContentBrowserFolderMenu();
 
     UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Toolbar button registration complete."));
 }
@@ -410,6 +415,54 @@ void FBP2AIModule::RegisterContentBrowserAssetMenu()
     }
 }
 
+void FBP2AIModule::RegisterContentBrowserFolderMenu()
+{
+    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: RegisterContentBrowserFolderMenu called."));
+
+    if (UToolMenu* Menu = UToolMenus::Get()->ExtendMenu("ContentBrowser.FolderContextMenu"))
+    {
+        Menu->AddDynamicSection("BP2AI.FolderDynamicSection", FNewToolMenuDelegate::CreateLambda([this](UToolMenu* InMenu)
+        {
+            if (!InMenu)
+            {
+                return;
+            }
+
+            const UContentBrowserFolderContext* FolderContext = InMenu->FindContext<UContentBrowserFolderContext>();
+            if (!FolderContext)
+            {
+                return;
+            }
+
+            TArray<FString> SelectedPathsCopy;
+            if (FolderContext->bCanBeModified && FolderContext->SelectedPackagePaths.Num() > 0)
+            {
+                for (const FString& PathString : FolderContext->SelectedPackagePaths)
+                {
+                    SelectedPathsCopy.Add(PathString);
+                }
+            }
+
+            if (SelectedPathsCopy.Num() == 0)
+            {
+                return;
+            }
+
+            FToolMenuSection& Section = InMenu->FindOrAddSection("FolderContextBulkOperations");
+            Section.AddMenuEntry(
+                "BP2AI_ExportSelectedFolders",
+                LOCTEXT("BP2AI_ExportSelectedFolders_Label", "Export Folders (BP2AI)"),
+                LOCTEXT("BP2AI_ExportSelectedFolders_Tooltip", "Export all blueprints within the selected folders using BP2AI."),
+                FSlateIcon(),
+                FUIAction(FExecuteAction::CreateLambda([this, SelectedPathsCopy]()
+                {
+                    HandleFolderExport(SelectedPathsCopy);
+                }))
+            );
+        }));
+    }
+}
+
 bool FBP2AIModule::CanExportBlueprintAsset(const FAssetData& AssetData) const
 {
     if (!AssetData.IsValid())
@@ -439,23 +492,7 @@ void FBP2AIModule::HandleSingleAssetExport(const FAssetData& AssetData) const
     UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Exporting blueprint '%s' via Content Browser action."), *Blueprint->GetName());
 
     const FCompleteBlueprintData CompleteData = FBP2AIBatchExporter::ExportCompleteBlueprint(Blueprint, true);
-    const FString BaseDir = FPaths::ProjectSavedDir() / TEXT("BP2AI/Exports");
-
-    FString PackagePath = AssetData.PackagePath.ToString();
-    const FString GameRoot = TEXT("/Game");
-    if (PackagePath.StartsWith(GameRoot))
-    {
-        PackagePath = PackagePath.Mid(GameRoot.Len());
-    }
-    PackagePath.RemoveFromStart(TEXT("/"));
-
-    FString OutputDir = BaseDir;
-    if (!PackagePath.IsEmpty())
-    {
-        OutputDir = FPaths::Combine(BaseDir, PackagePath);
-    }
-
-    const FString TargetFilePath = FPaths::Combine(OutputDir, CompleteData.BlueprintName + TEXT(".md"));
+    const FString TargetFilePath = BuildExportFilePath(AssetData.PackagePath.ToString(), CompleteData.BlueprintName);
 
     if (!FBP2AIBatchExporter::WriteCompleteBlueprintMarkdown(CompleteData, TargetFilePath, true))
     {
@@ -464,6 +501,181 @@ void FBP2AIModule::HandleSingleAssetExport(const FAssetData& AssetData) const
     }
 
     UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Export complete -> %s"), *TargetFilePath);
+}
+
+void FBP2AIModule::HandleFolderExport(const TArray<FString>& SelectedPaths) const
+{
+    if (SelectedPaths.Num() == 0)
+    {
+        return;
+    }
+
+    // 批量导出时静默内部技术日志分类（可通过配置关闭）
+    ELogVerbosity::Type OriginalDataTracer = ELogVerbosity::NoLogging;
+    ELogVerbosity::Type OriginalPathTracer = ELogVerbosity::NoLogging;
+    ELogVerbosity::Type OriginalFormatter = ELogVerbosity::NoLogging;
+    ELogVerbosity::Type OriginalExtractor = ELogVerbosity::NoLogging;
+    ELogVerbosity::Type OriginalNodeFactory = ELogVerbosity::NoLogging;
+    ELogVerbosity::Type OriginalModels = ELogVerbosity::NoLogging;
+
+    if (BP2AIExportConfig::bSilenceInternalCategoriesDuringBatchExport)
+    {
+        OriginalDataTracer = LogDataTracer.GetVerbosity();
+        OriginalPathTracer = LogPathTracer.GetVerbosity();
+        OriginalFormatter = LogFormatter.GetVerbosity();
+        OriginalExtractor = LogExtractor.GetVerbosity();
+        OriginalNodeFactory = LogBlueprintNodeFactory.GetVerbosity();
+        OriginalModels = LogModels.GetVerbosity();
+
+        LogDataTracer.SetVerbosity(ELogVerbosity::NoLogging);
+        LogPathTracer.SetVerbosity(ELogVerbosity::NoLogging);
+        LogFormatter.SetVerbosity(ELogVerbosity::NoLogging);
+        LogExtractor.SetVerbosity(ELogVerbosity::NoLogging);
+        LogBlueprintNodeFactory.SetVerbosity(ELogVerbosity::NoLogging);
+        LogModels.SetVerbosity(ELogVerbosity::NoLogging);
+    }
+
+    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Folder export started (%d folder%s)."), SelectedPaths.Num(), SelectedPaths.Num() > 1 ? TEXT("s") : TEXT(""));
+
+    FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+    IAssetRegistry& AssetRegistry = AssetRegistryModule.Get();
+
+    FARFilter Filter;
+    Filter.bRecursivePaths = true;
+    Filter.ClassPaths.Add(UBlueprint::StaticClass()->GetClassPathName());
+
+    for (const FString& Path : SelectedPaths)
+    {
+        if (!Path.IsEmpty())
+        {
+            Filter.PackagePaths.Add(FName(*Path));
+        }
+    }
+
+    TArray<FAssetData> BlueprintAssets;
+    AssetRegistry.GetAssets(Filter, BlueprintAssets);
+
+    if (BlueprintAssets.Num() == 0)
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("BP2AI: No blueprint assets found under selected folders."));
+
+        // 恢复日志级别
+        if (BP2AIExportConfig::bSilenceInternalCategoriesDuringBatchExport)
+        {
+            LogDataTracer.SetVerbosity(OriginalDataTracer);
+            LogPathTracer.SetVerbosity(OriginalPathTracer);
+            LogFormatter.SetVerbosity(OriginalFormatter);
+            LogExtractor.SetVerbosity(OriginalExtractor);
+            LogBlueprintNodeFactory.SetVerbosity(OriginalNodeFactory);
+            LogModels.SetVerbosity(OriginalModels);
+        }
+
+        return;
+    }
+
+    const int32 TotalAssets = BlueprintAssets.Num();
+    int32 SuccessCount = 0;
+    int32 FailureCount = 0;
+    int32 ProcessedSinceGc = 0;
+    const int32 GcInterval = 10;
+
+    // 创建进度条对话框
+    FScopedSlowTask Progress(TotalAssets, LOCTEXT("BP2AIExportProgress", "Exporting Blueprints..."));
+    Progress.MakeDialog(true); // true = 允许取消
+
+    for (int32 Index = 0; Index < TotalAssets; ++Index)
+    {
+        // 检查用户是否取消
+        if (Progress.ShouldCancel())
+        {
+            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Export cancelled by user. Processed: %d/%d"), SuccessCount + FailureCount, TotalAssets);
+            break;
+        }
+
+        const FAssetData& AssetData = BlueprintAssets[Index];
+        if (!CanExportBlueprintAsset(AssetData))
+        {
+            Progress.EnterProgressFrame(1.0f);
+            continue;
+        }
+
+        // 更新进度条显示当前资产路径
+        const FString AssetFullPath = AssetData.GetObjectPathString();
+        Progress.EnterProgressFrame(1.0f, FText::Format(
+            LOCTEXT("ExportingAsset", "[{0}/{1}] {2}"),
+            FText::AsNumber(Index + 1),
+            FText::AsNumber(TotalAssets),
+            FText::FromString(AssetFullPath)
+        ));
+
+        UObject* LoadedObject = AssetData.GetAsset();
+        UBlueprint* Blueprint = Cast<UBlueprint>(LoadedObject);
+        if (!Blueprint)
+        {
+            ++FailureCount;
+            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: Failed to load blueprint asset '%s'."), *AssetData.AssetName.ToString());
+            continue;
+        }
+
+        const FCompleteBlueprintData CompleteData = FBP2AIBatchExporter::ExportCompleteBlueprint(Blueprint, true);
+        const FString TargetFilePath = BuildExportFilePath(AssetData.PackagePath.ToString(), CompleteData.BlueprintName);
+
+        const bool bSaved = FBP2AIBatchExporter::WriteCompleteBlueprintMarkdown(CompleteData, TargetFilePath, true);
+        const int32 ProgressIndex = SuccessCount + FailureCount + 1;
+
+        if (bSaved)
+        {
+            ++SuccessCount;
+            UE_LOG(LogBP2AI, Log, TEXT("BP2AI: [%d/%d] %s"), ProgressIndex, TotalAssets, *AssetFullPath);
+        }
+        else
+        {
+            ++FailureCount;
+            UE_LOG(LogBP2AI, Warning, TEXT("BP2AI: [%d/%d] %s (Failed to save)"), ProgressIndex, TotalAssets, *AssetFullPath);
+        }
+
+        ++ProcessedSinceGc;
+        if (ProcessedSinceGc >= GcInterval)
+        {
+            ProcessedSinceGc = 0;
+            CollectGarbage(GARBAGE_COLLECTION_KEEPFLAGS);
+        }
+    }
+
+    UE_LOG(LogBP2AI, Log, TEXT("BP2AI: Folder export summary -> Success: %d | Failed: %d | Total: %d"), SuccessCount, FailureCount, TotalAssets);
+
+    // 恢复原始日志级别
+    if (BP2AIExportConfig::bSilenceInternalCategoriesDuringBatchExport)
+    {
+        LogDataTracer.SetVerbosity(OriginalDataTracer);
+        LogPathTracer.SetVerbosity(OriginalPathTracer);
+        LogFormatter.SetVerbosity(OriginalFormatter);
+        LogExtractor.SetVerbosity(OriginalExtractor);
+        LogBlueprintNodeFactory.SetVerbosity(OriginalNodeFactory);
+        LogModels.SetVerbosity(OriginalModels);
+    }
+}
+
+
+FString FBP2AIModule::BuildExportFilePath(const FString& PackagePath, const FString& BlueprintName) const
+{
+    const FString BaseDir = FPaths::ProjectSavedDir() / TEXT("BP2AI/Exports");
+
+    FString RelativePath = PackagePath;
+    const FString GameRoot = TEXT("/Game");
+    if (RelativePath.StartsWith(GameRoot))
+    {
+        RelativePath = RelativePath.Mid(GameRoot.Len());
+    }
+    RelativePath.RemoveFromStart(TEXT("/"));
+
+    FString OutputDir = BaseDir;
+    if (!RelativePath.IsEmpty())
+    {
+        OutputDir = FPaths::Combine(BaseDir, RelativePath);
+    }
+
+    return FPaths::Combine(OutputDir, BlueprintName + TEXT(".md"));
 }
 /* --- COMMENTED OUT LEGACY IMPLEMENTATION ---
 void FBP2AIModule::OnPluginWindowClosed(const TSharedRef<SWindow>& Window)

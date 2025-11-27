@@ -17,15 +17,30 @@
 #include "Trace/Generation/GenerationShared.h"
 #include "Logging/BP2AILog.h"
 #include "Trace/Utils/MarkdownTracerUtils.h"
+#include "Settings/BP2AIExportConfig.h"
+
+namespace
+{
+FORCEINLINE bool ShouldLogBlueprintDetails()
+{
+    return BP2AIExportConfig::bDetailedBlueprintLog;
+}
+}
 
 FGraphDiscoveryHelper::FGraphDiscoveryHelper()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("FGraphDiscoveryHelper: Initialized"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("FGraphDiscoveryHelper: Initialized"));
+    }
 }
 
 FGraphDiscoveryHelper::~FGraphDiscoveryHelper()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("FGraphDiscoveryHelper: Destroyed"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("FGraphDiscoveryHelper: Destroyed"));
+    }
 }
 
 void FGraphDiscoveryHelper::PrescanForPureUserGraphs(

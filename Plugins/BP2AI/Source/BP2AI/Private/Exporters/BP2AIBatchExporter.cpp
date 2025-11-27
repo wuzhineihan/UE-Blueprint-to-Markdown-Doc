@@ -32,6 +32,14 @@
 
 static bool IsInterfaceGraph(UEdGraph* Graph, UBlueprint* Blueprint, const TSet<FName>& InterfaceFuncs);
 
+namespace
+{
+FORCEINLINE bool ShouldLogBlueprintDetails()
+{
+    return BP2AIExportConfig::bDetailedBlueprintLog;
+}
+}
+
 static FString GetPropertyTypeString(FProperty* Property)
 {
     if (!Property)
@@ -255,12 +263,18 @@ static TArray<FCompleteBlueprintData::FFunctionInfo> ExportInterfaceFunctionSign
 
 FBP2AIBatchExporter::FBP2AIBatchExporter()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Initialized"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Initialized"));
+    }
 }
 
 FBP2AIBatchExporter::~FBP2AIBatchExporter()
 {
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Destroyed"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Destroyed"));
+    }
 }
 
 FGenerationSettings FBP2AIBatchExporter::CreateDefaultSettings() const
@@ -304,6 +318,11 @@ bool FBP2AIBatchExporter::IsGraphValid(UEdGraph* Graph) const
 
 void FBP2AIBatchExporter::LogExportResult(const FString& GraphName, const FString& Content) const
 {
+    if (!ShouldLogBlueprintDetails())
+    {
+        return;
+    }
+
     const int32 CharCount = Content.Len();
     int32 LineCount = 0;
     if (!Content.IsEmpty())
@@ -591,7 +610,10 @@ static TSet<FName> GetInterfaceFunctionNames(UBlueprint* Blueprint)
         UClass* InterfaceClass = Iface.Interface.Get();
         if (InterfaceClass)
         {
-            UE_LOG(LogBP2AI, Log, TEXT("Found Interface: %s"), *InterfaceClass->GetName());
+            if (ShouldLogBlueprintDetails())
+            {
+                UE_LOG(LogBP2AI, Log, TEXT("Found Interface: %s"), *InterfaceClass->GetName());
+            }
             for (TFieldIterator<UFunction> Fit(InterfaceClass, EFieldIteratorFlags::IncludeSuper); Fit; ++Fit)
             {
                 UFunction* Func = *Fit;
@@ -604,7 +626,10 @@ static TSet<FName> GetInterfaceFunctionNames(UBlueprint* Blueprint)
                     }
 
                     Names.Add(Func->GetFName());
-                    UE_LOG(LogBP2AI, Log, TEXT("   - Found Interface Function: %s"), *Func->GetName());
+                    if (ShouldLogBlueprintDetails())
+                    {
+                        UE_LOG(LogBP2AI, Log, TEXT("   - Found Interface Function: %s"), *Func->GetName());
+                    }
                 }
             }
         }
@@ -624,9 +649,12 @@ TArray<FExportedGraphInfo> FBP2AIBatchExporter::ExportAllGraphsDetailed(UBluepri
         UE_LOG(LogBP2AI, Error, TEXT("ExportAllGraphsDetailed: Blueprint is null"));
         return Result;
     }
-    UE_LOG(LogBP2AI, Log, TEXT("========================================"));
-    UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Detailed export for blueprint '%s'"), *Blueprint->GetName());
-    UE_LOG(LogBP2AI, Log, TEXT("========================================"));
+    if (ShouldLogBlueprintDetails())
+    {
+        UE_LOG(LogBP2AI, Log, TEXT("========================================"));
+        UE_LOG(LogBP2AI, Log, TEXT("BP2AIBatchExporter: Detailed export for blueprint '%s'"), *Blueprint->GetName());
+        UE_LOG(LogBP2AI, Log, TEXT("========================================"));
+    }
 
     auto ExportArray = [&](const TArray<UEdGraph*>& GraphArray, const TCHAR* CategoryLabel)
     {
@@ -695,19 +723,22 @@ TArray<FExportedGraphInfo> FBP2AIBatchExporter::ExportAllGraphsDetailed(UBluepri
         TotalBlocks += G.BlueprintBlockCount;
         TotalNodes += G.NodeCount;
     }
-    UE_LOG(LogBP2AI, Log, TEXT("📊 Detailed Export Summary:"));
-    UE_LOG(LogBP2AI, Log, TEXT("   Graphs: %d"), Result.Num());
-    UE_LOG(LogBP2AI, Log, TEXT("   Total Nodes: %d"), TotalNodes);
-    UE_LOG(LogBP2AI, Log, TEXT("   Total Characters: %d"), TotalChars);
-    UE_LOG(LogBP2AI, Log, TEXT("   Total Lines: %d"), TotalLines);
-    UE_LOG(LogBP2AI, Log, TEXT("   Total Blueprint Blocks: %d"), TotalBlocks);
-
-    UE_LOG(LogBP2AI, Log, TEXT("   Per-Graph Overview:"));
-    for (const FExportedGraphInfo& G : Result)
+    if (ShouldLogBlueprintDetails())
     {
-        UE_LOG(LogBP2AI, Log, TEXT("      [%s] %s | Nodes=%d, Chars=%d, Lines=%d, Blocks=%d"), *G.Category, *G.GraphName, G.NodeCount, G.CharacterCount, G.LineCount, G.BlueprintBlockCount);
+        UE_LOG(LogBP2AI, Log, TEXT("📊 Detailed Export Summary:"));
+        UE_LOG(LogBP2AI, Log, TEXT("   Graphs: %d"), Result.Num());
+        UE_LOG(LogBP2AI, Log, TEXT("   Total Nodes: %d"), TotalNodes);
+        UE_LOG(LogBP2AI, Log, TEXT("   Total Characters: %d"), TotalChars);
+        UE_LOG(LogBP2AI, Log, TEXT("   Total Lines: %d"), TotalLines);
+        UE_LOG(LogBP2AI, Log, TEXT("   Total Blueprint Blocks: %d"), TotalBlocks);
+
+        UE_LOG(LogBP2AI, Log, TEXT("   Per-Graph Overview:"));
+        for (const FExportedGraphInfo& G : Result)
+        {
+            UE_LOG(LogBP2AI, Log, TEXT("      [%s] %s | Nodes=%d, Chars=%d, Lines=%d, Blocks=%d"), *G.Category, *G.GraphName, G.NodeCount, G.CharacterCount, G.LineCount, G.BlueprintBlockCount);
+        }
+        UE_LOG(LogBP2AI, Log, TEXT("========================================"));
     }
-    UE_LOG(LogBP2AI, Log, TEXT("========================================"));
 
     return Result;
 }
@@ -1602,7 +1633,10 @@ FCompleteBlueprintData FBP2AIBatchExporter::ExportCompleteBlueprint(UBlueprint* 
 
     if (Result.bIsInterface)
     {
-        UE_LOG(LogBP2AI, Log, TEXT("ExportCompleteBlueprint: '%s' detected as Blueprint Interface"), *Result.BlueprintName);
+        if (ShouldLogBlueprintDetails())
+        {
+            UE_LOG(LogBP2AI, Log, TEXT("ExportCompleteBlueprint: '%s' detected as Blueprint Interface"), *Result.BlueprintName);
+        }
         Result.Functions = ExportInterfaceFunctionSignatures(Blueprint);
         return Result;
     }
@@ -1639,7 +1673,10 @@ bool FBP2AIBatchExporter::WriteCompleteBlueprintMarkdown(const FCompleteBlueprin
     const FString Content = Data.ToMarkdown();
     if (FFileHelper::SaveStringToFile(Content, *TargetFilePath))
     {
-        UE_LOG(LogBP2AI, Log, TEXT("📘 Saved blueprint document: %s"), *TargetFilePath);
+        if (ShouldLogBlueprintDetails())
+        {
+            UE_LOG(LogBP2AI, Log, TEXT("📘 Saved blueprint document: %s"), *TargetFilePath);
+        }
         return true;
     }
 

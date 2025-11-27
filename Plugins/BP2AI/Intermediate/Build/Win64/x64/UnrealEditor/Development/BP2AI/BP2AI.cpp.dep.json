@@ -63,7 +63,13 @@
             "d:\\epic\\ue\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatalegacybridge.generated.h",
             "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\core\\public\\algo\\selectrandomweighted.h",
             "d:\\epic\\ue\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowser\\uht\\contentbrowsermenucontexts.generated.h",
-            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\exporters\\bp2aibatchexporter.h"
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\editor\\contentbrowser\\public\\contentbrowsermodule.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\assetregistrymodule.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\iassetregistry.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\misc\\assetregistryinterface.h",
+            "d:\\epic\\ue\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assetregistry\\uht\\iassetregistry.generated.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\exporters\\bp2aibatchexporter.h",
+            "c:\\users\\admin\\desktop\\cppplayground\\plugins\\bp2ai\\source\\bp2ai\\public\\settings\\bp2aiexportconfig.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
